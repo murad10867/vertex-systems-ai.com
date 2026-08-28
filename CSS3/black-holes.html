@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        الثقوب السوداء | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="black-holes.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            🕳️
+        </div>
+
+        <div>
+
+            <h1>
+                الثقوب السوداء
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================================
+             المقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-stars"></div>
+
+
+            <div class="hero-content">
+
+                <h2>
+                    🕳️ ادخل عالم الثقوب السوداء
+                </h2>
+
+                <p>
+                    الثقب الأسود منطقة في الفضاء
+                    تكون فيها الجاذبية قوية جدًا،
+                    وبعد تجاوز أفق الحدث لا يستطيع
+                    الضوء العودة إلى الخارج.
+                </p>
+
+                <button
+                    id="exploreBtn"
+                    class="main-btn"
+                >
+                    🚀 ابدأ الاستكشاف
+                </button>
+
+            </div>
+
+
+            <!-- الثقب الأسود -->
+
+            <div class="hero-black-hole">
+
+                <div class="accretion-glow"></div>
+
+                <div class="accretion-disk disk-back"></div>
+
+                <div class="black-hole-core"></div>
+
+                <div class="accretion-disk disk-front"></div>
+
+                <div class="photon-ring"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             محاكاة الثقب الأسود
+        ========================================== -->
+
+        <section
+            class="section"
+            id="simulationSection"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🌌 محاكاة الثقب الأسود
+                </h2>
+
+                <p>
+                    اضغط تشغيل أو غيّر سرعة دوران قرص التراكم.
+                </p>
+
+            </div>
+
+
+            <div
+                class="black-hole-simulator"
+                id="blackHoleSimulator"
+            >
+
+                <div class="sim-stars"></div>
+
+
+                <div class="sim-black-hole">
+
+                    <div class="sim-glow"></div>
+
+                    <div class="sim-disk sim-disk-back"></div>
+
+                    <div class="sim-core"></div>
+
+                    <div class="sim-photon-ring"></div>
+
+                    <div class="sim-disk sim-disk-front"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    id="pauseBtn"
+                    class="main-btn"
+                >
+                    ⏸️ إيقاف الحركة
+                </button>
+
+                <button
+                    id="speedBtn"
+                    class="main-btn"
+                >
+                    ⚡ تسريع
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="main-btn"
+                >
+                    🔄 الوضع الطبيعي
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أجزاء الثقب الأسود
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🔬 أجزاء ومناطق حول الثقب الأسود
+                </h2>
+
+                <p>
+                    تعرف على أهم المناطق التي نستخدمها
+                    لوصف ما يحدث قرب الثقب الأسود.
+                </p>
+
+            </div>
+
+
+            <div class="parts-grid">
+
+
+                <article class="part-card">
+
+                    <div class="part-icon">
+                        ⚫
+                    </div>
+
+                    <h3>
+                        أفق الحدث
+                    </h3>
+
+                    <p>
+                        حد إذا تجاوزه جسم باتجاه الداخل
+                        فلن يستطيع إرسال إشارة تعود إلى الخارج.
+                    </p>
+
+                </article>
+
+
+                <article class="part-card">
+
+                    <div class="part-icon">
+                        🌀
+                    </div>
+
+                    <h3>
+                        قرص التراكم
+                    </h3>
+
+                    <p>
+                        مادة ساخنة قد تدور حول بعض الثقوب السوداء
+                        قبل سقوطها إلى الداخل.
+                    </p>
+
+                </article>
+
+
+                <article class="part-card">
+
+                    <div class="part-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        حلقة الفوتونات
+                    </h3>
+
+                    <p>
+                        الضوء قرب الثقب الأسود يمكن أن ينحني
+                        بقوة بسبب الجاذبية.
+                    </p>
+
+                </article>
+
+
+                <article class="part-card">
+
+                    <div class="part-icon">
+                        🧲
+                    </div>
+
+                    <h3>
+                        الجاذبية
+                    </h3>
+
+                    <p>
+                        الجاذبية تغير مسارات المادة والضوء
+                        قرب الثقب الأسود بشكل شديد.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أنواع الثقوب السوداء
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🕳️ أنواع الثقوب السوداء
+                </h2>
+
+                <p>
+                    اضغط على النوع لعرض معلوماته.
+                </p>
+
+            </div>
+
+
+            <div class="types-grid">
+
+
+                <button
+                    class="type-card"
+                    data-hole="stellar"
+                >
+
+                    <div class="type-hole small-hole"></div>
+
+                    <h3>
+                        ثقب أسود نجمي
+                    </h3>
+
+                    <p>
+                        ينتج من انهيار بعض النجوم الضخمة.
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="type-card"
+                    data-hole="intermediate"
+                >
+
+                    <div class="type-hole medium-hole"></div>
+
+                    <h3>
+                        متوسط الكتلة
+                    </h3>
+
+                    <p>
+                        يقع بين النجمي وفائق الكتلة.
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="type-card"
+                    data-hole="supermassive"
+                >
+
+                    <div class="type-hole huge-hole"></div>
+
+                    <h3>
+                        فائق الكتلة
+                    </h3>
+
+                    <p>
+                        يوجد في مراكز كثير من المجرات.
+                    </p>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومات النوع المحدد
+        ========================================== -->
+
+        <section class="hole-info">
+
+            <div
+                id="selectedHole"
+                class="selected-hole"
+            ></div>
+
+
+            <p class="small-title">
+                النوع المحدد
+            </p>
+
+            <h2 id="holeName">
+                ثقب أسود نجمي
+            </h2>
+
+            <p
+                id="holeDescription"
+                class="description"
+            >
+                ثقب أسود يمكن أن يتكون
+                بعد انهيار نجم ضخم.
+            </p>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⚖️
+                    </span>
+
+                    <strong>
+                        الكتلة
+                    </strong>
+
+                    <p id="holeMass">
+                        عدة كتل شمسية أو أكثر
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        🌌
+                    </span>
+
+                    <strong>
+                        الموقع
+                    </strong>
+
+                    <p id="holeLocation">
+                        يمكن أن يوجد داخل المجرة
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <strong>
+                        التكوين
+                    </strong>
+
+                    <p id="holeFormation">
+                        انهيار بعض النجوم الضخمة
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <strong>
+                        معلومة
+                    </strong>
+
+                    <p id="holeFact">
+                        لا نرى الثقب الأسود نفسه مباشرة،
+                        لكن يمكن دراسة تأثيره في المادة والضوء.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             تجربة الاقتراب
+        ========================================== -->
+
+        <section class="section approach-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🚀 تجربة الاقتراب
+                </h2>
+
+                <p>
+                    حرّك المركبة نحو الثقب الأسود
+                    باستخدام الأزرار.
+                </p>
+
+            </div>
+
+
+            <div
+                class="approach-space"
+                id="approachSpace"
+            >
+
+                <div class="approach-stars"></div>
+
+
+                <div class="target-hole">
+
+                    <div class="target-glow"></div>
+
+                    <div class="target-disk"></div>
+
+                    <div class="target-core"></div>
+
+                </div>
+
+
+                <div
+                    class="ship"
+                    id="ship"
+                >
+                    🚀
+                </div>
+
+
+                <div
+                    class="distance-box"
+                    id="distanceBox"
+                >
+                    المسافة: 100%
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    id="closerBtn"
+                    class="main-btn"
+                >
+                    ➡️ اقترب
+                </button>
+
+                <button
+                    id="fartherBtn"
+                    class="main-btn"
+                >
+                    ⬅️ ابتعد
+                </button>
+
+                <button
+                    id="shipResetBtn"
+                    class="main-btn"
+                >
+                    🔄 إعادة المركبة
+                </button>
+
+            </div>
+
+
+            <p
+                id="shipMessage"
+                class="ship-message"
+            >
+                المركبة ما زالت بعيدة عن الثقب الأسود.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             ماذا يحدث عند الاقتراب
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🧠 ماذا يحدث قرب الثقب الأسود؟
+                </h2>
+
+            </div>
+
+
+            <div class="effects-grid">
+
+
+                <article class="effect-card">
+
+                    <span>
+                        ⏱️
+                    </span>
+
+                    <h3>
+                        تمدد الزمن
+                    </h3>
+
+                    <p>
+                        في النسبية العامة،
+                        يختلف مرور الزمن بالقرب من
+                        مجال جاذبية قوي مقارنة بمكان أبعد.
+                    </p>
+
+                </article>
+
+
+                <article class="effect-card">
+
+                    <span>
+                        🌈
+                    </span>
+
+                    <h3>
+                        انحناء الضوء
+                    </h3>
+
+                    <p>
+                        الجاذبية القوية تغير مسار الضوء،
+                        وقد تسبب ظاهرة العدسة الجاذبية.
+                    </p>
+
+                </article>
+
+
+                <article class="effect-card">
+
+                    <span>
+                        🧵
+                    </span>
+
+                    <h3>
+                        قوى المد والجزر
+                    </h3>
+
+                    <p>
+                        اختلاف قوة الجاذبية بين أجزاء الجسم
+                        يمكن أن يصبح كبيرًا جدًا قرب بعض
+                        الثقوب السوداء.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أسئلة سريعة
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    ❓ أسئلة سريعة
+                </h2>
+
+            </div>
+
+
+            <div class="faq">
+
+
+                <button class="faq-question">
+
+                    هل الثقب الأسود يبتلع الكون كله؟
+
+                </button>
+
+                <div class="faq-answer">
+
+                    لا. من بعيد تتصرف جاذبيته
+                    مثل أي جسم له الكتلة نفسها.
+                    الخطر الشديد يكون عند الاقتراب كثيرًا.
+
+                </div>
+
+
+                <button class="faq-question">
+
+                    هل نستطيع رؤية الثقب الأسود؟
+
+                </button>
+
+                <div class="faq-answer">
+
+                    الثقب الأسود نفسه لا يرسل ضوءًا من داخله،
+                    لكن العلماء يدرسون المادة الساخنة حوله
+                    وتأثير جاذبيته في الأجسام والضوء.
+
+                </div>
+
+
+                <button class="faq-question">
+
+                    هل يوجد ثقب أسود في مركز مجرتنا؟
+
+                </button>
+
+                <div class="faq-answer">
+
+                    نعم. في مركز مجرة درب التبانة
+                    يوجد ثقب أسود فائق الكتلة يسمى
+                    Sagittarius A*.
+
+                </div>
+
+
+                <button class="faq-question">
+
+                    هل كل النجوم تتحول إلى ثقوب سوداء؟
+
+                </button>
+
+                <div class="faq-answer">
+
+                    لا. مصير النجم يعتمد بدرجة كبيرة
+                    على كتلته وتطوره.
+                    كثير من النجوم تنتهي بطرق أخرى.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومة عشوائية
+        ========================================== -->
+
+        <section class="fact-section">
+
+            <h2>
+                💡 معلومة عن الثقوب السوداء
+            </h2>
+
+            <p id="randomFact">
+                اضغط الزر للحصول على معلومة.
+            </p>
+
+            <button
+                id="factBtn"
+                class="main-btn"
+            >
+                🕳️ معلومة جديدة
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="black-holes.js"></script>
+
+</body>
+
+</html>

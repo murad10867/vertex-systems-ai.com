@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        الأقمار | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="moons.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            🌙
+        </div>
+
+        <div>
+
+            <h1>
+                عالم الأقمار
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================================
+             مقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-stars"></div>
+
+
+            <div class="hero-content">
+
+                <h2>
+                    🌙 اكتشف الأقمار
+                </h2>
+
+                <p>
+                    القمر الطبيعي جسم يدور حول كوكب أو جسم أكبر،
+                    وتوجد في مجموعتنا الشمسية أقمار كثيرة بأشكال
+                    وخصائص مختلفة.
+                </p>
+
+                <button
+                    id="exploreBtn"
+                    class="main-btn"
+                >
+                    🚀 ابدأ الاستكشاف
+                </button>
+
+            </div>
+
+
+            <div class="hero-earth-system">
+
+                <div class="hero-earth">
+
+                    <div class="hero-land"></div>
+
+                    <div class="hero-clouds"></div>
+
+                </div>
+
+
+                <div class="hero-moon-orbit">
+
+                    <div class="hero-moon"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             الأرض والقمر
+        ========================================== -->
+
+        <section
+            class="section"
+            id="earthMoonSection"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🌍 الأرض والقمر
+                </h2>
+
+                <p>
+                    شاهد القمر وهو يدور حول الأرض.
+                </p>
+
+            </div>
+
+
+            <div
+                class="earth-moon-simulator"
+                id="earthMoonSimulator"
+            >
+
+                <div class="space-stars"></div>
+
+
+                <div class="earth-main">
+
+                    <div class="earth-ocean"></div>
+
+                    <div class="earth-land"></div>
+
+                    <div class="earth-clouds"></div>
+
+                    <div class="earth-shadow"></div>
+
+                </div>
+
+
+                <div class="moon-main-orbit">
+
+                    <div class="moon-main">
+
+                        <span class="crater crater-one"></span>
+
+                        <span class="crater crater-two"></span>
+
+                        <span class="crater crater-three"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    id="pauseBtn"
+                    class="main-btn"
+                >
+                    ⏸️ إيقاف الحركة
+                </button>
+
+
+                <button
+                    id="speedBtn"
+                    class="main-btn"
+                >
+                    ⚡ تسريع
+                </button>
+
+
+                <button
+                    id="resetBtn"
+                    class="main-btn"
+                >
+                    🔄 الوضع الطبيعي
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أطوار القمر
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌒 أطوار القمر
+                </h2>
+
+                <p>
+                    اضغط على أي طور لمعرفة اسمه.
+                </p>
+
+            </div>
+
+
+            <div class="phases-grid">
+
+
+                <button
+                    class="phase-card"
+                    data-phase="newMoon"
+                >
+
+                    <div class="phase-moon new-moon"></div>
+
+                    <span>
+                        المحاق
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="waxingCrescent"
+                >
+
+                    <div class="phase-moon waxing-crescent"></div>
+
+                    <span>
+                        هلال متزايد
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="firstQuarter"
+                >
+
+                    <div class="phase-moon first-quarter"></div>
+
+                    <span>
+                        التربيع الأول
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="waxingGibbous"
+                >
+
+                    <div class="phase-moon waxing-gibbous"></div>
+
+                    <span>
+                        أحدب متزايد
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="fullMoon"
+                >
+
+                    <div class="phase-moon full-moon"></div>
+
+                    <span>
+                        البدر
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="waningGibbous"
+                >
+
+                    <div class="phase-moon waning-gibbous"></div>
+
+                    <span>
+                        أحدب متناقص
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="lastQuarter"
+                >
+
+                    <div class="phase-moon last-quarter"></div>
+
+                    <span>
+                        التربيع الأخير
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="phase-card"
+                    data-phase="waningCrescent"
+                >
+
+                    <div class="phase-moon waning-crescent"></div>
+
+                    <span>
+                        هلال متناقص
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومات الطور المحدد
+        ========================================== -->
+
+        <section class="phase-info">
+
+            <div
+                id="selectedPhaseVisual"
+                class="selected-phase full-moon"
+            ></div>
+
+
+            <p class="small-title">
+                الطور المحدد
+            </p>
+
+
+            <h2 id="phaseName">
+                البدر
+            </h2>
+
+
+            <p
+                id="phaseDescription"
+                class="description"
+            >
+                يظهر الوجه القريب من القمر مضاءً تقريبًا بالكامل.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             الكسوف والخسوف
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    ☀️🌍🌙 الكسوف والخسوف
+                </h2>
+
+                <p>
+                    محاكاة تعليمية مبسطة.
+                </p>
+
+            </div>
+
+
+            <div class="eclipse-grid">
+
+
+                <!-- كسوف الشمس -->
+
+                <div class="eclipse-card">
+
+                    <h3>
+                        ☀️ كسوف الشمس
+                    </h3>
+
+
+                    <div class="eclipse-space">
+
+                        <div class="eclipse-sun"></div>
+
+                        <div class="eclipse-moon"></div>
+
+                        <div class="eclipse-earth"></div>
+
+                    </div>
+
+
+                    <p>
+                        يحدث عندما يمر القمر بين الأرض والشمس
+                        فيحجب جزءًا من ضوء الشمس عن مناطق من الأرض.
+                    </p>
+
+                </div>
+
+
+                <!-- خسوف القمر -->
+
+                <div class="eclipse-card">
+
+                    <h3>
+                        🌙 خسوف القمر
+                    </h3>
+
+
+                    <div class="lunar-space">
+
+                        <div class="lunar-sun"></div>
+
+                        <div class="lunar-earth"></div>
+
+                        <div class="earth-shadow-beam"></div>
+
+                        <div class="lunar-moon"></div>
+
+                    </div>
+
+
+                    <p>
+                        يحدث عندما تدخل القمر منطقة ظل الأرض.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أشهر الأقمار
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🪐 أشهر أقمار المجموعة الشمسية
+                </h2>
+
+                <p>
+                    اضغط على أي قمر لعرض معلوماته.
+                </p>
+
+            </div>
+
+
+            <div class="moons-grid">
+
+
+                <button
+                    class="moon-card"
+                    data-moon="moon"
+                >
+
+                    <div class="moon-visual earth-moon-visual"></div>
+
+                    <h3>
+                        قمر الأرض
+                    </h3>
+
+                    <p>
+                        🌍 الأرض
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="io"
+                >
+
+                    <div class="moon-visual io-visual"></div>
+
+                    <h3>
+                        آيو
+                    </h3>
+
+                    <p>
+                        🟤 المشتري
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="europa"
+                >
+
+                    <div class="moon-visual europa-visual"></div>
+
+                    <h3>
+                        أوروبا
+                    </h3>
+
+                    <p>
+                        🟤 المشتري
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="ganymede"
+                >
+
+                    <div class="moon-visual ganymede-visual"></div>
+
+                    <h3>
+                        غانيميد
+                    </h3>
+
+                    <p>
+                        🟤 المشتري
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="callisto"
+                >
+
+                    <div class="moon-visual callisto-visual"></div>
+
+                    <h3>
+                        كاليستو
+                    </h3>
+
+                    <p>
+                        🟤 المشتري
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="titan"
+                >
+
+                    <div class="moon-visual titan-visual"></div>
+
+                    <h3>
+                        تيتان
+                    </h3>
+
+                    <p>
+                        🪐 زحل
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="enceladus"
+                >
+
+                    <div class="moon-visual enceladus-visual"></div>
+
+                    <h3>
+                        إنسيلادوس
+                    </h3>
+
+                    <p>
+                        🪐 زحل
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="moon-card"
+                    data-moon="triton"
+                >
+
+                    <div class="moon-visual triton-visual"></div>
+
+                    <h3>
+                        تريتون
+                    </h3>
+
+                    <p>
+                        🔵 نبتون
+                    </p>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومات القمر المختار
+        ========================================== -->
+
+        <section class="moon-info">
+
+            <div
+                id="selectedMoonVisual"
+                class="selected-moon earth-moon-visual"
+            ></div>
+
+
+            <p class="small-title">
+                القمر المحدد
+            </p>
+
+
+            <h2 id="moonName">
+                قمر الأرض
+            </h2>
+
+
+            <p
+                id="moonDescription"
+                class="description"
+            >
+                القمر الطبيعي الوحيد للأرض.
+            </p>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        🪐
+                    </span>
+
+                    <strong>
+                        يدور حول
+                    </strong>
+
+                    <p id="moonPlanet">
+                        الأرض
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        📏
+                    </span>
+
+                    <strong>
+                        القطر
+                    </strong>
+
+                    <p id="moonDiameter">
+                        حوالي 3,475 كم
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        🌀
+                    </span>
+
+                    <strong>
+                        مدة المدار
+                    </strong>
+
+                    <p id="moonOrbit">
+                        نحو 27.3 يوم
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <strong>
+                        معلومة
+                    </strong>
+
+                    <p id="moonFact">
+                        نرى تقريبًا الوجه نفسه من القمر بسبب الدوران المتزامن.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أقمار المشتري
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🟤 أقمار المشتري الغاليلية
+                </h2>
+
+                <p>
+                    آيو، أوروبا، غانيميد، وكاليستو.
+                </p>
+
+            </div>
+
+
+            <div
+                class="jupiter-system"
+                id="jupiterSystem"
+            >
+
+                <div class="jupiter-main"></div>
+
+
+                <div class="jupiter-orbit orbit-io">
+
+                    <div class="jupiter-moon io-small"></div>
+
+                </div>
+
+
+                <div class="jupiter-orbit orbit-europa">
+
+                    <div class="jupiter-moon europa-small"></div>
+
+                </div>
+
+
+                <div class="jupiter-orbit orbit-ganymede">
+
+                    <div class="jupiter-moon ganymede-small"></div>
+
+                </div>
+
+
+                <div class="jupiter-orbit orbit-callisto">
+
+                    <div class="jupiter-moon callisto-small"></div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="jupiterPauseBtn"
+                class="main-btn"
+            >
+                ⏸️ إيقاف أقمار المشتري
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومة عشوائية
+        ========================================== -->
+
+        <section class="fact-section">
+
+            <h2>
+                💡 معلومة عن الأقمار
+            </h2>
+
+            <p id="randomFact">
+                اضغط للحصول على معلومة.
+            </p>
+
+            <button
+                id="factBtn"
+                class="main-btn"
+            >
+                🌙 معلومة جديدة
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="moons.js"></script>
+
+
+</body>
+
+</html>

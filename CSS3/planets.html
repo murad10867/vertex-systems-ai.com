@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        المجموعة الشمسية | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="planets.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-logo">
+            ☀️
+        </div>
+
+        <div>
+
+            <h1>
+                المجموعة الشمسية
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             مقدمة
+        ========================================== -->
+
+        <section class="intro-section">
+
+            <h2>
+                🌌 استكشف مجموعتنا الشمسية
+            </h2>
+
+            <p>
+                شاهد الكواكب وهي تدور حول الشمس،
+                واضغط على أي كوكب لمعرفة معلوماته.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================================
+             النظام الشمسي
+        ========================================== -->
+
+        <section class="solar-section">
+
+            <div class="section-title">
+
+                <h2>
+                    ☀️ النظام الشمسي
+                </h2>
+
+                <p>
+                    الأحجام والمسافات هنا تقريبية لأغراض العرض.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="solar-system"
+                id="solarSystem"
+            >
+
+
+                <!-- النجوم -->
+
+                <div class="stars stars-one"></div>
+
+                <div class="stars stars-two"></div>
+
+
+
+                <!-- =====================================
+                     الشمس
+                ====================================== -->
+
+                <button
+                    class="sun"
+                    data-planet="sun"
+                    aria-label="الشمس"
+                    title="الشمس"
+                >
+
+                    <span class="sun-glow"></span>
+
+                    <span class="sun-core"></span>
+
+                </button>
+
+
+
+                <!-- =====================================
+                     عطارد
+                ====================================== -->
+
+                <div class="orbit orbit-mercury">
+
+                    <button
+                        class="planet mercury"
+                        data-planet="mercury"
+                        aria-label="عطارد"
+                        title="عطارد"
+                    >
+
+                        <span
+                            class="sphere mercury-sphere"
+                        ></span>
+
+                        <span class="planet-label">
+                            عطارد
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     الزهرة
+                ====================================== -->
+
+                <div class="orbit orbit-venus">
+
+                    <button
+                        class="planet venus"
+                        data-planet="venus"
+                        aria-label="الزهرة"
+                        title="الزهرة"
+                    >
+
+                        <span
+                            class="sphere venus-sphere"
+                        ></span>
+
+                        <span class="planet-label">
+                            الزهرة
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     الأرض والقمر
+                ====================================== -->
+
+                <div class="orbit orbit-earth">
+
+                    <button
+                        class="planet earth"
+                        data-planet="earth"
+                        aria-label="الأرض"
+                        title="الأرض"
+                    >
+
+                        <span class="earth-system">
+
+                            <span class="earth-sphere">
+
+                                <span
+                                    class="earth-land"
+                                ></span>
+
+                                <span
+                                    class="earth-clouds"
+                                ></span>
+
+                            </span>
+
+
+                            <span class="moon-orbit">
+
+                                <span class="moon">
+                                </span>
+
+                            </span>
+
+                        </span>
+
+
+                        <span class="planet-label">
+                            الأرض
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     المريخ
+                ====================================== -->
+
+                <div class="orbit orbit-mars">
+
+                    <button
+                        class="planet mars"
+                        data-planet="mars"
+                        aria-label="المريخ"
+                        title="المريخ"
+                    >
+
+                        <span
+                            class="sphere mars-sphere"
+                        ></span>
+
+                        <span class="planet-label">
+                            المريخ
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     حزام الكويكبات
+                ====================================== -->
+
+                <div class="asteroid-belt"></div>
+
+
+
+                <!-- =====================================
+                     المشتري
+                ====================================== -->
+
+                <div class="orbit orbit-jupiter">
+
+                    <button
+                        class="planet jupiter"
+                        data-planet="jupiter"
+                        aria-label="المشتري"
+                        title="المشتري"
+                    >
+
+                        <span
+                            class="sphere jupiter-sphere"
+                        >
+
+                            <span
+                                class="jupiter-spot"
+                            ></span>
+
+                        </span>
+
+                        <span class="planet-label">
+                            المشتري
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     زحل
+                ====================================== -->
+
+                <div class="orbit orbit-saturn">
+
+                    <button
+                        class="planet saturn"
+                        data-planet="saturn"
+                        aria-label="زحل"
+                        title="زحل"
+                    >
+
+                        <span class="saturn-system">
+
+                            <span
+                                class="saturn-ring-back"
+                            ></span>
+
+                            <span
+                                class="sphere saturn-sphere"
+                            ></span>
+
+                            <span
+                                class="saturn-ring-front"
+                            ></span>
+
+                        </span>
+
+                        <span class="planet-label">
+                            زحل
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     أورانوس
+                ====================================== -->
+
+                <div class="orbit orbit-uranus">
+
+                    <button
+                        class="planet uranus"
+                        data-planet="uranus"
+                        aria-label="أورانوس"
+                        title="أورانوس"
+                    >
+
+                        <span class="uranus-system">
+
+                            <span
+                                class="uranus-ring"
+                            ></span>
+
+                            <span
+                                class="sphere uranus-sphere"
+                            ></span>
+
+                        </span>
+
+                        <span class="planet-label">
+                            أورانوس
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     نبتون
+                ====================================== -->
+
+                <div class="orbit orbit-neptune">
+
+                    <button
+                        class="planet neptune"
+                        data-planet="neptune"
+                        aria-label="نبتون"
+                        title="نبتون"
+                    >
+
+                        <span
+                            class="sphere neptune-sphere"
+                        ></span>
+
+                        <span class="planet-label">
+                            نبتون
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 التحكم
+            ========================================== -->
+
+            <div class="controls">
+
+                <button
+                    id="pauseBtn"
+                    class="control-btn"
+                >
+                    ⏸️ إيقاف الحركة
+                </button>
+
+
+                <button
+                    id="speedBtn"
+                    class="control-btn"
+                >
+                    ⚡ تسريع
+                </button>
+
+
+                <button
+                    id="resetBtn"
+                    class="control-btn"
+                >
+                    🔄 الوضع الطبيعي
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             معلومات الكوكب
+        ========================================== -->
+
+        <section
+            class="planet-info"
+            id="planetInfo"
+        >
+
+            <div class="info-top">
+
+                <div
+                    class="planet-preview"
+                    id="planetPreview"
+                >
+                    🌍
+                </div>
+
+
+                <div>
+
+                    <p class="small-title">
+                        الكوكب المحدد
+                    </p>
+
+                    <h2 id="planetName">
+                        الأرض
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <p
+                class="planet-description"
+                id="planetDescription"
+            >
+                الأرض هي الكوكب الثالث من الشمس.
+            </p>
+
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        🪨
+                    </span>
+
+                    <strong>
+                        النوع
+                    </strong>
+
+                    <span id="planetType">
+                        كوكب صخري
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        ☀️
+                    </span>
+
+                    <strong>
+                        الموقع
+                    </strong>
+
+                    <span id="planetPosition">
+                        الثالث من الشمس
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        🌙
+                    </span>
+
+                    <strong>
+                        الأقمار
+                    </strong>
+
+                    <span id="planetMoons">
+                        1
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        📅
+                    </span>
+
+                    <strong>
+                        مدة السنة
+                    </strong>
+
+                    <span id="planetYear">
+                        365.25 يوم
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        🌀
+                    </span>
+
+                    <strong>
+                        مدة اليوم
+                    </strong>
+
+                    <span id="planetDay">
+                        حوالي 24 ساعة
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        📏
+                    </span>
+
+                    <strong>
+                        القطر
+                    </strong>
+
+                    <span id="planetDiameter">
+                        12,742 كم
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        🌡️
+                    </span>
+
+                    <strong>
+                        الحرارة
+                    </strong>
+
+                    <span id="planetTemperature">
+                        متوسط 15°C
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <span class="info-icon">
+                        💡
+                    </span>
+
+                    <strong>
+                        معلومة
+                    </strong>
+
+                    <span id="planetFact">
+                        الكوكب الوحيد المعروف بوجود حياة عليه.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             الأرض والقمر
+        ========================================== -->
+
+        <section class="earth-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌍 الأرض والقمر
+                </h2>
+
+                <p>
+                    نموذج يوضح دوران الأرض والقمر.
+                </p>
+
+            </div>
+
+
+            <div
+                class="earth-demo"
+                id="earthDemo"
+            >
+
+
+                <div class="demo-stars"></div>
+
+
+                <div class="large-earth">
+
+                    <div class="large-earth-ocean"></div>
+
+                    <div class="large-earth-land"></div>
+
+                    <div class="large-earth-clouds"></div>
+
+                    <div class="earth-shadow"></div>
+
+                </div>
+
+
+
+                <div class="large-moon-orbit">
+
+                    <div class="large-moon">
+
+                        <span class="moon-crater crater-one">
+                        </span>
+
+                        <span class="moon-crater crater-two">
+                        </span>
+
+                        <span class="moon-crater crater-three">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                id="earthPauseBtn"
+                class="control-btn"
+            >
+                ⏸️ إيقاف الأرض والقمر
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             ترتيب الكواكب
+        ========================================== -->
+
+        <section class="order-section">
+
+            <h2>
+                🪐 ترتيب الكواكب من الشمس
+            </h2>
+
+
+            <div class="planet-order">
+
+                <div>
+                    <span>1</span>
+                    عطارد
+                </div>
+
+                <div>
+                    <span>2</span>
+                    الزهرة
+                </div>
+
+                <div>
+                    <span>3</span>
+                    الأرض
+                </div>
+
+                <div>
+                    <span>4</span>
+                    المريخ
+                </div>
+
+                <div>
+                    <span>5</span>
+                    المشتري
+                </div>
+
+                <div>
+                    <span>6</span>
+                    زحل
+                </div>
+
+                <div>
+                    <span>7</span>
+                    أورانوس
+                </div>
+
+                <div>
+                    <span>8</span>
+                    نبتون
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             زر العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="planets.js"></script>
+
+
+</body>
+
+</html>

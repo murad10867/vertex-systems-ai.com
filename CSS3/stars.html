@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        النجوم | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="stars.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            ⭐
+        </div>
+
+        <div>
+
+            <h1>
+                عالم النجوم
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             المقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-stars"></div>
+
+            <div class="hero-content">
+
+                <h2>
+                    ⭐ اكتشف النجوم
+                </h2>
+
+                <p>
+                    النجوم كرات ضخمة من الغاز والبلازما
+                    تنتج الطاقة داخلها عن طريق الاندماج النووي.
+                </p>
+
+                <button
+                    id="exploreBtn"
+                    class="main-btn"
+                >
+                    🚀 ابدأ الاستكشاف
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             أنواع النجوم
+        ========================================== -->
+
+        <section
+            class="section"
+            id="starTypes"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    ⭐ أنواع النجوم
+                </h2>
+
+                <p>
+                    اضغط على أي نجم لعرض معلوماته.
+                </p>
+
+            </div>
+
+
+            <div class="stars-grid">
+
+
+                <!-- القزم الأحمر -->
+
+                <button
+                    class="star-card"
+                    data-star="redDwarf"
+                >
+
+                    <span
+                        class="star-object red-dwarf"
+                    ></span>
+
+                    <h3>
+                        القزم الأحمر
+                    </h3>
+
+                    <p>
+                        صغير وبارد نسبيًا.
+                    </p>
+
+                </button>
+
+
+
+                <!-- الشمس -->
+
+                <button
+                    class="star-card"
+                    data-star="sunLike"
+                >
+
+                    <span
+                        class="star-object sun-like"
+                    ></span>
+
+                    <h3>
+                        نجم شبيه بالشمس
+                    </h3>
+
+                    <p>
+                        نجم متوسط الحجم.
+                    </p>
+
+                </button>
+
+
+
+                <!-- العملاق الأزرق -->
+
+                <button
+                    class="star-card"
+                    data-star="blueGiant"
+                >
+
+                    <span
+                        class="star-object blue-giant"
+                    ></span>
+
+                    <h3>
+                        العملاق الأزرق
+                    </h3>
+
+                    <p>
+                        شديد الحرارة والسطوع.
+                    </p>
+
+                </button>
+
+
+
+                <!-- العملاق الأحمر -->
+
+                <button
+                    class="star-card"
+                    data-star="redGiant"
+                >
+
+                    <span
+                        class="star-object red-giant"
+                    ></span>
+
+                    <h3>
+                        العملاق الأحمر
+                    </h3>
+
+                    <p>
+                        نجم ضخم في مرحلة متقدمة.
+                    </p>
+
+                </button>
+
+
+
+                <!-- القزم الأبيض -->
+
+                <button
+                    class="star-card"
+                    data-star="whiteDwarf"
+                >
+
+                    <span
+                        class="star-object white-dwarf"
+                    ></span>
+
+                    <h3>
+                        القزم الأبيض
+                    </h3>
+
+                    <p>
+                        بقايا نجم صغير أو متوسط.
+                    </p>
+
+                </button>
+
+
+
+                <!-- النجم النيوتروني -->
+
+                <button
+                    class="star-card"
+                    data-star="neutronStar"
+                >
+
+                    <span
+                        class="star-object neutron-star"
+                    ></span>
+
+                    <h3>
+                        النجم النيوتروني
+                    </h3>
+
+                    <p>
+                        صغير جدًا وكثيف للغاية.
+                    </p>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             معلومات النجم المختار
+        ========================================== -->
+
+        <section class="star-info">
+
+            <div class="selected-star-area">
+
+                <div
+                    id="selectedStarVisual"
+                    class="selected-star sun-like"
+                ></div>
+
+            </div>
+
+
+            <div class="selected-data">
+
+                <p class="small-title">
+                    النجم المحدد
+                </p>
+
+                <h2 id="starName">
+                    نجم شبيه بالشمس
+                </h2>
+
+                <p
+                    id="starDescription"
+                    class="description"
+                >
+                    نجم متوسط الحجم مثل شمس مجموعتنا الشمسية.
+                </p>
+
+            </div>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        🌡️
+                    </span>
+
+                    <strong>
+                        الحرارة
+                    </strong>
+
+                    <p id="starTemperature">
+                        آلاف الدرجات
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        📏
+                    </span>
+
+                    <strong>
+                        الحجم
+                    </strong>
+
+                    <p id="starSize">
+                        متوسط
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        🎨
+                    </span>
+
+                    <strong>
+                        اللون
+                    </strong>
+
+                    <p id="starColor">
+                        أصفر مائل للأبيض
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⏳
+                    </span>
+
+                    <strong>
+                        العمر
+                    </strong>
+
+                    <p id="starLifetime">
+                        مليارات السنين
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <strong>
+                        معلومة
+                    </strong>
+
+                    <p id="starFact">
+                        الشمس مثال على هذا النوع تقريبًا.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⚡
+                    </span>
+
+                    <strong>
+                        الطاقة
+                    </strong>
+
+                    <p id="starEnergy">
+                        اندماج الهيدروجين
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             دورة حياة النجوم
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌌 دورة حياة النجم
+                </h2>
+
+                <p>
+                    تختلف نهاية النجم حسب كتلته.
+                </p>
+
+            </div>
+
+
+            <div class="life-cycle">
+
+
+                <div class="life-step">
+
+                    <div class="life-icon">
+                        ☁️
+                    </div>
+
+                    <h3>
+                        السديم
+                    </h3>
+
+                    <p>
+                        سحابة ضخمة من الغاز والغبار.
+                    </p>
+
+                </div>
+
+
+                <div class="arrow">
+                    ➜
+                </div>
+
+
+                <div class="life-step">
+
+                    <div class="life-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        نجم أولي
+                    </h3>
+
+                    <p>
+                        تبدأ المادة بالتجمع بفعل الجاذبية.
+                    </p>
+
+                </div>
+
+
+                <div class="arrow">
+                    ➜
+                </div>
+
+
+                <div class="life-step">
+
+                    <div class="life-icon">
+                        ☀️
+                    </div>
+
+                    <h3>
+                        نجم
+                    </h3>
+
+                    <p>
+                        يبدأ الاندماج النووي في قلبه.
+                    </p>
+
+                </div>
+
+
+                <div class="arrow">
+                    ➜
+                </div>
+
+
+                <div class="life-step">
+
+                    <div class="life-icon">
+                        🔴
+                    </div>
+
+                    <h3>
+                        عملاق أحمر
+                    </h3>
+
+                    <p>
+                        يتمدد النجم بعد استهلاك جزء كبير من وقوده.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="split-life">
+
+
+                <!-- نجم متوسط -->
+
+                <div class="life-path">
+
+                    <h3>
+                        ⭐ نجم متوسط
+                    </h3>
+
+                    <div class="path-box">
+                        🔴 عملاق أحمر
+                    </div>
+
+                    <div class="down-arrow">
+                        ↓
+                    </div>
+
+                    <div class="path-box">
+                        🌌 سديم كوكبي
+                    </div>
+
+                    <div class="down-arrow">
+                        ↓
+                    </div>
+
+                    <div class="path-box">
+                        ⚪ قزم أبيض
+                    </div>
+
+                </div>
+
+
+
+                <!-- نجم ضخم -->
+
+                <div class="life-path">
+
+                    <h3>
+                        🌟 نجم ضخم
+                    </h3>
+
+                    <div class="path-box">
+                        🔴 عملاق فائق
+                    </div>
+
+                    <div class="down-arrow">
+                        ↓
+                    </div>
+
+                    <div class="path-box supernova-box">
+                        💥 مستعر أعظم
+                    </div>
+
+                    <div class="down-arrow">
+                        ↓
+                    </div>
+
+                    <div class="final-path">
+
+                        <div>
+                            🌀 نجم نيوتروني
+                        </div>
+
+                        <span>
+                            أو
+                        </span>
+
+                        <div>
+                            🕳️ ثقب أسود
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             مقارنة أحجام
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    📏 مقارنة تقريبية للأحجام
+                </h2>
+
+                <p>
+                    الرسم للتوضيح فقط وليس مقياسًا دقيقًا.
+                </p>
+
+            </div>
+
+
+            <div class="size-comparison">
+
+
+                <div class="size-item">
+
+                    <div class="size-star small-red"></div>
+
+                    <span>
+                        قزم أحمر
+                    </span>
+
+                </div>
+
+
+                <div class="size-item">
+
+                    <div class="size-star medium-sun"></div>
+
+                    <span>
+                        الشمس
+                    </span>
+
+                </div>
+
+
+                <div class="size-item">
+
+                    <div class="size-star giant-blue"></div>
+
+                    <span>
+                        عملاق أزرق
+                    </span>
+
+                </div>
+
+
+                <div class="size-item">
+
+                    <div class="size-star huge-red"></div>
+
+                    <span>
+                        عملاق أحمر
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             النجم النابض
+        ========================================== -->
+
+        <section class="section pulsar-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌀 محاكاة نجم نابض
+                </h2>
+
+                <p>
+                    بعض النجوم النيوترونية تدور بسرعة
+                    وتطلق حزمًا قوية من الإشعاع.
+                </p>
+
+            </div>
+
+
+            <div
+                class="pulsar-space"
+                id="pulsarSpace"
+            >
+
+                <div class="pulsar">
+
+                    <div class="pulsar-beam beam-one"></div>
+
+                    <div class="pulsar-core"></div>
+
+                    <div class="pulsar-beam beam-two"></div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="pulsarBtn"
+                class="main-btn"
+            >
+                ⏸️ إيقاف النجم النابض
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             معلومة عشوائية
+        ========================================== -->
+
+        <section class="fact-section">
+
+            <h2>
+                💡 معلومة نجمية
+            </h2>
+
+            <p id="randomFact">
+                اضغط للحصول على معلومة عن النجوم.
+            </p>
+
+            <button
+                id="factBtn"
+                class="main-btn"
+            >
+                ⭐ معلومة جديدة
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="stars.js"></script>
+
+
+</body>
+
+</html>

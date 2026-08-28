@@ -1,0 +1,1937 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #12182f,
+            #050713 42%,
+            #010207 80%,
+            #000
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================
+   الرأس
+========================================= */
+
+.main-header {
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.header-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 22px white
+        );
+}
+
+
+.main-header h1 {
+    margin: 0;
+
+    font-size: 48px;
+}
+
+
+.main-header p {
+    margin-top: 10px;
+
+    color: #a7aec5;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   main
+========================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding:
+        35px 25px 60px;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 650px;
+
+    margin-bottom: 35px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #111b3e,
+            #050817 58%,
+            #000
+        );
+}
+
+
+.hero-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            #7dbaff 1px,
+            transparent 1px
+        );
+
+    background-size:
+        50px 50px,
+        95px 95px;
+
+    background-position:
+        0 0,
+        30px 20px;
+
+    opacity: 0.55;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 15;
+
+    max-width: 800px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.hero-content h2 {
+    margin:
+        0 0 20px;
+
+    font-size: 45px;
+}
+
+
+.hero-content p {
+    color: #d0d5e4;
+
+    font-size: 19px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   Hero Earth
+========================================= */
+
+.hero-earth-system {
+    position: relative;
+
+    width: 380px;
+
+    height: 300px;
+}
+
+
+.hero-earth {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 125px;
+
+    height: 125px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #075acb,
+            #14a8ee,
+            #075acb
+        );
+
+    box-shadow:
+        0 0 30px rgba(0,140,255,0.7),
+        inset -30px -8px 30px rgba(0,0,0,0.6);
+}
+
+
+.hero-land {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            120deg,
+            transparent 0 14px,
+            #42ad68 15px 27px,
+            transparent 28px 44px
+        );
+
+    background-size:
+        220px 125px;
+
+    animation:
+        heroLandMove
+        6s
+        linear
+        infinite;
+}
+
+
+@keyframes heroLandMove {
+
+    from {
+        background-position:
+            0 0;
+    }
+
+    to {
+        background-position:
+            220px 0;
+    }
+
+}
+
+
+.hero-clouds {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            25deg,
+            transparent 0 15px,
+            rgba(255,255,255,0.18) 16px 21px,
+            transparent 22px 35px
+        );
+
+    animation:
+        heroCloudRotate
+        10s
+        linear
+        infinite;
+}
+
+
+@keyframes heroCloudRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.hero-moon-orbit {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 285px;
+
+    height: 285px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 50%;
+
+    animation:
+        heroMoonOrbit
+        7s
+        linear
+        infinite;
+}
+
+
+@keyframes heroMoonOrbit {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+.hero-moon {
+    position: absolute;
+
+    top: -22px;
+
+    left: 50%;
+
+    width: 44px;
+
+    height: 44px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff,
+            #aaa 58%,
+            #555
+        );
+
+    box-shadow:
+        0 0 14px rgba(255,255,255,0.45);
+}
+
+
+/* =========================================
+   الأقسام
+========================================= */
+
+.section,
+.phase-info,
+.moon-info,
+.fact-section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background:
+        rgba(
+            10,
+            13,
+            29,
+            0.95
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 25px;
+}
+
+
+.section-title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.section-title h2 {
+    margin:
+        0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.section-title p {
+    margin: 0;
+
+    color: #a4abc0;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   الأرض والقمر
+========================================= */
+
+.earth-moon-simulator {
+    position: relative;
+
+    width: 620px;
+
+    height: 560px;
+
+    max-width: 100%;
+
+    margin:
+        20px auto 25px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle,
+            #0e1938,
+            #02040b 70%
+        );
+}
+
+
+.space-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        );
+
+    background-size:
+        48px 48px;
+
+    opacity: 0.5;
+}
+
+
+.earth-main {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 170px;
+
+    height: 170px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 35px rgba(0,140,255,0.7);
+}
+
+
+.earth-ocean {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #075ac8,
+            #11a2e7,
+            #075ac8
+        );
+}
+
+
+.earth-land {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            120deg,
+            transparent 0 18px,
+            #3ca65d 19px 34px,
+            transparent 35px 53px
+        );
+
+    background-size:
+        270px 170px;
+
+    animation:
+        earthMove
+        7s
+        linear
+        infinite;
+}
+
+
+@keyframes earthMove {
+
+    to {
+        background-position:
+            270px 0;
+    }
+
+}
+
+
+.earth-clouds {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            25deg,
+            transparent 0 20px,
+            rgba(255,255,255,0.18) 21px 27px,
+            transparent 28px 42px
+        );
+
+    animation:
+        earthCloudMove
+        12s
+        linear
+        infinite;
+}
+
+
+@keyframes earthCloudMove {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.earth-shadow {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset -45px -8px 45px
+        rgba(0,0,0,0.7);
+}
+
+
+/* =========================================
+   مدار القمر
+========================================= */
+
+.moon-main-orbit {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 390px;
+
+    height: 390px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 50%;
+
+    animation:
+        mainMoonOrbit
+        8s
+        linear
+        infinite;
+}
+
+
+@keyframes mainMoonOrbit {
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+.moon-main {
+    position: absolute;
+
+    top: -30px;
+
+    left: 50%;
+
+    width: 60px;
+
+    height: 60px;
+
+    transform:
+        translateX(-50%);
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #bbb 55%,
+            #626262
+        );
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.45);
+}
+
+
+.crater {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(80,80,80,0.45);
+}
+
+
+.crater-one {
+    width: 12px;
+
+    height: 12px;
+
+    top: 12px;
+
+    left: 12px;
+}
+
+
+.crater-two {
+    width: 8px;
+
+    height: 8px;
+
+    top: 34px;
+
+    left: 35px;
+}
+
+
+.crater-three {
+    width: 7px;
+
+    height: 7px;
+
+    top: 12px;
+
+    right: 10px;
+}
+
+
+/* =========================================
+   إيقاف وتسريع
+========================================= */
+
+.earth-moon-simulator.paused
+.earth-land,
+
+.earth-moon-simulator.paused
+.earth-clouds,
+
+.earth-moon-simulator.paused
+.moon-main-orbit {
+    animation-play-state:
+        paused;
+}
+
+
+.earth-moon-simulator.fast
+.moon-main-orbit {
+    animation-duration:
+        2.5s;
+}
+
+
+.earth-moon-simulator.fast
+.earth-land {
+    animation-duration:
+        2.5s;
+}
+
+
+.earth-moon-simulator.fast
+.earth-clouds {
+    animation-duration:
+        4s;
+}
+
+
+/* =========================================
+   الأطوار
+========================================= */
+
+.phases-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 18px;
+}
+
+
+.phase-card {
+    min-height: 200px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        border 0.25s;
+}
+
+
+.phase-card:hover {
+    transform:
+        translateY(-7px);
+}
+
+
+.phase-card.selected {
+    border:
+        1px solid #dbe8ff;
+
+    box-shadow:
+        0 0 24px rgba(180,210,255,0.25);
+}
+
+
+.phase-moon,
+.selected-phase {
+    width: 80px;
+
+    height: 80px;
+
+    border-radius: 50%;
+}
+
+
+/* محاق */
+
+.new-moon {
+    background:
+        #101010;
+
+    box-shadow:
+        0 0 8px #333;
+}
+
+
+/* هلال متزايد */
+
+.waxing-crescent {
+    background:
+        radial-gradient(
+            circle at 30% 50%,
+            #f3f3f3 0 20%,
+            #222 23% 100%
+        );
+}
+
+
+/* تربيع أول */
+
+.first-quarter {
+    background:
+        linear-gradient(
+            90deg,
+            #eeeeee 50%,
+            #181818 50%
+        );
+}
+
+
+/* أحدب متزايد */
+
+.waxing-gibbous {
+    background:
+        radial-gradient(
+            circle at 72% 50%,
+            #222 0 22%,
+            #efefef 24% 100%
+        );
+}
+
+
+/* بدر */
+
+.full-moon {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #d5d5d5 58%,
+            #989898
+        );
+
+    box-shadow:
+        0 0 18px rgba(255,255,255,0.45);
+}
+
+
+/* أحدب متناقص */
+
+.waning-gibbous {
+    background:
+        radial-gradient(
+            circle at 28% 50%,
+            #222 0 22%,
+            #efefef 24% 100%
+        );
+}
+
+
+/* تربيع أخير */
+
+.last-quarter {
+    background:
+        linear-gradient(
+            90deg,
+            #181818 50%,
+            #eeeeee 50%
+        );
+}
+
+
+/* هلال متناقص */
+
+.waning-crescent {
+    background:
+        radial-gradient(
+            circle at 70% 50%,
+            #f3f3f3 0 20%,
+            #222 23% 100%
+        );
+}
+
+
+/* =========================================
+   معلومات الطور
+========================================= */
+
+.phase-info {
+    text-align: center;
+}
+
+
+.selected-phase {
+    width: 120px;
+
+    height: 120px;
+
+    margin:
+        10px auto 25px;
+}
+
+
+.small-title {
+    margin: 0;
+
+    color: #919ab2;
+
+    font-size: 14px;
+}
+
+
+.phase-info h2,
+.moon-info h2 {
+    margin:
+        8px 0 15px;
+
+    font-size: 38px;
+}
+
+
+.description {
+    max-width: 850px;
+
+    margin:
+        0 auto 30px;
+
+    color: #cdd2df;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   الكسوف والخسوف
+========================================= */
+
+.eclipse-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 25px;
+}
+
+
+.eclipse-card {
+    min-height: 390px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border-radius: 20px;
+}
+
+
+.eclipse-card p {
+    color: #b5bdcf;
+
+    line-height: 1.8;
+}
+
+
+.eclipse-space,
+.lunar-space {
+    position: relative;
+
+    height: 210px;
+
+    margin:
+        20px 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        #03050d;
+}
+
+
+/* كسوف الشمس */
+
+.eclipse-sun {
+    position: absolute;
+
+    top: 50%;
+
+    left: 10%;
+
+    width: 80px;
+
+    height: 80px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #ffbd28;
+
+    box-shadow:
+        0 0 30px #ff9b17;
+}
+
+
+.eclipse-moon {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    left: 48%;
+
+    width: 34px;
+
+    height: 34px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        #777;
+}
+
+
+.eclipse-earth {
+    position: absolute;
+
+    top: 50%;
+
+    right: 8%;
+
+    width: 65px;
+
+    height: 65px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #5ec5ff,
+            #0b6dd3 55%,
+            #08336f
+        );
+}
+
+
+/* خسوف */
+
+.lunar-sun {
+    position: absolute;
+
+    top: 50%;
+
+    left: 8%;
+
+    width: 80px;
+
+    height: 80px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #ffbd28;
+
+    box-shadow:
+        0 0 30px #ff9b17;
+}
+
+
+.lunar-earth {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 70px;
+
+    height: 70px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        #168add;
+}
+
+
+.earth-shadow-beam {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 190px;
+
+    height: 70px;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.8),
+            rgba(0,0,0,0.2)
+        );
+
+    clip-path:
+        polygon(
+            0 20%,
+            100% 0,
+            100% 100%,
+            0 80%
+        );
+}
+
+
+.lunar-moon {
+    position: absolute;
+
+    z-index: 4;
+
+    top: 50%;
+
+    right: 8%;
+
+    width: 42px;
+
+    height: 42px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #8e3f2b;
+
+    box-shadow:
+        0 0 12px rgba(255,80,40,0.35);
+}
+
+
+/* =========================================
+   أشهر الأقمار
+========================================= */
+
+.moons-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 18px;
+}
+
+
+.moon-card {
+    min-height: 260px;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        border 0.25s;
+}
+
+
+.moon-card:hover {
+    transform:
+        translateY(-7px);
+}
+
+
+.moon-card.selected {
+    border:
+        1px solid #a8c7ff;
+
+    box-shadow:
+        0 0 24px rgba(100,150,255,0.25);
+}
+
+
+.moon-card h3 {
+    margin:
+        20px 0 8px;
+
+    font-size: 21px;
+}
+
+
+.moon-card p {
+    margin: 0;
+
+    color: #aeb6cb;
+}
+
+
+.moon-visual,
+.selected-moon {
+    border-radius: 50%;
+
+    box-shadow:
+        inset -12px -8px 15px rgba(0,0,0,0.45);
+}
+
+
+.moon-visual {
+    width: 85px;
+
+    height: 85px;
+}
+
+
+/* قمر الأرض */
+
+.earth-moon-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #eee,
+            #aaa 60%,
+            #606060
+        );
+}
+
+
+/* آيو */
+
+.io-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffe778,
+            #e7b433 55%,
+            #9b5d18
+        );
+}
+
+
+/* أوروبا */
+
+.europa-visual {
+    background:
+        repeating-linear-gradient(
+            20deg,
+            #e9dfc2 0 10px,
+            #ab7952 11px 13px,
+            #f1e6c9 14px 25px
+        );
+}
+
+
+/* غانيميد */
+
+.ganymede-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #c9b79e,
+            #86725d 55%,
+            #4e4034
+        );
+}
+
+
+/* كاليستو */
+
+.callisto-visual {
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            #c0b39a 0 4px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle at 65% 40%,
+            #aaa 0 5px,
+            transparent 6px
+        ),
+        radial-gradient(
+            circle,
+            #665f55,
+            #37332f
+        );
+}
+
+
+/* تيتان */
+
+.titan-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffc66b,
+            #d78a2f 60%,
+            #704017
+        );
+
+    box-shadow:
+        0 0 14px rgba(255,170,60,0.35),
+        inset -12px -8px 15px rgba(0,0,0,0.4);
+}
+
+
+/* إنسيلادوس */
+
+.enceladus-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #d9efff 60%,
+            #8eafc6
+        );
+}
+
+
+/* تريتون */
+
+.triton-visual {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #e6dcdf,
+            #aaa1bd 55%,
+            #665b80
+        );
+}
+
+
+/* =========================================
+   معلومات القمر
+========================================= */
+
+.moon-info {
+    text-align: center;
+}
+
+
+.selected-moon {
+    width: 130px;
+
+    height: 130px;
+
+    margin:
+        10px auto 25px;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 15px;
+}
+
+
+.info-card {
+    min-height: 160px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border-radius: 16px;
+}
+
+
+.info-card > span {
+    font-size: 30px;
+}
+
+
+.info-card p {
+    margin: 0;
+
+    color: #bbc2d3;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   المشتري وأقماره
+========================================= */
+
+.jupiter-system {
+    position: relative;
+
+    width: 620px;
+
+    height: 620px;
+
+    max-width: 100%;
+
+    margin:
+        20px auto 25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #0e1630,
+            #02040b 70%
+        );
+}
+
+
+.jupiter-main {
+    position: absolute;
+
+    z-index: 20;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 110px;
+
+    height: 110px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #d4b38d 0 10px,
+            #9b6747 11px 17px,
+            #e4c5a3 18px 27px
+        );
+
+    box-shadow:
+        inset -20px -8px 25px rgba(0,0,0,0.5);
+}
+
+
+.jupiter-orbit {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    border-radius: 50%;
+
+    animation:
+        jupiterOrbit
+        linear
+        infinite;
+}
+
+
+@keyframes jupiterOrbit {
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+.orbit-io {
+    width: 190px;
+
+    height: 190px;
+
+    animation-duration:
+        4s;
+}
+
+
+.orbit-europa {
+    width: 280px;
+
+    height: 280px;
+
+    animation-duration:
+        6s;
+}
+
+
+.orbit-ganymede {
+    width: 390px;
+
+    height: 390px;
+
+    animation-duration:
+        9s;
+}
+
+
+.orbit-callisto {
+    width: 510px;
+
+    height: 510px;
+
+    animation-duration:
+        13s;
+}
+
+
+.jupiter-moon {
+    position: absolute;
+
+    top: -10px;
+
+    left: 50%;
+
+    width: 20px;
+
+    height: 20px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+}
+
+
+.io-small {
+    background:
+        #e6bb36;
+}
+
+
+.europa-small {
+    background:
+        #ddd3b9;
+}
+
+
+.ganymede-small {
+    width: 25px;
+
+    height: 25px;
+
+    background:
+        #887864;
+}
+
+
+.callisto-small {
+    width: 24px;
+
+    height: 24px;
+
+    background:
+        #4d4840;
+}
+
+
+.jupiter-system.paused
+.jupiter-orbit {
+    animation-play-state:
+        paused;
+}
+
+
+/* =========================================
+   المعلومة
+========================================= */
+
+.fact-section {
+    text-align: center;
+}
+
+
+.fact-section h2 {
+    margin-top: 0;
+}
+
+
+#randomFact {
+    min-height: 65px;
+
+    max-width: 850px;
+
+    margin:
+        20px auto;
+
+    color: #c9cfdd;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   الأزرار
+========================================= */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.main-btn,
+.back-btn {
+    padding:
+        14px 27px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        #f1f1f1;
+
+    color: #111;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s;
+}
+
+
+.main-btn:hover,
+.back-btn:hover {
+    transform:
+        scale(1.06);
+}
+
+
+.bottom-area {
+    text-align: center;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .phases-grid,
+    .moons-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .info-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .eclipse-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .main-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    main {
+        padding:
+            20px 12px 45px;
+    }
+
+
+    .hero {
+        min-height: 630px;
+    }
+
+
+    .hero-content h2 {
+        font-size: 34px;
+    }
+
+
+    .hero-earth-system {
+        transform:
+            scale(0.8);
+    }
+
+
+    .section,
+    .phase-info,
+    .moon-info,
+    .fact-section {
+        padding:
+            20px 14px;
+    }
+
+
+    .phases-grid,
+    .moons-grid,
+    .info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .earth-moon-simulator {
+        height: 440px;
+    }
+
+
+    .earth-main {
+        width: 125px;
+
+        height: 125px;
+    }
+
+
+    .moon-main-orbit {
+        width: 300px;
+
+        height: 300px;
+    }
+
+
+    .jupiter-system {
+        width: 620px;
+
+        max-width: none;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%)
+            scale(0.55);
+
+        transform-origin:
+            top center;
+
+        margin-bottom:
+            -260px;
+    }
+
+}

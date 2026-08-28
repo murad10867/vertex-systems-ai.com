@@ -1,0 +1,1425 @@
+/* =========================================
+   إعدادات عامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    min-height: 100%;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background:
+        #05070b;
+
+    color:
+        white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   الخلفية
+========================================= */
+
+.background {
+    position: fixed;
+
+    z-index: -10;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(32, 95, 200, 0.2),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(67, 50, 190, 0.16),
+            transparent 30%
+        ),
+
+        #05070b;
+}
+
+
+.background-grid {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(70, 145, 230, 0.055)
+            1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(70, 145, 230, 0.055)
+            1px,
+            transparent 1px
+        );
+
+    background-size:
+        55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+}
+
+
+.glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter:
+        blur(110px);
+
+    opacity: 0.22;
+
+    animation:
+        glowMove
+        12s
+        ease-in-out
+        infinite alternate;
+}
+
+
+.glow-one {
+    top: -120px;
+
+    right: -100px;
+
+    width: 450px;
+
+    height: 450px;
+
+    background:
+        #147cff;
+}
+
+
+.glow-two {
+    left: -130px;
+
+    bottom: -100px;
+
+    width: 480px;
+
+    height: 480px;
+
+    background:
+        #5139de;
+
+    animation-delay:
+        -4s;
+}
+
+
+@keyframes glowMove {
+
+    from {
+        transform:
+            translateY(-20px)
+            scale(0.9);
+    }
+
+    to {
+        transform:
+            translateY(50px)
+            scale(1.1);
+    }
+
+}
+
+
+/* =========================================
+   الجزيئات
+========================================= */
+
+.particles {
+    position: absolute;
+
+    inset: 0;
+}
+
+
+.particle {
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    animation:
+        particlePulse
+        var(--duration)
+        ease-in-out
+        infinite;
+
+    animation-delay:
+        var(--delay);
+}
+
+
+@keyframes particlePulse {
+
+    0%,
+    100% {
+        opacity: 0.12;
+
+        transform:
+            scale(0.6);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.5);
+    }
+
+}
+
+
+/* =========================================
+   الصفحة
+========================================= */
+
+.login-page {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns:
+        1.05fr 0.95fr;
+}
+
+
+/* =========================================
+   الجانب التعريفي
+========================================= */
+
+.info-side {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        45px 60px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================
+   الشعار
+========================================= */
+
+.brand {
+    width: fit-content;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        white;
+
+    text-align: right;
+
+    cursor: pointer;
+}
+
+
+.brand-logo,
+.mobile-logo {
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #147cf4,
+            #42c9ff
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(30, 140, 255, 0.3);
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+
+.brand strong {
+    display: block;
+
+    font-size: 20px;
+}
+
+
+.brand span {
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        #778499;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   المحتوى
+========================================= */
+
+.info-content {
+    max-width: 680px;
+
+    margin:
+        60px 0;
+}
+
+
+.system-badge {
+    width: fit-content;
+
+    padding:
+        9px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    border:
+        1px solid
+        rgba(70, 165, 255, 0.17);
+
+    border-radius: 50px;
+
+    background:
+        rgba(30, 115, 220, 0.07);
+
+    color:
+        #92c7f3;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.badge-dot {
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #42caff;
+
+    box-shadow:
+        0 0 9px
+        #42caff;
+}
+
+
+.info-content h1 {
+    margin:
+        24px 0 20px;
+
+    font-size:
+        clamp(
+            45px,
+            5vw,
+            72px
+        );
+
+    line-height: 1.12;
+
+    letter-spacing: -2px;
+}
+
+
+.info-content h1 span {
+    display: block;
+
+    margin-top: 8px;
+
+    color:
+        transparent;
+
+    background:
+        linear-gradient(
+            90deg,
+            #298cff,
+            #56d1ff,
+            #7775ff
+        );
+
+    background-clip:
+        text;
+
+    -webkit-background-clip:
+        text;
+}
+
+
+.info-content > p {
+    max-width: 640px;
+
+    color:
+        #919daf;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   الأنظمة الصغيرة
+========================================= */
+
+.systems-mini {
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.systems-mini > div {
+    min-width: 100px;
+
+    padding:
+        13px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    color:
+        #c0c7d4;
+}
+
+
+.systems-mini span {
+    font-size: 12px;
+}
+
+
+/* =========================================
+   النظام المطلوب
+========================================= */
+
+.requested-system {
+    max-width: 520px;
+
+    min-height: 90px;
+
+    margin-top: 35px;
+
+    padding:
+        15px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border:
+        1px solid
+        rgba(60, 165, 255, 0.18);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(30, 110, 230, 0.12),
+            rgba(50, 170, 255, 0.035)
+        );
+}
+
+
+.requested-icon {
+    width: 54px;
+
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(50, 145, 255, 0.1);
+
+    font-size: 27px;
+}
+
+
+.requested-system span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        #7e8ca1;
+
+    font-size: 12px;
+}
+
+
+.requested-system strong {
+    font-size: 18px;
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+
+.info-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    color:
+        #59667a;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   جانب النموذج
+========================================= */
+
+.form-side {
+    min-height: 100vh;
+
+    padding:
+        50px 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   البطاقة
+========================================= */
+
+.login-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    padding:
+        40px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 26px;
+
+    background:
+        rgba(11, 15, 23, 0.86);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.35);
+
+    backdrop-filter:
+        blur(20px);
+}
+
+
+.login-card-header {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.mobile-logo {
+    display: none;
+
+    margin:
+        0 auto 20px;
+}
+
+
+.small-label {
+    margin: 0;
+
+    color:
+        #3eaaff;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.login-card-header h2 {
+    margin:
+        10px 0;
+
+    font-size: 35px;
+}
+
+
+.login-card-header > p:last-child {
+    margin:
+        0;
+
+    color:
+        #7f8b9f;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   Session
+========================================= */
+
+.existing-session {
+    display: none;
+
+    margin-bottom: 25px;
+
+    padding: 18px;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border:
+        1px solid
+        rgba(60, 175, 255, 0.16);
+
+    border-radius: 16px;
+
+    background:
+        rgba(30, 115, 220, 0.08);
+
+    text-align: center;
+}
+
+
+.existing-session.visible {
+    display: flex;
+}
+
+
+.session-icon {
+    font-size: 38px;
+}
+
+
+.existing-session span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        #8d9bae;
+
+    font-size: 12px;
+}
+
+
+.existing-session strong {
+    font-size: 18px;
+}
+
+
+#continueSessionBtn {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #147cf4,
+            #38b9ff
+        );
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.different-account {
+    border: none;
+
+    background: transparent;
+
+    color:
+        #8794a8;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   النموذج
+========================================= */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+
+.input-group > label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        #c9d0dc;
+
+    font-size: 14px;
+}
+
+
+.input-wrapper {
+    position: relative;
+
+    min-height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    border:
+        1px solid
+        #273143;
+
+    border-radius: 12px;
+
+    background:
+        #101620;
+
+    transition:
+        border 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.input-wrapper:focus-within {
+    border-color:
+        #329fff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(45, 155, 255, 0.08);
+}
+
+
+.input-wrapper.error {
+    border-color:
+        #e45a64;
+}
+
+
+.input-icon {
+    width: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 0.7;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding:
+        0 5px;
+
+    border: none;
+
+    outline: none;
+
+    background:
+        transparent;
+
+    color: white;
+
+    font-size: 15px;
+}
+
+
+.input-wrapper input::placeholder {
+    color:
+        #566274;
+}
+
+
+.password-toggle {
+    width: 48px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    background:
+        transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    opacity: 0.65;
+}
+
+
+.password-toggle:hover {
+    opacity: 1;
+}
+
+
+.error-message {
+    display: block;
+
+    min-height: 17px;
+
+    margin-top: 6px;
+
+    color:
+        #e8757c;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   خيارات
+========================================= */
+
+.login-options {
+    margin:
+        2px 0 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.remember-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color:
+        #919cad;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.remember-row input {
+    width: 17px;
+
+    height: 17px;
+
+    accent-color:
+        #258cff;
+}
+
+
+.text-button {
+    padding: 0;
+
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        #56b8ff;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   رسالة النموذج
+========================================= */
+
+.form-message {
+    display: none;
+
+    margin-bottom: 16px;
+
+    padding:
+        12px 14px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+.form-message.visible {
+    display: block;
+}
+
+
+.form-message.success {
+    color:
+        #87e8aa;
+
+    background:
+        rgba(40, 180, 100, 0.09);
+
+    border:
+        1px solid
+        rgba(70, 210, 120, 0.13);
+}
+
+
+.form-message.error {
+    color:
+        #f08b91;
+
+    background:
+        rgba(210, 60, 70, 0.08);
+
+    border:
+        1px solid
+        rgba(230, 80, 90, 0.13);
+}
+
+
+/* =========================================
+   زر الدخول
+========================================= */
+
+.login-submit {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    padding:
+        0 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #147cf4,
+            #3dbdff
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px
+        rgba(30, 140, 255, 0.17);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+
+.login-submit:hover:not(:disabled) {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(30, 140, 255, 0.25);
+}
+
+
+.login-submit:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+.submit-arrow {
+    font-size: 20px;
+}
+
+
+.loading-spinner {
+    display: none;
+
+    width: 21px;
+
+    height: 21px;
+
+    border:
+        3px solid
+        rgba(255, 255, 255, 0.3);
+
+    border-top-color:
+        white;
+
+    border-radius: 50%;
+
+    animation:
+        loadingRotate
+        0.7s
+        linear
+        infinite;
+}
+
+
+.login-submit.loading
+.loading-spinner {
+    display: block;
+}
+
+
+.login-submit.loading
+#submitText,
+.login-submit.loading
+#submitArrow {
+    display: none;
+}
+
+
+@keyframes loadingRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   الملاحظة
+========================================= */
+
+.local-note {
+    margin-top: 20px;
+
+    padding:
+        14px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.local-note p {
+    margin: 0;
+
+    color:
+        #788598;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.back-home {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 10px;
+
+    background:
+        transparent;
+
+    color:
+        #7f8b9d;
+
+    cursor: pointer;
+}
+
+
+.back-home:hover {
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   Modal
+========================================= */
+
+.modal {
+    position: fixed;
+
+    z-index: 5000;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+.modal.visible {
+    display: flex;
+}
+
+
+.modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.72);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.modal-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 22px;
+
+    background:
+        #0d121b;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.55);
+}
+
+
+.modal-close {
+    position: absolute;
+
+    top: 15px;
+
+    left: 15px;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        #171d28;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.modal-icon {
+    margin-bottom: 15px;
+
+    font-size: 55px;
+}
+
+
+.modal-card h2 {
+    margin:
+        0 0 12px;
+}
+
+
+.modal-card p {
+    color:
+        #8b97a9;
+
+    line-height: 1.8;
+}
+
+
+.modal-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        #2189f1;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (
+    max-width: 1000px
+) {
+
+    .login-page {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .info-side {
+        display: none;
+    }
+
+
+    .form-side {
+        padding:
+            50px 20px;
+    }
+
+
+    .mobile-logo {
+        display: flex;
+    }
+
+}
+
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (
+    max-width: 550px
+) {
+
+    .form-side {
+        padding:
+            25px 12px;
+    }
+
+
+    .login-card {
+        padding:
+            28px 18px;
+
+        border-radius:
+            20px;
+    }
+
+
+    .login-card-header h2 {
+        font-size:
+            30px;
+    }
+
+
+    .login-options {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+}

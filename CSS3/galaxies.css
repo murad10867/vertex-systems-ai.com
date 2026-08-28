@@ -1,0 +1,1839 @@
+/* =========================================
+   إعدادات عامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #101735,
+            #050817 40%,
+            #010208 75%,
+            #000
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================
+   الرأس
+========================================= */
+
+.main-header {
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.header-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 20px #466cff
+        );
+}
+
+
+.main-header h1 {
+    margin: 0;
+
+    font-size: 48px;
+}
+
+
+.main-header p {
+    margin-top: 10px;
+
+    color: #a4abc5;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   main
+========================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding:
+        35px 25px 60px;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 650px;
+
+    margin-bottom: 35px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #141e48,
+            #070b1e 55%,
+            #010208
+        );
+}
+
+
+.hero-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            #7bafff 1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px,
+        90px 90px;
+
+    background-position:
+        0 0,
+        25px 30px;
+
+    opacity: 0.55;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 20;
+
+    max-width: 800px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.hero-content h2 {
+    margin:
+        0 0 20px;
+
+    font-size: 45px;
+}
+
+
+.hero-content p {
+    color: #d2d7e7;
+
+    font-size: 19px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   المجرة في Hero
+========================================= */
+
+.hero-galaxy {
+    position: relative;
+
+    z-index: 5;
+
+    width: 420px;
+
+    height: 250px;
+
+    margin-bottom: 40px;
+}
+
+
+.galaxy-glow {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 390px;
+
+    height: 180px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(120,160,255,0.32),
+            rgba(75,50,200,0.13),
+            transparent 70%
+        );
+
+    filter:
+        blur(18px);
+}
+
+
+.galaxy-disk {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 390px;
+
+    height: 120px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(120,175,255,0.9) 45deg,
+            transparent 90deg,
+            rgba(175,130,255,0.8) 150deg,
+            transparent 220deg,
+            rgba(90,150,255,0.9) 300deg,
+            transparent 360deg
+        );
+
+    animation:
+        heroGalaxySpin
+        10s
+        linear
+        infinite;
+}
+
+
+.galaxy-disk-two {
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(80deg)
+        scale(0.82);
+
+    opacity: 0.7;
+}
+
+
+.galaxy-core {
+    position: absolute;
+
+    z-index: 6;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 70px;
+
+    height: 70px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #ffe8a3 30%,
+            #ffc04e 55%,
+            transparent 78%
+        );
+
+    box-shadow:
+        0 0 30px #fff3c4,
+        0 0 60px rgba(255,190,70,0.55);
+}
+
+
+.galaxy-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        );
+
+    background-size:
+        18px 18px;
+
+    mask-image:
+        radial-gradient(
+            ellipse,
+            black,
+            transparent 75%
+        );
+
+    opacity: 0.8;
+}
+
+
+@keyframes heroGalaxySpin {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   الأقسام
+========================================= */
+
+.section,
+.galaxy-info,
+.fact-section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background:
+        rgba(
+            10,
+            13,
+            30,
+            0.94
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 25px;
+}
+
+
+.section-title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.section-title h2 {
+    margin:
+        0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.section-title p {
+    margin: 0;
+
+    color: #a3abc2;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   محاكاة المجرة
+========================================= */
+
+.galaxy-simulator {
+    position: relative;
+
+    width: 700px;
+
+    height: 560px;
+
+    max-width: 100%;
+
+    margin:
+        20px auto 25px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle,
+            #101a3d,
+            #030611 70%
+        );
+}
+
+
+.sim-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            #668cff 1px,
+            transparent 1px
+        );
+
+    background-size:
+        50px 50px,
+        85px 85px;
+
+    background-position:
+        0 0,
+        30px 25px;
+
+    opacity: 0.5;
+}
+
+
+.spiral-galaxy {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 440px;
+
+    height: 440px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    animation:
+        galaxyRotate
+        15s
+        linear
+        infinite;
+}
+
+
+@keyframes galaxyRotate {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+.spiral-layer {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    border-radius: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-style: solid;
+
+    border-color:
+        rgba(
+            110,
+            160,
+            255,
+            0.7
+        )
+        transparent
+        rgba(
+            175,
+            100,
+            255,
+            0.65
+        )
+        transparent;
+}
+
+
+.layer-one {
+    width: 410px;
+
+    height: 410px;
+
+    border-width: 35px;
+}
+
+
+.layer-two {
+    width: 300px;
+
+    height: 300px;
+
+    border-width: 30px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(55deg);
+}
+
+
+.layer-three {
+    width: 200px;
+
+    height: 200px;
+
+    border-width: 24px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(110deg);
+}
+
+
+.spiral-center {
+    position: absolute;
+
+    z-index: 6;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 75px;
+
+    height: 75px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #ffe39d 35%,
+            #ffb63a 58%,
+            transparent 78%
+        );
+
+    box-shadow:
+        0 0 30px white,
+        0 0 60px #ffc45d;
+}
+
+
+.galaxy-simulator.paused
+.spiral-galaxy {
+    animation-play-state:
+        paused;
+}
+
+
+.galaxy-simulator.fast
+.spiral-galaxy {
+    animation-duration:
+        4s;
+}
+
+
+/* =========================================
+   الأنواع
+========================================= */
+
+.types-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 18px;
+}
+
+
+.galaxy-card {
+    min-height: 300px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        border 0.25s,
+        background 0.25s;
+}
+
+
+.galaxy-card:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.075
+        );
+}
+
+
+.galaxy-card.selected {
+    border:
+        1px solid #798cff;
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            70,
+            100,
+            255,
+            0.3
+        );
+}
+
+
+.galaxy-card h3 {
+    margin:
+        24px 0 10px;
+
+    font-size: 21px;
+}
+
+
+.galaxy-card p {
+    margin: 0;
+
+    color: #abb3c9;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   أشكال المجرات الصغيرة
+========================================= */
+
+.mini-galaxy {
+    position: relative;
+
+    width: 130px;
+
+    height: 90px;
+}
+
+
+.spiral-mini {
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            transparent,
+            #76a4ff,
+            transparent,
+            #bd7dff,
+            transparent,
+            #76a4ff,
+            transparent
+        );
+
+    animation:
+        miniSpin
+        8s
+        linear
+        infinite;
+}
+
+
+@keyframes miniSpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.mini-core {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 30px;
+
+    height: 30px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        white;
+
+    box-shadow:
+        0 0 20px #ffd774;
+}
+
+
+.elliptical-mini {
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            white,
+            #ffe4a8 28%,
+            #c49f78 60%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,200,140,0.45);
+}
+
+
+.irregular-mini {
+    position: relative;
+}
+
+
+.irregular-mini span {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #b5c8ff,
+            #6657cb,
+            transparent 75%
+        );
+}
+
+
+.irregular-mini span:nth-child(1) {
+    width: 80px;
+
+    height: 55px;
+
+    top: 10px;
+
+    left: 10px;
+}
+
+
+.irregular-mini span:nth-child(2) {
+    width: 65px;
+
+    height: 45px;
+
+    right: 5px;
+
+    bottom: 8px;
+}
+
+
+.irregular-mini span:nth-child(3) {
+    width: 50px;
+
+    height: 40px;
+
+    top: 25px;
+
+    right: 30px;
+}
+
+
+.lenticular-mini {
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            transparent 0 20%,
+            #ccb88c 23% 38%,
+            rgba(190,170,130,0.45) 55%,
+            transparent 72%
+        );
+}
+
+
+.lenticular-core {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 40px;
+
+    height: 40px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        #ffe6a5;
+
+    box-shadow:
+        0 0 20px #ffcb69;
+}
+
+
+/* =========================================
+   معلومات المجرة
+========================================= */
+
+.galaxy-info {
+    text-align: center;
+}
+
+
+.selected-galaxy {
+    width: 200px;
+
+    height: 140px;
+
+    margin:
+        10px auto 25px;
+
+    transition:
+        all 0.4s ease;
+}
+
+
+.spiral-preview {
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            transparent,
+            #78a5ff,
+            transparent,
+            #c078ff,
+            transparent,
+            #78a5ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 35px rgba(90,120,255,0.4);
+}
+
+
+.elliptical-preview {
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            white,
+            #f3d8aa 35%,
+            #9f8264 65%,
+            transparent 78%
+        );
+}
+
+
+.irregular-preview {
+    border-radius:
+        35% 65% 55% 45%;
+
+    background:
+        radial-gradient(
+            circle at 25% 30%,
+            #a7c5ff,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 70% 60%,
+            #8d65ff,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            #cad8ff,
+            #4b3a99 60%
+        );
+}
+
+
+.lenticular-preview {
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #fff1c8 0 20%,
+            #d2b57d 22% 40%,
+            rgba(170,150,115,0.3) 60%,
+            transparent 72%
+        );
+}
+
+
+.small-title {
+    margin: 0;
+
+    color: #9099b2;
+
+    font-size: 14px;
+}
+
+
+.galaxy-info h2 {
+    margin:
+        8px 0 15px;
+
+    font-size: 38px;
+}
+
+
+.description {
+    max-width: 850px;
+
+    margin:
+        0 auto 30px;
+
+    color: #cdd2e0;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 15px;
+}
+
+
+.info-card {
+    min-height: 155px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    border-radius: 16px;
+}
+
+
+.info-card > span {
+    font-size: 30px;
+}
+
+
+.info-card p {
+    margin: 0;
+
+    color: #bbc2d5;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   درب التبانة
+========================================= */
+
+.milky-way-area {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 500px;
+
+    overflow: hidden;
+}
+
+
+.milky-way {
+    position: relative;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,230,180,0.22),
+            rgba(80,90,190,0.08) 45%,
+            transparent 70%
+        );
+
+    animation:
+        milkyRotate
+        30s
+        linear
+        infinite;
+}
+
+
+@keyframes milkyRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.mw-arm {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    border-radius: 50%;
+
+    border-style: solid;
+
+    border-color:
+        #779cff
+        transparent
+        #ad75ff
+        transparent;
+}
+
+
+.arm-one {
+    width: 390px;
+
+    height: 390px;
+
+    border-width: 34px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(0deg);
+}
+
+
+.arm-two {
+    width: 290px;
+
+    height: 290px;
+
+    border-width: 28px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(60deg);
+}
+
+
+.arm-three {
+    width: 190px;
+
+    height: 190px;
+
+    border-width: 23px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(120deg);
+}
+
+
+.mw-core {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 70px;
+
+    height: 70px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #ffe096 40%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 30px #ffe2a1;
+}
+
+
+/* موقع النظام الشمسي */
+
+.solar-location {
+    position: absolute;
+
+    z-index: 20;
+
+    top: 35%;
+
+    left: 72%;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,215,60,0.12);
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform:
+        scale(0);
+
+    transition:
+        opacity 0.4s,
+        transform 0.4s;
+
+    animation:
+        locationPulse
+        1.4s
+        ease-in-out
+        infinite;
+}
+
+
+.solar-location.visible {
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+@keyframes locationPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 5px #ffd743;
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px #ffd743,
+            0 0 45px rgba(255,200,50,0.55);
+    }
+
+}
+
+
+.solar-label {
+    position: absolute;
+
+    z-index: 25;
+
+    top: 28%;
+
+    left: 68%;
+
+    padding:
+        7px 10px;
+
+    color: white;
+
+    background:
+        rgba(0,0,0,0.8);
+
+    border-radius: 8px;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.4s;
+}
+
+
+.solar-label.visible {
+    opacity: 1;
+}
+
+
+.milky-description {
+    max-width: 800px;
+
+    margin:
+        0 auto 25px;
+
+    color: #c8cddd;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   مقارنة المجرات
+========================================= */
+
+.comparison-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 25px;
+}
+
+
+.comparison-card {
+    min-height: 350px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    border-radius: 20px;
+}
+
+
+.comparison-card h3 {
+    margin:
+        25px 0 10px;
+
+    font-size: 24px;
+}
+
+
+.comparison-card p {
+    color: #afb7cc;
+
+    line-height: 1.7;
+}
+
+
+.comparison-galaxy {
+    width: 230px;
+
+    height: 150px;
+
+    border-radius: 50%;
+}
+
+
+.milky-preview {
+    background:
+        conic-gradient(
+            transparent,
+            #789eff,
+            transparent,
+            #b87cff,
+            transparent,
+            #789eff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 30px rgba(80,120,255,0.4);
+}
+
+
+.andromeda-preview {
+    transform:
+        rotate(-15deg);
+
+    background:
+        radial-gradient(
+            ellipse,
+            white 0 5%,
+            #ffe6ae 7%,
+            rgba(140,160,255,0.75) 25%,
+            rgba(90,80,170,0.38) 50%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 35px rgba(120,130,255,0.4);
+}
+
+
+/* =========================================
+   مقارنة الأحجام
+========================================= */
+
+.size-area {
+    min-height: 380px;
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 35px;
+}
+
+
+.size-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.size-galaxy {
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #e1e8ff,
+            #7a78dd 35%,
+            rgba(80,60,160,0.25) 65%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 25px rgba(100,100,255,0.35);
+}
+
+
+.dwarf-galaxy {
+    width: 80px;
+
+    height: 55px;
+}
+
+
+.medium-galaxy {
+    width: 170px;
+
+    height: 105px;
+}
+
+
+.giant-galaxy {
+    width: 270px;
+
+    height: 170px;
+}
+
+
+/* =========================================
+   مكونات المجرة
+========================================= */
+
+.components-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 18px;
+}
+
+
+.component-card {
+    min-height: 240px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    border-radius: 18px;
+}
+
+
+.component-card > span {
+    font-size: 48px;
+}
+
+
+.component-card h3 {
+    margin:
+        18px 0 12px;
+}
+
+
+.component-card p {
+    color: #b5bccf;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   المعلومة
+========================================= */
+
+.fact-section {
+    text-align: center;
+}
+
+
+.fact-section h2 {
+    margin-top: 0;
+}
+
+
+#randomFact {
+    min-height: 65px;
+
+    max-width: 850px;
+
+    margin:
+        20px auto;
+
+    color: #cbd0de;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   الأزرار
+========================================= */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.main-btn,
+.back-btn {
+    padding:
+        14px 27px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        #f0f0f0;
+
+    color: #111;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s;
+}
+
+
+.main-btn:hover,
+.back-btn:hover {
+    transform:
+        scale(1.06);
+}
+
+
+.bottom-area {
+    text-align: center;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .types-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .info-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .components-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .main-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    .header-icon {
+        font-size: 55px;
+    }
+
+
+    main {
+        padding:
+            20px 12px 45px;
+    }
+
+
+    .hero {
+        min-height: 620px;
+    }
+
+
+    .hero-content h2 {
+        font-size: 34px;
+    }
+
+
+    .hero-galaxy {
+        transform:
+            scale(0.78);
+    }
+
+
+    .section,
+    .galaxy-info,
+    .fact-section {
+        padding:
+            20px 14px;
+    }
+
+
+    .types-grid,
+    .info-grid,
+    .components-grid,
+    .comparison-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .galaxy-simulator {
+        height: 430px;
+    }
+
+
+    .spiral-galaxy {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0.72);
+    }
+
+
+    .milky-way-area {
+        min-height: 390px;
+    }
+
+
+    .milky-way {
+        transform:
+            scale(0.72);
+    }
+
+
+    .giant-galaxy {
+        width: 200px;
+
+        height: 125px;
+    }
+
+}

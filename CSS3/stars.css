@@ -1,0 +1,1208 @@
+/* =========================================
+   إعدادات عامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #121730,
+            #050713 40%,
+            #000 80%
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================
+   الرأس
+========================================= */
+
+.main-header {
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.header-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 25px #ffd700
+        );
+}
+
+
+.main-header h1 {
+    margin: 0;
+
+    font-size: 48px;
+}
+
+
+.main-header p {
+    margin-top: 10px;
+
+    color: #a4acc7;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   main
+========================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding: 35px 25px 60px;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 430px;
+
+    margin-bottom: 35px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #17214c,
+            #070b1d 55%,
+            #010207
+        );
+}
+
+
+.hero-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            #7abaff 1px,
+            transparent 1px
+        );
+
+    background-size:
+        50px 50px,
+        90px 90px;
+
+    background-position:
+        0 0,
+        20px 35px;
+
+    opacity: 0.6;
+
+    animation:
+        starMove 25s linear infinite;
+}
+
+
+@keyframes starMove {
+
+    from {
+        background-position:
+            0 0,
+            20px 35px;
+    }
+
+    to {
+        background-position:
+            300px 300px,
+            -250px 250px;
+    }
+
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 750px;
+
+    padding: 30px;
+}
+
+
+.hero-content h2 {
+    margin:
+        0 0 20px;
+
+    font-size: 46px;
+}
+
+
+.hero-content p {
+    color: #d2d6e4;
+
+    font-size: 20px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   الأقسام
+========================================= */
+
+.section,
+.star-info,
+.fact-section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background:
+        rgba(
+            10,
+            13,
+            29,
+            0.94
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius: 25px;
+}
+
+
+.section-title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.section-title h2 {
+    margin:
+        0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.section-title p {
+    margin: 0;
+
+    color: #9fa7c0;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   أنواع النجوم
+========================================= */
+
+.stars-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 20px;
+}
+
+
+.star-card {
+    min-height: 280px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        background 0.25s;
+}
+
+
+.star-card:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+}
+
+
+.star-card.selected {
+    border:
+        1px solid #6ab9ff;
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            0,
+            140,
+            255,
+            0.3
+        );
+}
+
+
+.star-card h3 {
+    margin:
+        20px 0 10px;
+
+    font-size: 23px;
+}
+
+
+.star-card p {
+    margin: 0;
+
+    color: #abb3ca;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   أشكال النجوم
+========================================= */
+
+.star-object,
+.selected-star {
+    display: block;
+
+    border-radius: 50%;
+
+    animation:
+        starPulse 2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.08);
+    }
+
+}
+
+
+/* قزم أحمر */
+
+.red-dwarf {
+    width: 65px;
+
+    height: 65px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd0b0,
+            #ff5838 40%,
+            #a21608 100%
+        );
+
+    box-shadow:
+        0 0 20px #ff3b1f,
+        0 0 45px rgba(255,40,10,0.45);
+}
+
+
+/* شبيه بالشمس */
+
+.sun-like {
+    width: 90px;
+
+    height: 90px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fffbd7,
+            #ffdd43 30%,
+            #ff9500 70%,
+            #c94b00 100%
+        );
+
+    box-shadow:
+        0 0 20px #ffd339,
+        0 0 55px rgba(255,150,0,0.5);
+}
+
+
+/* عملاق أزرق */
+
+.blue-giant {
+    width: 120px;
+
+    height: 120px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #a8d6ff 35%,
+            #3c86ff 75%,
+            #15307d
+        );
+
+    box-shadow:
+        0 0 25px #72adff,
+        0 0 70px rgba(30,110,255,0.6);
+}
+
+
+/* عملاق أحمر */
+
+.red-giant {
+    width: 145px;
+
+    height: 145px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd39b,
+            #ff7038 35%,
+            #d62910 70%,
+            #6c0903
+        );
+
+    box-shadow:
+        0 0 30px #ff512b,
+        0 0 80px rgba(255,50,20,0.5);
+}
+
+
+/* قزم أبيض */
+
+.white-dwarf {
+    width: 48px;
+
+    height: 48px;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #d9e8ff 60%,
+            #7598d6
+        );
+
+    box-shadow:
+        0 0 22px white,
+        0 0 50px rgba(150,200,255,0.7);
+}
+
+
+/* نجم نيوتروني */
+
+.neutron-star {
+    width: 34px;
+
+    height: 34px;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #69c5ff 40%,
+            #2053e8
+        );
+
+    box-shadow:
+        0 0 20px white,
+        0 0 55px #298cff;
+}
+
+
+/* =========================================
+   معلومات النجم
+========================================= */
+
+.star-info {
+    text-align: center;
+}
+
+
+.selected-star-area {
+    min-height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.selected-data {
+    max-width: 800px;
+
+    margin:
+        0 auto 30px;
+}
+
+
+.small-title {
+    margin: 0;
+
+    color: #8993ad;
+
+    font-size: 14px;
+}
+
+
+.selected-data h2 {
+    margin:
+        8px 0 15px;
+
+    font-size: 40px;
+}
+
+
+.description {
+    color: #ced3e2;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 15px;
+}
+
+
+.info-card {
+    min-height: 150px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    border-radius: 16px;
+}
+
+
+.info-card > span {
+    font-size: 28px;
+}
+
+
+.info-card p {
+    margin: 0;
+
+    color: #bac1d4;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   دورة الحياة
+========================================= */
+
+.life-cycle {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.life-step {
+    width: 190px;
+
+    min-height: 190px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    border-radius: 18px;
+}
+
+
+.life-icon {
+    font-size: 50px;
+}
+
+
+.life-step h3 {
+    margin:
+        12px 0;
+}
+
+
+.life-step p {
+    color: #adb5cc;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.arrow {
+    font-size: 28px;
+
+    color: #6caeff;
+}
+
+
+.split-life {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+
+.life-path {
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    border-radius: 20px;
+}
+
+
+.path-box {
+    padding: 18px;
+
+    margin: 10px 0;
+
+    background:
+        #171d31;
+
+    border-radius: 13px;
+}
+
+
+.supernova-box {
+    background:
+        radial-gradient(
+            circle,
+            #ffcb3b,
+            #f04a19
+        );
+
+    color: white;
+
+    font-weight: bold;
+}
+
+
+.down-arrow {
+    font-size: 25px;
+}
+
+
+.final-path {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+
+.final-path div {
+    padding: 15px;
+
+    background:
+        #12182b;
+
+    border-radius: 12px;
+}
+
+
+/* =========================================
+   مقارنة الأحجام
+========================================= */
+
+.size-comparison {
+    min-height: 360px;
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+}
+
+
+.size-item {
+    min-width: 130px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.size-star {
+    border-radius: 50%;
+}
+
+
+.small-red {
+    width: 45px;
+
+    height: 45px;
+
+    background: #e74729;
+
+    box-shadow:
+        0 0 20px #e74729;
+}
+
+
+.medium-sun {
+    width: 75px;
+
+    height: 75px;
+
+    background: #ffc934;
+
+    box-shadow:
+        0 0 25px #ffc934;
+}
+
+
+.giant-blue {
+    width: 150px;
+
+    height: 150px;
+
+    background: #62a7ff;
+
+    box-shadow:
+        0 0 35px #62a7ff;
+}
+
+
+.huge-red {
+    width: 230px;
+
+    height: 230px;
+
+    background: #e84d26;
+
+    box-shadow:
+        0 0 45px #e84d26;
+}
+
+
+/* =========================================
+   النجم النابض
+========================================= */
+
+.pulsar-section {
+    text-align: center;
+}
+
+
+.pulsar-space {
+    position: relative;
+
+    width: 500px;
+
+    height: 400px;
+
+    max-width: 100%;
+
+    margin:
+        20px auto 25px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            #0b1734,
+            #010207 70%
+        );
+}
+
+
+.pulsar {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 250px;
+
+    height: 250px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    animation:
+        pulsarSpin
+        1.5s
+        linear
+        infinite;
+}
+
+
+@keyframes pulsarSpin {
+
+    from {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(360deg);
+    }
+
+}
+
+
+.pulsar-core {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 45px;
+
+    height: 45px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        white;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px #55b8ff,
+        0 0 75px #1b71ff;
+}
+
+
+.pulsar-beam {
+    position: absolute;
+
+    top: 50%;
+
+    width: 120px;
+
+    height: 12px;
+
+    margin-top: -6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #5bc4ff,
+            white
+        );
+
+    box-shadow:
+        0 0 20px #36aaff;
+}
+
+
+.beam-one {
+    left: 0;
+}
+
+
+.beam-two {
+    right: 0;
+
+    transform:
+        rotate(180deg);
+}
+
+
+.pulsar-space.paused
+.pulsar {
+    animation-play-state:
+        paused;
+}
+
+
+/* =========================================
+   المعلومة
+========================================= */
+
+.fact-section {
+    text-align: center;
+}
+
+
+.fact-section h2 {
+    margin-top: 0;
+
+    font-size: 30px;
+}
+
+
+#randomFact {
+    min-height: 65px;
+
+    max-width: 850px;
+
+    margin:
+        20px auto;
+
+    color: #cbd1df;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   الأزرار
+========================================= */
+
+.main-btn,
+.back-btn {
+    padding:
+        14px 28px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        #f0f0f0;
+
+    color: #111;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s;
+}
+
+
+.main-btn:hover,
+.back-btn:hover {
+    transform:
+        scale(1.06);
+}
+
+
+.bottom-area {
+    text-align: center;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 900px) {
+
+    .stars-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .info-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .split-life {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .main-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    main {
+        padding:
+            20px 12px 45px;
+    }
+
+
+    .hero-content h2 {
+        font-size: 34px;
+    }
+
+
+    .stars-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .section,
+    .star-info,
+    .fact-section {
+        padding:
+            20px 14px;
+    }
+
+
+    .life-cycle {
+        flex-direction: column;
+    }
+
+
+    .arrow {
+        transform:
+            rotate(90deg);
+    }
+
+
+    .huge-red {
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    .giant-blue {
+        width: 115px;
+
+        height: 115px;
+    }
+
+}
+button{
+    background-color: aqua;
+    color: white;
+}

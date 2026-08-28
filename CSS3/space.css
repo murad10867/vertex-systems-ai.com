@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    padding: 0;
+
+    background-color: black;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+}
+
+
+/* =========================
+   رأس الصفحة
+========================= */
+
+.space-header {
+    padding: 50px 20px 30px;
+}
+
+
+.space-header h1 {
+    margin: 0;
+
+    font-size: 55px;
+}
+
+
+.space-header p {
+    margin-top: 15px;
+
+    color: #bbb;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   المحتوى
+========================= */
+
+main {
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   المقدمة
+========================= */
+
+.hero {
+    margin-bottom: 50px;
+
+    padding: 40px;
+
+    background-color: #111;
+
+    border-radius: 25px;
+}
+
+
+.hero h2 {
+    margin-top: 0;
+
+    font-size: 38px;
+}
+
+
+.hero p {
+    max-width: 750px;
+
+    margin: auto;
+
+    color: #ddd;
+
+    font-size: 21px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   شبكة الأقسام
+========================= */
+
+.space-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(300px, 1fr));
+
+    gap: 30px;
+}
+
+
+/* =========================
+   الكروت
+========================= */
+
+.space-card {
+    min-height: 350px;
+
+    padding: 35px;
+
+    background-color: #111;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+
+.space-card:hover {
+    transform: translateY(-10px);
+}
+
+
+.icon {
+    margin-bottom: 10px;
+
+    font-size: 70px;
+}
+
+
+.space-card h2 {
+    margin: 15px 0;
+
+    font-size: 32px;
+}
+
+
+.space-card p {
+    max-width: 450px;
+
+    min-height: 70px;
+
+    margin: 0;
+
+    color: #ccc;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   الأزرار
+========================= */
+
+button {
+    margin-top: 25px;
+
+    padding: 15px 35px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+button:hover {
+    transform: scale(1.07);
+}
+
+
+/* =========================
+   معلومة فضائية
+========================= */
+
+.fact-box {
+    margin-top: 50px;
+
+    padding: 35px;
+
+    background-color: #111;
+
+    border-radius: 25px;
+}
+
+
+.fact-box h2 {
+    margin-top: 0;
+
+    font-size: 32px;
+}
+
+
+#spaceFact {
+    min-height: 60px;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   العودة
+========================= */
+
+.bottom-buttons {
+    margin: 40px 0;
+}
+
+
+/* =========================
+   الجوال
+========================= */
+
+@media (max-width: 800px) {
+
+    .space-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .space-header h1 {
+        font-size: 38px;
+    }
+
+
+    .space-header p {
+        font-size: 18px;
+    }
+
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+
+    .hero {
+        padding: 25px;
+    }
+
+
+    .space-card {
+        min-height: 300px;
+    }
+
+}
+button{
+    background-color: aqua;
+    color: white;
+}

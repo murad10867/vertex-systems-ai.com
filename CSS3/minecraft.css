@@ -1,0 +1,780 @@
+/* ==========================================
+   الصفحة
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    padding: 30px;
+
+    background-color: #000;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+}
+
+
+main {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+/* ==========================================
+   رأس الصفحة
+========================================== */
+
+.main-header {
+    margin-bottom: 40px;
+}
+
+
+.main-header h1 {
+    margin-bottom: 10px;
+
+    font-size: 50px;
+}
+
+
+.main-header p {
+    margin: 0;
+
+    color: #bbb;
+
+    font-size: 22px;
+}
+
+
+/* ==========================================
+   الكروت
+========================================== */
+
+.card {
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    background-color: #111;
+
+    border: 1px solid #222;
+
+    border-radius: 20px;
+
+    text-align: right;
+}
+
+
+.card h2 {
+    margin-top: 0;
+
+    font-size: 30px;
+}
+
+
+/* ==========================================
+   معلومات المشروع
+========================================== */
+
+.project-info p {
+    font-size: 18px;
+}
+
+
+.project-settings {
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+
+.setting-item {
+    flex: 1;
+
+    min-width: 250px;
+}
+
+
+.setting-item label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+}
+
+
+.setting-row {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+#versionInput,
+#phaseSelect {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+}
+
+
+.phase-display {
+    margin-top: 25px;
+
+    padding: 15px;
+
+    background-color: #222;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+
+.last-saved {
+    margin-top: 20px;
+
+    color: #aaa;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   شريط التقدم
+========================================== */
+
+.progress {
+    width: 100%;
+
+    height: 40px;
+
+    background-color: #333;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    background-color: white;
+
+    color: black;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    transition: width 0.4s;
+}
+
+
+/* ==========================================
+   الإحصائيات
+========================================== */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+
+.stat-box {
+    padding: 20px;
+
+    background-color: #222;
+
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+
+.stat-box h3 {
+    margin: 0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.stat-box p {
+    margin: 0;
+
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   تقدم الأقسام
+========================================== */
+
+.section-progress {
+    margin: 25px 0;
+}
+
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 18px;
+}
+
+
+.small-progress {
+    height: 25px;
+
+    background-color: #333;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.small-progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    background-color: white;
+
+    transition: width 0.4s;
+}
+
+
+/* ==========================================
+   البحث
+========================================== */
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+
+#searchInput {
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 18px;
+}
+
+
+/* ==========================================
+   محرر المهمة
+========================================== */
+
+.task-editor {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 1fr)
+        auto
+        auto
+        auto
+        auto
+        auto;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.task-editor input,
+.task-editor select {
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+
+.hidden-control {
+    display: none;
+}
+
+
+/* ==========================================
+   الفلاتر
+========================================== */
+
+.filters,
+.sort-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+
+.filter-btn {
+    padding: 10px 14px;
+
+    opacity: 0.6;
+
+    font-size: 14px;
+}
+
+
+.filter-btn.active {
+    opacity: 1;
+
+    transform: scale(1.06);
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   المهام
+========================================== */
+
+.task {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 12px 0;
+
+    padding: 15px;
+
+    background-color: #222;
+
+    border: 1px solid transparent;
+
+    border-radius: 12px;
+
+    transition: 0.25s;
+}
+
+
+.task:hover {
+    background-color: #292929;
+
+    transform: translateY(-2px);
+}
+
+
+.task.overdue {
+    border-color: white;
+}
+
+
+.task-check {
+    min-width: 45px;
+
+    padding: 8px;
+
+    font-size: 18px;
+}
+
+
+.task-main {
+    flex: 1;
+}
+
+
+.task-title {
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.task.done .task-title {
+    opacity: 0.5;
+
+    text-decoration: line-through;
+}
+
+
+.task-details {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+
+.badge {
+    padding: 7px 9px;
+
+    background-color: #333;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+
+.task-actions {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+.task-actions button {
+    padding: 8px 10px;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   Bugs
+========================================== */
+
+.bug-stats {
+    display: flex;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+
+.bug-editor {
+    display: grid;
+
+    grid-template-columns: 1fr auto auto;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+.bug-editor input,
+.bug-editor select {
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+
+.bug-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 10px 0;
+
+    padding: 15px;
+
+    background-color: #222;
+
+    border-radius: 12px;
+}
+
+
+.bug-main {
+    flex: 1;
+}
+
+
+.bug-title {
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.bug-info {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 8px;
+}
+
+
+.bug-item.fixed .bug-title {
+    opacity: 0.5;
+
+    text-decoration: line-through;
+}
+
+
+/* ==========================================
+   الملاحظات
+========================================== */
+
+#projectNotes {
+    width: 100%;
+
+    min-height: 220px;
+
+    resize: vertical;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+.notes-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+
+#notesStatus {
+    color: #aaa;
+}
+
+
+/* ==========================================
+   الأدوات
+========================================== */
+
+.tools {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.danger-btn {
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   الأزرار العامة
+========================================== */
+
+button {
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+
+button:hover {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================
+   رسائل فارغة
+========================================== */
+
+.empty-message {
+    display: none;
+
+    padding: 20px;
+
+    color: #aaa;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   أزرار الصفحة
+========================================== */
+
+.page-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin: 35px 0;
+}
+
+
+/* ==========================================
+   الشاشات الصغيرة
+========================================== */
+
+@media (max-width: 900px) {
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .task-editor {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    .main-header p {
+        font-size: 17px;
+    }
+
+
+    .card {
+        padding: 20px;
+    }
+
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .project-settings,
+    .setting-row {
+        flex-direction: column;
+    }
+
+
+    .task-editor {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bug-editor {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task,
+    .bug-item {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .task-actions {
+        justify-content: center;
+    }
+
+
+    .task-details,
+    .bug-info {
+        justify-content: center;
+    }
+
+
+    .task-title,
+    .bug-title {
+        text-align: center;
+    }
+
+}

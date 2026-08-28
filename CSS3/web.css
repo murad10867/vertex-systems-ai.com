@@ -1,0 +1,1587 @@
+/* =========================================
+   إعدادات عامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #111a30,
+            #050810 45%,
+            #000 85%
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================
+   الرأس
+========================================= */
+
+.main-header {
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+
+.header-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 20px #258eff
+        );
+}
+
+
+.main-header h1 {
+    margin: 0;
+
+    font-size: 48px;
+}
+
+
+.main-header p {
+    margin-top: 10px;
+
+    color: #9da9bf;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   main
+========================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding:
+        35px 25px 60px;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 650px;
+
+    margin-bottom: 35px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #142344,
+            #070d1c 60%,
+            #010306
+        );
+}
+
+
+.hero-grid {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(50, 150, 255, 0.07)
+            1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(50, 150, 255, 0.07)
+            1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 800px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.hero-content h2 {
+    margin:
+        0 0 20px;
+
+    font-size: 46px;
+}
+
+
+.hero-content p {
+    color: #ced5e3;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   شكل المتصفح
+========================================= */
+
+.hero-browser {
+    position: relative;
+
+    z-index: 10;
+
+    width: 500px;
+
+    max-width: 90%;
+
+    min-height: 280px;
+
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 22px;
+
+    background:
+        #0c111b;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.45);
+
+    animation:
+        browserFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes browserFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-15px);
+    }
+
+}
+
+
+.browser-top {
+    height: 45px;
+
+    padding:
+        0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        #171e2b;
+}
+
+
+.browser-top span {
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background:
+        #5c6878;
+}
+
+
+.browser-screen {
+    min-height: 235px;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #15223b,
+            #080c13
+        );
+}
+
+
+.browser-logo {
+    width: 60px;
+
+    height: 60px;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2587ff,
+            #43c4ff
+        );
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+.browser-line {
+    height: 10px;
+
+    margin-bottom: 12px;
+
+    border-radius: 20px;
+
+    background:
+        #485365;
+}
+
+
+.line-one {
+    width: 65%;
+}
+
+
+.line-two {
+    width: 45%;
+}
+
+
+.browser-button {
+    width: 110px;
+
+    height: 34px;
+
+    margin-top: 15px;
+
+    border-radius: 10px;
+
+    background:
+        #288fff;
+}
+
+
+/* =========================================
+   Builder
+========================================= */
+
+.builder-section {
+    margin-bottom: 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        360px 1fr;
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   لوحة التحكم
+========================================= */
+
+.builder-panel {
+    position: sticky;
+
+    top: 20px;
+
+    max-height:
+        calc(100vh - 40px);
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    background:
+        #0c111b;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 22px;
+}
+
+
+.panel-title {
+    margin-bottom: 25px;
+}
+
+
+.panel-title h2 {
+    margin:
+        0 0 8px;
+}
+
+
+.panel-title p {
+    margin: 0;
+
+    color: #929caf;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   الإعدادات
+========================================= */
+
+.setting-group {
+    margin-bottom: 25px;
+}
+
+
+.setting-group > label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #d5dbe5;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+
+.setting-group input[type="text"],
+.setting-group textarea {
+    width: 100%;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        #283347;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background:
+        #121926;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+}
+
+
+.setting-group input:focus,
+.setting-group textarea:focus {
+    border-color:
+        #349eff;
+}
+
+
+.setting-group textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+   اللون
+========================================= */
+
+.color-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+#accentColorInput {
+    width: 60px;
+
+    height: 45px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: none;
+
+    cursor: pointer;
+}
+
+
+#colorValue {
+    color: #abb6c8;
+
+    font-family:
+        monospace;
+}
+
+
+/* =========================================
+   اختيارات
+========================================= */
+
+.theme-buttons,
+.radius-buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+
+.theme-btn,
+.radius-btn {
+    padding:
+        10px 7px;
+
+    border:
+        1px solid
+        #2b3547;
+
+    border-radius: 9px;
+
+    background:
+        #161e2a;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.theme-btn.selected,
+.radius-btn.selected {
+    border-color:
+        #3ba6ff;
+
+    background:
+        rgba(30, 130, 255, 0.18);
+}
+
+
+/* =========================================
+   Toggles
+========================================= */
+
+.switch-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.switch-row {
+    padding:
+        12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background:
+        #131b28;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.switch-row input {
+    width: 18px;
+
+    height: 18px;
+
+    accent-color:
+        #238cff;
+}
+
+
+/* =========================================
+   أزرار اللوحة
+========================================= */
+
+.panel-actions {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 9px;
+}
+
+
+.download-btn {
+    grid-column:
+        1 / -1;
+
+    padding:
+        14px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1d7eff,
+            #39bbff
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.save-message {
+    min-height: 20px;
+
+    margin:
+        15px 0 0;
+
+    text-align: center;
+
+    color: #67e59b;
+}
+
+
+/* =========================================
+   المعاينة
+========================================= */
+
+.preview-area {
+    min-width: 0;
+
+    padding: 20px;
+
+    background:
+        #080c13;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 22px;
+}
+
+
+.preview-toolbar {
+    margin-bottom: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.device-buttons {
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.device-btn {
+    width: 42px;
+
+    height: 38px;
+
+    border:
+        1px solid
+        #2b3446;
+
+    border-radius: 8px;
+
+    background:
+        #121a25;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.device-btn.selected {
+    border-color:
+        #42adff;
+
+    background:
+        #1b4e79;
+}
+
+
+/* =========================================
+   إطار المعاينة
+========================================= */
+
+.preview-frame {
+    margin: auto;
+
+    overflow: auto;
+
+    transition:
+        width 0.4s;
+
+    border:
+        8px solid
+        #202937;
+
+    border-radius: 18px;
+
+    background:
+        white;
+}
+
+
+.preview-frame.desktop {
+    width: 100%;
+}
+
+
+.preview-frame.tablet {
+    width: 720px;
+
+    max-width: 100%;
+}
+
+
+.preview-frame.mobile {
+    width: 390px;
+
+    max-width: 100%;
+}
+
+
+/* =========================================
+   الموقع المصغر
+========================================= */
+
+.website-preview {
+    --accent:
+        #2b8cff;
+
+    --preview-radius:
+        12px;
+
+    min-height: 700px;
+
+    overflow: hidden;
+
+    direction: rtl;
+}
+
+
+/* =========================================
+   Theme dark
+========================================= */
+
+.website-preview.theme-dark {
+    background:
+        #080b11;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================
+   Theme light
+========================================= */
+
+.website-preview.theme-light {
+    background:
+        #f7f7f7;
+
+    color:
+        #141414;
+}
+
+
+/* =========================================
+   Theme Space
+========================================= */
+
+.website-preview.theme-space {
+    background:
+        radial-gradient(
+            circle at top,
+            #151e47,
+            #070a19 50%,
+            #010205
+        );
+
+    color:
+        white;
+}
+
+
+/* =========================================
+   Navigation
+========================================= */
+
+.preview-nav {
+    min-height: 70px;
+
+    padding:
+        0 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background:
+        rgba(15, 18, 25, 0.95);
+
+    color: white;
+}
+
+
+.theme-light
+.preview-nav {
+    background:
+        white;
+
+    color:
+        #111;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+
+.preview-nav strong {
+    color:
+        var(--accent);
+
+    font-size: 18px;
+}
+
+
+.preview-nav div {
+    display: flex;
+
+    gap: 20px;
+}
+
+
+.preview-nav a {
+    color: inherit;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   Hero preview
+========================================= */
+
+.preview-hero {
+    position: relative;
+
+    min-height: 430px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.preview-hero-glow {
+    position: absolute;
+
+    width: 480px;
+
+    height: 480px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--accent) 35%,
+                transparent
+            ),
+            transparent 65%
+        );
+
+    filter:
+        blur(30px);
+}
+
+
+.preview-hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
+
+    padding: 30px;
+}
+
+
+.preview-small {
+    color:
+        var(--accent);
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.preview-hero-content h1 {
+    margin:
+        12px 0;
+
+    font-size: 40px;
+}
+
+
+.preview-hero-content > p:not(.preview-small) {
+    color: #aeb7c6;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+.theme-light
+.preview-hero-content > p:not(.preview-small) {
+    color:
+        #555;
+}
+
+
+.preview-hero-content button,
+.preview-contact button {
+    margin-top: 18px;
+
+    padding:
+        13px 26px;
+
+    border: none;
+
+    border-radius:
+        var(--preview-radius);
+
+    background:
+        var(--accent);
+
+    color:
+        white;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   Content sections
+========================================= */
+
+.preview-content-section {
+    padding:
+        60px 30px;
+
+    text-align: center;
+}
+
+
+.preview-content-section > h2 {
+    margin-top: 0;
+
+    font-size: 28px;
+}
+
+
+.preview-cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.preview-cards article {
+    padding: 25px 15px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    border-radius:
+        var(--preview-radius);
+}
+
+
+.theme-light
+.preview-cards article {
+    background:
+        white;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.07);
+}
+
+
+.preview-cards span {
+    font-size: 35px;
+}
+
+
+.preview-cards h3 {
+    margin:
+        14px 0 8px;
+}
+
+
+.preview-cards p {
+    color: #aeb6c4;
+
+    font-size: 13px;
+}
+
+
+.theme-light
+.preview-cards p {
+    color:
+        #666;
+}
+
+
+/* =========================================
+   About
+========================================= */
+
+.preview-about {
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.theme-light
+.preview-about {
+    background:
+        #ededed;
+}
+
+
+.preview-about p {
+    max-width: 600px;
+
+    margin:
+        auto;
+
+    color:
+        #adb5c3;
+
+    line-height: 1.8;
+}
+
+
+.theme-light
+.preview-about p {
+    color:
+        #555;
+}
+
+
+/* =========================================
+   Contact
+========================================= */
+
+.preview-contact form {
+    max-width: 500px;
+
+    margin:
+        25px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.preview-contact input,
+.preview-contact textarea {
+    padding:
+        12px;
+
+    border:
+        1px solid
+        rgba(150, 150, 150, 0.25);
+
+    border-radius:
+        var(--preview-radius);
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: inherit;
+}
+
+
+.theme-light
+.preview-contact input,
+.theme-light
+.preview-contact textarea {
+    background:
+        white;
+
+    border-color:
+        #ddd;
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+
+.preview-footer {
+    min-height: 90px;
+
+    padding: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background:
+        #05070a;
+
+    color:
+        #818b9a;
+
+    font-size: 12px;
+}
+
+
+.theme-light
+.preview-footer {
+    background:
+        #222;
+
+    color:
+        #bbb;
+}
+
+
+/* =========================================
+   إخفاء الأقسام
+========================================= */
+
+.section-hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   الأقسام الخارجية
+========================================= */
+
+.section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background:
+        rgba(10, 15, 28, 0.95);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 25px;
+}
+
+
+.section-title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.section-title h2 {
+    margin:
+        0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.section-title p {
+    margin: 0;
+
+    color: #9ea8bc;
+}
+
+
+/* =========================================
+   التقنيات
+========================================= */
+
+.technologies-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.technology-card {
+    min-height: 240px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    border-radius: 18px;
+}
+
+
+.technology-icon {
+    font-size: 55px;
+}
+
+
+.technology-card h3 {
+    margin:
+        18px 0 10px;
+}
+
+
+.technology-card p {
+    color:
+        #aeb7c8;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================
+   الخطوات
+========================================= */
+
+.steps-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
+}
+
+
+.steps-grid article {
+    min-height: 200px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    border-radius: 16px;
+}
+
+
+.steps-grid article > span {
+    width: 45px;
+
+    height: 45px;
+
+    margin:
+        auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+        #218bdf;
+
+    font-weight: bold;
+}
+
+
+.steps-grid h3 {
+    margin:
+        17px 0 8px;
+}
+
+
+.steps-grid p {
+    color:
+        #abb4c5;
+
+    line-height:
+        1.6;
+}
+
+
+/* =========================================
+   Buttons
+========================================= */
+
+.primary-btn,
+.normal-btn,
+.back-btn {
+    padding:
+        14px 26px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s;
+}
+
+
+.primary-btn {
+    background:
+        linear-gradient(
+            90deg,
+            #1e82ff,
+            #3bbcff
+        );
+
+    color:
+        white;
+}
+
+
+.normal-btn,
+.back-btn {
+    background:
+        #ededed;
+
+    color:
+        #111;
+}
+
+
+.primary-btn:hover,
+.normal-btn:hover,
+.back-btn:hover,
+.download-btn:hover {
+    transform:
+        scale(1.04);
+}
+
+
+.bottom-area {
+    text-align:
+        center;
+}
+
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (
+    max-width: 1100px
+) {
+
+    .builder-section {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .builder-panel {
+        position: static;
+
+        max-height: none;
+    }
+
+
+    .technologies-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .steps-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (
+    max-width: 650px
+) {
+
+    .main-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    .header-icon {
+        font-size: 55px;
+    }
+
+
+    main {
+        padding:
+            20px 12px 45px;
+    }
+
+
+    .hero {
+        min-height: 650px;
+    }
+
+
+    .hero-content h2 {
+        font-size: 34px;
+    }
+
+
+    .builder-panel,
+    .preview-area,
+    .section {
+        padding:
+            18px 12px;
+    }
+
+
+    .theme-buttons,
+    .radius-buttons {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .preview-toolbar {
+        flex-direction: column;
+    }
+
+
+    .preview-nav {
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding:
+            18px 10px;
+    }
+
+
+    .preview-nav div {
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .preview-hero-content h1 {
+        font-size:
+            29px;
+    }
+
+
+    .preview-cards {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .preview-footer {
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+    }
+
+
+    .technologies-grid,
+    .steps-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}

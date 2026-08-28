@@ -1,0 +1,9 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /login.html
+Disallow: /dashboard.html
+Disallow: /check.html
+
+Sitemap: https://vertexsystems-ai.netlify.app/sitemap.xml

@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vertex Space - استكشاف الفضاء والرحلات والمهمات الفضائية"
+    >
+
+    <title>
+        استكشاف الفضاء | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="exploration.css"
+    >
+
+    <!-- حماية الصفحة -->
+    <script src="auth.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         Header
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            🚀
+        </div>
+
+        <div>
+
+            <h1>
+                استكشاف الفضاء
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             Hero
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-stars"></div>
+
+            <div class="hero-content">
+
+                <p class="section-label">
+                    VERTEX SPACE EXPLORATION
+                </p>
+
+                <h2>
+                    🚀 ابدأ رحلتك إلى الفضاء
+                </h2>
+
+                <p>
+                    اختر مهمة، جهّز أنظمة المركبة،
+                    ثم شغّل محاكاة الإطلاق واستكشف
+                    كيف تعمل الرحلات الفضائية.
+                </p>
+
+                <button
+                    id="exploreBtn"
+                    class="primary-btn"
+                >
+                    بدء الاستكشاف
+                </button>
+
+            </div>
+
+
+            <!-- شكل الصاروخ -->
+
+            <div class="hero-rocket-scene">
+
+                <div class="hero-moon"></div>
+
+
+                <div class="hero-rocket">
+
+                    <div class="hero-rocket-tip"></div>
+
+                    <div class="hero-rocket-window"></div>
+
+                    <div class="hero-rocket-body"></div>
+
+                    <div class="hero-fin fin-right"></div>
+
+                    <div class="hero-fin fin-left"></div>
+
+                    <div class="hero-flame"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             اختيار المهمة
+        ========================================== -->
+
+        <section
+            id="missionSection"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    MISSION SELECTOR
+                </p>
+
+                <h2>
+                    🎯 اختر مهمتك
+                </h2>
+
+                <p>
+                    كل مهمة لها وجهة وهدف مختلف.
+                </p>
+
+            </div>
+
+
+
+            <div class="mission-grid">
+
+
+                <button
+                    class="mission-card active"
+                    data-mission="moon"
+                >
+
+                    <span class="mission-icon">
+                        🌙
+                    </span>
+
+                    <strong>
+                        مهمة القمر
+                    </strong>
+
+                    <small>
+                        استكشاف سطح القمر
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="mission-card"
+                    data-mission="mars"
+                >
+
+                    <span class="mission-icon">
+                        🔴
+                    </span>
+
+                    <strong>
+                        مهمة المريخ
+                    </strong>
+
+                    <small>
+                        رحلة إلى الكوكب الأحمر
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="mission-card"
+                    data-mission="station"
+                >
+
+                    <span class="mission-icon">
+                        🛰️
+                    </span>
+
+                    <strong>
+                        المحطة الفضائية
+                    </strong>
+
+                    <small>
+                        الوصول إلى مدار أرضي منخفض
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="mission-card"
+                    data-mission="deepSpace"
+                >
+
+                    <span class="mission-icon">
+                        🌌
+                    </span>
+
+                    <strong>
+                        الفضاء العميق
+                    </strong>
+
+                    <small>
+                        استكشاف ما وراء الكواكب
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- تفاصيل المهمة -->
+
+            <div class="mission-details">
+
+                <div
+                    id="selectedMissionVisual"
+                    class="mission-visual moon-visual"
+                >
+                    🌙
+                </div>
+
+
+                <div class="mission-info">
+
+                    <p class="section-label">
+                        SELECTED MISSION
+                    </p>
+
+                    <h3 id="missionName">
+                        مهمة القمر
+                    </h3>
+
+                    <p
+                        id="missionDescription"
+                        class="mission-description"
+                    >
+                        رحلة تعليمية لمحاكاة الوصول
+                        إلى القمر ودراسة سطحه.
+                    </p>
+
+
+                    <div class="mission-info-grid">
+
+                        <div>
+
+                            <span>
+                                الوجهة
+                            </span>
+
+                            <strong id="missionDestination">
+                                القمر
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                المسافة التقريبية
+                            </span>
+
+                            <strong id="missionDistance">
+                                384,400 كم
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                مدة الرحلة
+                            </span>
+
+                            <strong id="missionDuration">
+                                عدة أيام
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                الهدف
+                            </span>
+
+                            <strong id="missionGoal">
+                                البحث والاستكشاف
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mission-fact">
+
+                        <span>
+                            💡
+                        </span>
+
+                        <p id="missionFact">
+                            متوسط المسافة بين الأرض والقمر
+                            يقارب 384 ألف كيلومتر.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             تجهيز المهمة
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    MISSION CONTROL
+                </p>
+
+                <h2>
+                    📋 تجهيز المهمة
+                </h2>
+
+                <p>
+                    أكمل قائمة التجهيز قبل الإطلاق.
+                </p>
+
+            </div>
+
+
+
+            <div class="checklist-layout">
+
+
+                <div class="checklist">
+
+
+                    <button
+                        class="check-item"
+                        data-check="systems"
+                    >
+
+                        <span class="check-circle">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                فحص الأنظمة
+                            </strong>
+
+                            <small>
+                                التأكد من جاهزية أنظمة المركبة
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <button
+                        class="check-item"
+                        data-check="power"
+                    >
+
+                        <span class="check-circle">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                الطاقة
+                            </strong>
+
+                            <small>
+                                التأكد من جاهزية مصدر الطاقة
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <button
+                        class="check-item"
+                        data-check="crew"
+                    >
+
+                        <span class="check-circle">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                الطاقم
+                            </strong>
+
+                            <small>
+                                تجهيز الطاقم والمعدات
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <button
+                        class="check-item"
+                        data-check="route"
+                    >
+
+                        <span class="check-circle">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                مسار المهمة
+                            </strong>
+
+                            <small>
+                                مراجعة الوجهة والخطة
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <button
+                        class="check-item"
+                        data-check="launch"
+                    >
+
+                        <span class="check-circle">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                منصة الإطلاق
+                            </strong>
+
+                            <small>
+                                التأكد من جاهزية الإطلاق
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <div class="check-progress-card">
+
+                    <div class="progress-ring">
+
+                        <strong id="checklistProgressText">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <h3>
+                        جاهزية المهمة
+                    </h3>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="checklistProgress"
+                            class="progress-fill"
+                        ></div>
+
+                    </div>
+
+
+                    <p id="checklistMessage">
+                        أكمل عناصر التجهيز.
+                    </p>
+
+
+                    <button
+                        id="resetChecklistBtn"
+                        class="secondary-btn"
+                    >
+                        🔄 إعادة القائمة
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             محاكاة الإطلاق
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    LAUNCH SIMULATOR
+                </p>
+
+                <h2>
+                    🚀 محاكاة الإطلاق
+                </h2>
+
+                <p>
+                    محاكاة تعليمية مبسطة وليست
+                    بيانات رحلة حقيقية.
+                </p>
+
+            </div>
+
+
+
+            <div class="launch-layout">
+
+
+                <!-- المشهد -->
+
+                <div
+                    id="launchScene"
+                    class="launch-scene"
+                >
+
+                    <div class="launch-stars"></div>
+
+                    <div class="launch-moon"></div>
+
+                    <div class="launch-cloud cloud-one"></div>
+
+                    <div class="launch-cloud cloud-two"></div>
+
+
+                    <div
+                        id="rocket"
+                        class="rocket"
+                    >
+
+                        <div class="rocket-tip"></div>
+
+                        <div class="rocket-window"></div>
+
+                        <div class="rocket-body"></div>
+
+                        <div class="rocket-fin rocket-fin-right"></div>
+
+                        <div class="rocket-fin rocket-fin-left"></div>
+
+                        <div class="rocket-flame"></div>
+
+                    </div>
+
+
+                    <div class="launch-pad">
+
+                        <div class="tower"></div>
+
+                        <div class="platform"></div>
+
+                        <div class="ground"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- البيانات -->
+
+                <div class="launch-panel">
+
+                    <h3>
+                        📡 بيانات المحاكاة
+                    </h3>
+
+
+                    <div class="launch-data-grid">
+
+
+                        <div>
+
+                            <span>
+                                الحالة
+                            </span>
+
+                            <strong id="launchStatus">
+                                جاهز
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                المرحلة
+                            </span>
+
+                            <strong id="launchStage">
+                                على المنصة
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                الارتفاع التوضيحي
+                            </span>
+
+                            <strong id="altitudeValue">
+                                0 كم
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                السرعة التوضيحية
+                            </span>
+
+                            <strong id="velocityValue">
+                                0 كم/س
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                زمن المحاكاة
+                            </span>
+
+                            <strong id="missionTimeValue">
+                                00:00
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                التقدم
+                            </span>
+
+                            <strong id="launchPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="launch-progress">
+
+                        <div
+                            id="launchProgressFill"
+                            class="launch-progress-fill"
+                        ></div>
+
+                    </div>
+
+
+
+                    <div class="launch-controls">
+
+                        <button
+                            id="launchBtn"
+                            class="primary-btn"
+                        >
+                            🚀 إطلاق
+                        </button>
+
+
+                        <button
+                            id="pauseLaunchBtn"
+                            class="secondary-btn"
+                        >
+                            ⏸ إيقاف مؤقت
+                        </button>
+
+
+                        <button
+                            id="resetLaunchBtn"
+                            class="secondary-btn"
+                        >
+                            🔄 إعادة
+                        </button>
+
+                    </div>
+
+
+                    <p class="simulation-note">
+                        الأرقام المعروضة تقريبية لأغراض
+                        المحاكاة والتعليم فقط.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             كيف يعمل الصاروخ
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    ROCKET SCIENCE
+                </p>
+
+                <h2>
+                    🧠 كيف يعمل الصاروخ؟
+                </h2>
+
+            </div>
+
+
+            <div class="science-grid">
+
+
+                <article>
+
+                    <span>
+                        🔥
+                    </span>
+
+                    <h3>
+                        الدفع
+                    </h3>
+
+                    <p>
+                        اندفاع الغازات في اتجاه
+                        يولّد قوة تدفع الصاروخ
+                        في الاتجاه المقابل.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        🌍
+                    </span>
+
+                    <h3>
+                        الجاذبية
+                    </h3>
+
+                    <p>
+                        يجب أن يكتسب الصاروخ سرعة
+                        كافية للوصول إلى المسار
+                        المطلوب حول الأرض أو خارجها.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        💨
+                    </span>
+
+                    <h3>
+                        مقاومة الهواء
+                    </h3>
+
+                    <p>
+                        الغلاف الجوي يسبب مقاومة،
+                        لذلك شكل المركبة مهم أثناء
+                        الصعود.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        🛰️
+                    </span>
+
+                    <h3>
+                        المدار
+                    </h3>
+
+                    <p>
+                        الجسم في المدار يكون في
+                        سقوط مستمر حول الأرض بدل
+                        السقوط مباشرة نحو سطحها.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             المحطة الفضائية
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    ORBITAL STATION
+                </p>
+
+                <h2>
+                    🛰️ المحطة الفضائية
+                </h2>
+
+                <p>
+                    شاهد نموذجًا مبسطًا لجسم
+                    يدور حول الأرض.
+                </p>
+
+            </div>
+
+
+
+            <div class="station-layout">
+
+
+                <div
+                    id="stationScene"
+                    class="station-scene"
+                >
+
+                    <div class="station-stars"></div>
+
+
+                    <div class="earth">
+
+                        <div class="earth-glow"></div>
+
+                        <div class="continent continent-one"></div>
+
+                        <div class="continent continent-two"></div>
+
+                    </div>
+
+
+                    <div
+                        id="stationOrbit"
+                        class="station-orbit"
+                    >
+
+                        <div class="space-station">
+                            🛰️
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="station-info">
+
+                    <h3>
+                        محطة في مدار أرضي منخفض
+                    </h3>
+
+
+                    <p>
+                        محطة الفضاء الدولية تدور
+                        تقريبًا على ارتفاع يقارب
+                        400 كم، وتكمل دورة حول الأرض
+                        في نحو 90 دقيقة تقريبًا.
+                    </p>
+
+
+                    <div class="station-stats">
+
+
+                        <div>
+
+                            <span>
+                                الارتفاع التقريبي
+                            </span>
+
+                            <strong>
+                                ~400 كم
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                الدورة
+                            </span>
+
+                            <strong>
+                                ~90 دقيقة
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                البيئة
+                            </span>
+
+                            <strong>
+                                جاذبية صغرى
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        id="stationPauseBtn"
+                        class="secondary-btn"
+                    >
+                        ⏸ إيقاف المدار
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             Timeline
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    SPACE HISTORY
+                </p>
+
+                <h2>
+                    🕘 محطات في تاريخ استكشاف الفضاء
+                </h2>
+
+            </div>
+
+
+
+            <div class="timeline">
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        1957
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            سبوتنيك 1
+                        </h3>
+
+                        <p>
+                            أول قمر صناعي من صنع الإنسان
+                            يدخل مدار الأرض.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        1961
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            يوري غاغارين
+                        </h3>
+
+                        <p>
+                            أول إنسان يسافر إلى الفضاء.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        1969
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            أبولو 11
+                        </h3>
+
+                        <p>
+                            أول هبوط بشري على سطح القمر.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        1998
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            المحطة الفضائية الدولية
+                        </h3>
+
+                        <p>
+                            بدأ إطلاق وتجميع أول أجزاء
+                            المحطة في المدار.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        2012
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Curiosity
+                        </h3>
+
+                        <p>
+                            هبطت المركبة الجوالة
+                            Curiosity على سطح المريخ.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article>
+
+                    <span class="timeline-year">
+                        2021
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            James Webb
+                        </h3>
+
+                        <p>
+                            أُطلق تلسكوب جيمس ويب
+                            الفضائي لدراسة الكون.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             معلومة عشوائية
+        ========================================== -->
+
+        <section class="fact-section">
+
+            <div>
+
+                <p class="section-label">
+                    SPACE FACT
+                </p>
+
+                <h2>
+                    💡 معلومة فضائية
+                </h2>
+
+                <p id="randomFact">
+                    اضغط الزر للحصول على معلومة.
+                </p>
+
+            </div>
+
+
+            <button
+                id="factBtn"
+                class="primary-btn"
+            >
+                معلومة جديدة
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+
+    <script src="exploration.js"></script>
+
+    <script src="vertex-userbar.js"></script>
+
+
+</body>
+
+</html>

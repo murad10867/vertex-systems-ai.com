@@ -1,0 +1,1622 @@
+/* =========================================
+   إعدادات عامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #111a2d,
+            #050810 45%,
+            #000 85%
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================
+   الرأس
+========================================= */
+
+.main-header {
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.header-logo {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(
+            0 0 20px #35a7ff
+        );
+}
+
+
+.main-header h1 {
+    margin: 0;
+
+    font-size: 48px;
+}
+
+
+.main-header p {
+    margin-top: 10px;
+
+    color: #9da8bf;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   main
+========================================= */
+
+main {
+    width: 100%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding:
+        35px 25px 60px;
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 620px;
+
+    margin-bottom: 35px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #142340,
+            #07101e 60%,
+            #02050a
+        );
+}
+
+
+.hero-grid {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(50,150,255,0.07)
+            1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(50,150,255,0.07)
+            1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 20;
+
+    max-width: 800px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.hero-content h2 {
+    margin:
+        0 0 20px;
+
+    font-size: 46px;
+}
+
+
+.hero-content p {
+    color: #d0d7e5;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   الروبوت الكبير
+========================================= */
+
+.hero-robot {
+    position: relative;
+
+    z-index: 10;
+
+    width: 250px;
+
+    height: 300px;
+
+    margin-top: 25px;
+
+    animation:
+        robotFloat
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes robotFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-15px);
+    }
+
+}
+
+
+.robot-head {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 130px;
+
+    height: 95px;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        3px solid #65c5ff;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e4edf3,
+            #778895
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0,150,255,0.35);
+}
+
+
+.robot-eye {
+    position: absolute;
+
+    top: 35px;
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background:
+        #31bfff;
+
+    box-shadow:
+        0 0 10px #31bfff,
+        0 0 22px #168fff;
+
+    animation:
+        eyeBlink
+        4s
+        infinite;
+}
+
+
+@keyframes eyeBlink {
+
+    0%,
+    94%,
+    100% {
+        transform:
+            scaleY(1);
+    }
+
+    96% {
+        transform:
+            scaleY(0.1);
+    }
+
+}
+
+
+.left-eye {
+    left: 27px;
+}
+
+
+.right-eye {
+    right: 27px;
+}
+
+
+.robot-mouth {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    width: 38px;
+
+    height: 5px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 10px;
+
+    background:
+        #26323c;
+}
+
+
+.antenna {
+    position: absolute;
+
+    top: -32px;
+
+    left: 50%;
+
+    width: 4px;
+
+    height: 32px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #9eacb6;
+}
+
+
+.antenna-light {
+    position: absolute;
+
+    top: -11px;
+
+    left: 50%;
+
+    width: 17px;
+
+    height: 17px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #34c3ff;
+
+    box-shadow:
+        0 0 15px #34c3ff;
+
+    animation:
+        antennaPulse
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes antennaPulse {
+
+    50% {
+        opacity: 0.35;
+    }
+
+}
+
+
+.robot-body {
+    position: absolute;
+
+    z-index: 4;
+
+    top: 105px;
+
+    left: 50%;
+
+    width: 145px;
+
+    height: 115px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9cabb5,
+            #4d5c68
+        );
+
+    border:
+        3px solid #6cc9ff;
+}
+
+
+.robot-body span {
+    color: #91ddff;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.body-light {
+    position: absolute;
+
+    top: 17px;
+
+    right: 18px;
+
+    width: 13px;
+
+    height: 13px;
+
+    border-radius: 50%;
+
+    background:
+        #37ff8b;
+
+    box-shadow:
+        0 0 10px #37ff8b;
+}
+
+
+.robot-arm {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 120px;
+
+    width: 32px;
+
+    height: 110px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            #8fa1ad,
+            #495965
+        );
+}
+
+
+.robot-arm-left {
+    left: 25px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+.robot-arm-right {
+    right: 25px;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.robot-leg {
+    position: absolute;
+
+    top: 210px;
+
+    width: 40px;
+
+    height: 85px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            #8fa1ad,
+            #42505b
+        );
+}
+
+
+.robot-leg-left {
+    left: 72px;
+}
+
+
+.robot-leg-right {
+    right: 72px;
+}
+
+
+/* =========================================
+   الأقسام
+========================================= */
+
+.section,
+.robot-information {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background:
+        rgba(10,15,27,0.95);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 25px;
+}
+
+
+.section-title {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.section-title h2 {
+    margin:
+        0 0 10px;
+
+    font-size: 32px;
+}
+
+
+.section-title p {
+    margin: 0;
+
+    color: #9ea8bd;
+}
+
+
+/* =========================================
+   اختيار الروبوت
+========================================= */
+
+.robots-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.robot-card {
+    min-height: 270px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+}
+
+
+.robot-card:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(255,255,255,0.075);
+}
+
+
+.robot-card.selected {
+    border-color:
+        #49baff;
+
+    box-shadow:
+        0 0 25px
+        rgba(50,160,255,0.25);
+}
+
+
+.robot-card-icon {
+    font-size: 70px;
+}
+
+
+.robot-card h3 {
+    margin:
+        20px 0 8px;
+}
+
+
+.robot-card p {
+    margin: 0;
+
+    color: #aeb7ca;
+}
+
+
+/* =========================================
+   معلومات الروبوت
+========================================= */
+
+.robot-information {
+    text-align: center;
+}
+
+
+.robot-preview {
+    font-size: 100px;
+}
+
+
+.small-title {
+    margin: 5px 0;
+
+    color: #8e9aaf;
+
+    font-size: 14px;
+}
+
+
+.robot-information h2 {
+    margin:
+        8px 0 15px;
+
+    font-size: 40px;
+}
+
+
+.description {
+    max-width: 800px;
+
+    margin:
+        0 auto 30px;
+
+    color: #cbd2df;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.info-card {
+    min-height: 150px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border-radius: 16px;
+}
+
+
+.info-card > span {
+    font-size: 30px;
+}
+
+
+.info-card p {
+    margin: 0;
+
+    color: #b9c2d2;
+}
+
+
+/* =========================================
+   محاكي الروبوت
+========================================= */
+
+.robot-simulator {
+    position: relative;
+
+    width: 850px;
+
+    height: 500px;
+
+    max-width: 100%;
+
+    margin:
+        20px auto 30px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            #101a2d 0 55%,
+            #18212d 55%
+        );
+}
+
+
+.sim-floor {
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 45%;
+
+    background-image:
+
+        linear-gradient(
+            rgba(75,120,160,0.17)
+            1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(75,120,160,0.17)
+            1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+}
+
+
+/* =========================================
+   الروبوت داخل المحاكي
+========================================= */
+
+.sim-robot {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+
+    top: 60%;
+
+    width: 90px;
+
+    height: 140px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    transition:
+        left 0.35s ease,
+        top 0.35s ease,
+        transform 0.3s;
+}
+
+
+.sim-head {
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 70px;
+
+    height: 50px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 15px;
+
+    background:
+        #899ba8;
+
+    border:
+        2px solid #46bfff;
+}
+
+
+.sim-eye {
+    position: absolute;
+
+    top: 17px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #111;
+}
+
+
+.sim-robot.powered .sim-eye {
+    background:
+        #36c8ff;
+
+    box-shadow:
+        0 0 9px #36c8ff;
+}
+
+
+.sim-eye-left {
+    left: 16px;
+}
+
+
+.sim-eye-right {
+    right: 16px;
+}
+
+
+.sim-body {
+    position: absolute;
+
+    top: 57px;
+
+    left: 50%;
+
+    width: 76px;
+
+    height: 60px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 10px;
+
+    background:
+        #667884;
+
+    border:
+        2px solid #3aaeff;
+}
+
+
+.sim-body span {
+    color:
+        #5fd1ff;
+
+    font-weight: bold;
+}
+
+
+.sim-arm {
+    position: absolute;
+
+    top: 63px;
+
+    width: 16px;
+
+    height: 56px;
+
+    border-radius: 8px;
+
+    background:
+        #71838e;
+}
+
+
+.sim-arm-left {
+    left: -2px;
+}
+
+
+.sim-arm-right {
+    right: -2px;
+}
+
+
+.sim-leg {
+    position: absolute;
+
+    top: 112px;
+
+    width: 20px;
+
+    height: 28px;
+
+    background:
+        #586974;
+
+    border-radius:
+        5px 5px 8px 8px;
+}
+
+
+.sim-leg-left {
+    left: 22px;
+}
+
+
+.sim-leg-right {
+    right: 22px;
+}
+
+
+.sim-robot.walking
+.sim-arm-left {
+    animation:
+        armWalk
+        0.35s
+        alternate
+        infinite;
+}
+
+
+.sim-robot.walking
+.sim-arm-right {
+    animation:
+        armWalkReverse
+        0.35s
+        alternate
+        infinite;
+}
+
+
+@keyframes armWalk {
+
+    to {
+        transform:
+            rotate(20deg);
+    }
+
+}
+
+
+@keyframes armWalkReverse {
+
+    to {
+        transform:
+            rotate(-20deg);
+    }
+
+}
+
+
+/* =========================================
+   الهدف
+========================================= */
+
+.target {
+    position: absolute;
+
+    right: 70px;
+
+    top: 63%;
+
+    font-size: 50px;
+}
+
+
+/* =========================================
+   الحالة
+========================================= */
+
+.status-display {
+    position: absolute;
+
+    z-index: 30;
+
+    left: 20px;
+
+    bottom: 20px;
+
+    padding:
+        12px 16px;
+
+    background:
+        rgba(0,0,0,0.7);
+
+    border-radius: 10px;
+
+    color: #aaa;
+}
+
+
+.status-display strong {
+    color: white;
+}
+
+
+/* =========================================
+   تحكم الطاقة
+========================================= */
+
+.power-controls {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.power-btn,
+.primary-btn,
+.normal-btn,
+.back-btn {
+    padding:
+        14px 26px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        0.2s;
+}
+
+
+.power-btn {
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1686ff,
+            #32c0ff
+        );
+}
+
+
+.primary-btn {
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1686ff,
+            #32bfff
+        );
+}
+
+
+.normal-btn,
+.back-btn {
+    background:
+        #eee;
+
+    color: #111;
+}
+
+
+.power-btn:hover,
+.primary-btn:hover,
+.normal-btn:hover,
+.back-btn:hover {
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================
+   تحكم الحركة
+========================================= */
+
+.movement-controls {
+    width: 260px;
+
+    margin:
+        35px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.middle-controls {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.move-btn {
+    width: 70px;
+
+    height: 70px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        #202c3c;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition:
+        0.2s;
+}
+
+
+.move-btn:hover {
+    background:
+        #2b78b5;
+
+    transform:
+        scale(1.06);
+}
+
+
+.stop-btn {
+    background:
+        #722c35;
+}
+
+
+/* =========================================
+   البطارية
+========================================= */
+
+.battery-area {
+    text-align: center;
+}
+
+
+.battery {
+    position: relative;
+
+    width: 420px;
+
+    height: 70px;
+
+    max-width: 90%;
+
+    margin:
+        20px auto;
+
+    overflow: hidden;
+
+    padding: 6px;
+
+    border:
+        4px solid #cbd3dd;
+
+    border-radius: 12px;
+}
+
+
+.battery::after {
+    content: "";
+
+    position: absolute;
+
+    top: 18px;
+
+    right: -17px;
+
+    width: 14px;
+
+    height: 28px;
+
+    border-radius:
+        0 5px 5px 0;
+
+    background:
+        #cbd3dd;
+}
+
+
+.battery-fill {
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #26d66f,
+            #63ee9c
+        );
+
+    transition:
+        width 0.4s,
+        background 0.4s;
+}
+
+
+.battery-text {
+    font-size: 35px;
+
+    font-weight: bold;
+}
+
+
+.battery-message {
+    color: #aeb8cb;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   الحساسات
+========================================= */
+
+.sensors-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.sensor-card {
+    min-height: 210px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border-radius: 18px;
+}
+
+
+.sensor-icon {
+    font-size: 50px;
+}
+
+
+.sensor-card h3 {
+    margin:
+        17px 0 10px;
+}
+
+
+.sensor-card strong {
+    color:
+        #55c7ff;
+
+    font-size: 22px;
+}
+
+
+.scan-btn {
+    display: block;
+
+    margin:
+        25px auto 0;
+}
+
+
+/* =========================================
+   الأوامر
+========================================= */
+
+.command-area {
+    max-width: 800px;
+
+    margin: auto;
+
+    display: flex;
+
+    gap: 12px;
+}
+
+
+.command-area input {
+    flex: 1;
+
+    padding:
+        15px 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background:
+        #121a27;
+
+    color: white;
+
+    font-size: 17px;
+}
+
+
+.command-area input:focus {
+    border-color:
+        #3fb8ff;
+}
+
+
+.robot-reply {
+    max-width: 800px;
+
+    min-height: 80px;
+
+    margin:
+        20px auto 0;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        rgba(40,140,220,0.08);
+
+    border:
+        1px solid
+        rgba(50,160,255,0.15);
+
+    border-radius: 14px;
+
+    color: #cbd8e3;
+}
+
+
+/* =========================================
+   السجل
+========================================= */
+
+.robot-log {
+    max-width: 850px;
+
+    min-height: 120px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.empty-log {
+    margin: auto;
+
+    color: #929daf;
+}
+
+
+.log-item {
+    padding:
+        14px 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border-radius: 12px;
+}
+
+
+.log-item strong {
+    color:
+        #55c8ff;
+}
+
+
+.log-time {
+    color:
+        #8f9bae;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   مستقبل الروبوتات
+========================================= */
+
+.future-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.future-card {
+    min-height: 230px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border-radius: 18px;
+}
+
+
+.future-card > span {
+    font-size: 55px;
+}
+
+
+.future-card h3 {
+    margin:
+        18px 0 10px;
+}
+
+
+.future-card p {
+    color:
+        #afb9ca;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   أسفل الصفحة
+========================================= */
+
+.bottom-area {
+    text-align: center;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .robots-grid,
+    .info-grid,
+    .sensors-grid,
+    .future-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .main-header {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .main-header h1 {
+        font-size: 34px;
+    }
+
+
+    main {
+        padding:
+            20px 12px 45px;
+    }
+
+
+    .hero {
+        min-height: 650px;
+    }
+
+
+    .hero-content h2 {
+        font-size: 34px;
+    }
+
+
+    .section,
+    .robot-information {
+        padding:
+            20px 14px;
+    }
+
+
+    .robots-grid,
+    .info-grid,
+    .sensors-grid,
+    .future-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .robot-simulator {
+        height: 430px;
+    }
+
+
+    .command-area {
+        flex-direction: column;
+    }
+
+
+    .log-item {
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        المجرات | Vertex Space
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="galaxies.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            🌌
+        </div>
+
+        <div>
+
+            <h1>
+                عالم المجرات
+            </h1>
+
+            <p>
+                Vertex Space
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================================
+             مقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-stars"></div>
+
+
+            <div class="hero-content">
+
+                <h2>
+                    🌌 اكتشف المجرات
+                </h2>
+
+                <p>
+                    المجرة نظام ضخم يحتوي على
+                    النجوم والغاز والغبار والمادة المظلمة،
+                    وتربط مكوناته الجاذبية.
+                </p>
+
+                <button
+                    id="exploreBtn"
+                    class="main-btn"
+                >
+                    🚀 ابدأ الاستكشاف
+                </button>
+
+            </div>
+
+
+            <!-- المجرة الكبيرة -->
+
+            <div class="hero-galaxy">
+
+                <div class="galaxy-glow"></div>
+
+                <div class="galaxy-disk galaxy-disk-one"></div>
+
+                <div class="galaxy-disk galaxy-disk-two"></div>
+
+                <div class="galaxy-core"></div>
+
+                <div class="galaxy-stars"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             محاكاة مجرة
+        ========================================== -->
+
+        <section
+            class="section"
+            id="galaxySimulation"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🌀 مجرة حلزونية متحركة
+                </h2>
+
+                <p>
+                    شغّل أو أوقف دوران المجرة.
+                </p>
+
+            </div>
+
+
+            <div
+                class="galaxy-simulator"
+                id="galaxySimulator"
+            >
+
+                <div class="sim-stars"></div>
+
+
+                <div class="spiral-galaxy">
+
+                    <div class="spiral-layer layer-one"></div>
+
+                    <div class="spiral-layer layer-two"></div>
+
+                    <div class="spiral-layer layer-three"></div>
+
+                    <div class="spiral-center"></div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    id="pauseBtn"
+                    class="main-btn"
+                >
+                    ⏸️ إيقاف الحركة
+                </button>
+
+                <button
+                    id="speedBtn"
+                    class="main-btn"
+                >
+                    ⚡ تسريع
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="main-btn"
+                >
+                    🔄 الوضع الطبيعي
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أنواع المجرات
+        ========================================== -->
+
+        <section
+            class="section"
+            id="galaxyTypes"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🌌 أنواع المجرات
+                </h2>
+
+                <p>
+                    اضغط على أي نوع لعرض معلوماته.
+                </p>
+
+            </div>
+
+
+            <div class="types-grid">
+
+
+                <!-- حلزونية -->
+
+                <button
+                    class="galaxy-card"
+                    data-galaxy="spiral"
+                >
+
+                    <div class="mini-galaxy spiral-mini">
+
+                        <div class="mini-core"></div>
+
+                    </div>
+
+                    <h3>
+                        مجرة حلزونية
+                    </h3>
+
+                    <p>
+                        أذرع تلتف حول مركز المجرة.
+                    </p>
+
+                </button>
+
+
+                <!-- إهليلجية -->
+
+                <button
+                    class="galaxy-card"
+                    data-galaxy="elliptical"
+                >
+
+                    <div class="mini-galaxy elliptical-mini"></div>
+
+                    <h3>
+                        مجرة إهليلجية
+                    </h3>
+
+                    <p>
+                        شكل بيضاوي أو كروي تقريبًا.
+                    </p>
+
+                </button>
+
+
+                <!-- غير منتظمة -->
+
+                <button
+                    class="galaxy-card"
+                    data-galaxy="irregular"
+                >
+
+                    <div class="mini-galaxy irregular-mini">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <h3>
+                        مجرة غير منتظمة
+                    </h3>
+
+                    <p>
+                        لا تمتلك شكلًا منتظمًا واضحًا.
+                    </p>
+
+                </button>
+
+
+                <!-- عدسية -->
+
+                <button
+                    class="galaxy-card"
+                    data-galaxy="lenticular"
+                >
+
+                    <div class="mini-galaxy lenticular-mini">
+
+                        <div class="lenticular-core"></div>
+
+                    </div>
+
+                    <h3>
+                        مجرة عدسية
+                    </h3>
+
+                    <p>
+                        تجمع صفات بين الحلزونية والإهليلجية.
+                    </p>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومات النوع المحدد
+        ========================================== -->
+
+        <section class="galaxy-info">
+
+            <div
+                id="selectedGalaxyVisual"
+                class="selected-galaxy spiral-preview"
+            ></div>
+
+
+            <p class="small-title">
+                النوع المحدد
+            </p>
+
+
+            <h2 id="galaxyName">
+                مجرة حلزونية
+            </h2>
+
+
+            <p
+                id="galaxyDescription"
+                class="description"
+            >
+                مجرة لها قرص وأذرع حلزونية تمتد حول المركز.
+            </p>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        🌀
+                    </span>
+
+                    <strong>
+                        الشكل
+                    </strong>
+
+                    <p id="galaxyShape">
+                        حلزوني
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <strong>
+                        النجوم
+                    </strong>
+
+                    <p id="galaxyStars">
+                        أعداد هائلة من النجوم
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        🌫️
+                    </span>
+
+                    <strong>
+                        الغاز والغبار
+                    </strong>
+
+                    <p id="galaxyGas">
+                        موجود بكثرة نسبيًا
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <strong>
+                        مثال
+                    </strong>
+
+                    <p id="galaxyExample">
+                        درب التبانة
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             درب التبانة
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌌 مجرة درب التبانة
+                </h2>
+
+                <p>
+                    المجرة التي يوجد فيها نظامنا الشمسي.
+                </p>
+
+            </div>
+
+
+            <div class="milky-way-area">
+
+                <div class="milky-way">
+
+                    <div class="mw-arm arm-one"></div>
+
+                    <div class="mw-arm arm-two"></div>
+
+                    <div class="mw-arm arm-three"></div>
+
+                    <div class="mw-core"></div>
+
+
+                    <!-- موقع الشمس -->
+
+                    <button
+                        class="solar-location"
+                        id="solarLocation"
+                        title="موقع النظام الشمسي"
+                    >
+                        ☀️
+                    </button>
+
+
+                    <div
+                        class="solar-label"
+                        id="solarLabel"
+                    >
+                        نظامنا الشمسي
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="milky-description">
+
+                النظام الشمسي لا يوجد في مركز المجرة،
+                بل يقع في أحد أذرع مجرة درب التبانة
+                على مسافة كبيرة من مركزها.
+
+            </p>
+
+
+            <button
+                id="locationBtn"
+                class="main-btn"
+            >
+                ☀️ إظهار موقع النظام الشمسي
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             درب التبانة وأندروميدا
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🌌 درب التبانة وأندروميدا
+                </h2>
+
+            </div>
+
+
+            <div class="comparison-grid">
+
+
+                <article class="comparison-card">
+
+                    <div class="comparison-galaxy milky-preview"></div>
+
+                    <h3>
+                        درب التبانة
+                    </h3>
+
+                    <p>
+                        المجرة التي تحتوي على
+                        نظامنا الشمسي.
+                    </p>
+
+                </article>
+
+
+                <article class="comparison-card">
+
+                    <div class="comparison-galaxy andromeda-preview"></div>
+
+                    <h3>
+                        أندروميدا
+                    </h3>
+
+                    <p>
+                        إحدى أقرب المجرات الكبيرة
+                        إلى درب التبانة.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             أحجام تقريبية
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    📏 مقارنة تقريبية
+                </h2>
+
+                <p>
+                    الأشكال هنا للتوضيح وليست مقياسًا حقيقيًا.
+                </p>
+
+            </div>
+
+
+            <div class="size-area">
+
+
+                <div class="size-item">
+
+                    <div class="size-galaxy dwarf-galaxy"></div>
+
+                    <span>
+                        مجرة قزمة
+                    </span>
+
+                </div>
+
+
+                <div class="size-item">
+
+                    <div class="size-galaxy medium-galaxy"></div>
+
+                    <span>
+                        مجرة كبيرة
+                    </span>
+
+                </div>
+
+
+                <div class="size-item">
+
+                    <div class="size-galaxy giant-galaxy"></div>
+
+                    <span>
+                        مجرة عملاقة
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             مكونات المجرة
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🔬 ماذا يوجد داخل المجرة؟
+                </h2>
+
+            </div>
+
+
+            <div class="components-grid">
+
+
+                <article class="component-card">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <h3>
+                        النجوم
+                    </h3>
+
+                    <p>
+                        تحتوي المجرات على أعداد هائلة
+                        من النجوم المختلفة.
+                    </p>
+
+                </article>
+
+
+                <article class="component-card">
+
+                    <span>
+                        🪐
+                    </span>
+
+                    <h3>
+                        الأنظمة الكوكبية
+                    </h3>
+
+                    <p>
+                        يمكن أن توجد كواكب
+                        تدور حول كثير من النجوم.
+                    </p>
+
+                </article>
+
+
+                <article class="component-card">
+
+                    <span>
+                        ☁️
+                    </span>
+
+                    <h3>
+                        الغاز والغبار
+                    </h3>
+
+                    <p>
+                        توجد سحب ضخمة يمكن أن تتكون
+                        منها نجوم جديدة.
+                    </p>
+
+                </article>
+
+
+                <article class="component-card">
+
+                    <span>
+                        🕳️
+                    </span>
+
+                    <h3>
+                        ثقوب سوداء
+                    </h3>
+
+                    <p>
+                        يوجد ثقب أسود فائق الكتلة
+                        في مركز كثير من المجرات.
+                    </p>
+
+                </article>
+
+
+                <article class="component-card">
+
+                    <span>
+                        🌑
+                    </span>
+
+                    <h3>
+                        المادة المظلمة
+                    </h3>
+
+                    <p>
+                        لا نراها مباشرة،
+                        لكن العلماء يستدلون على وجودها
+                        من تأثيرات الجاذبية.
+                    </p>
+
+                </article>
+
+
+                <article class="component-card">
+
+                    <span>
+                        ✨
+                    </span>
+
+                    <h3>
+                        العناقيد النجمية
+                    </h3>
+
+                    <p>
+                        مجموعات من النجوم
+                        ترتبط معًا بالجاذبية.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             معلومات عشوائية
+        ========================================== -->
+
+        <section class="fact-section">
+
+            <h2>
+                💡 معلومة عن المجرات
+            </h2>
+
+            <p id="randomFact">
+                اضغط للحصول على معلومة.
+            </p>
+
+            <button
+                id="factBtn"
+                class="main-btn"
+            >
+                🌌 معلومة جديدة
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة إلى Vertex Space
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="galaxies.js"></script>
+
+
+</body>
+
+</html>

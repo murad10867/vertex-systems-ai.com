@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard | Vertex Systems AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+    <!-- حماية الصفحة -->
+    <script src="auth.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         القائمة الجانبية
+    ========================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- الشعار -->
+
+        <div class="sidebar-logo">
+
+            <div class="logo-box">
+                V
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Vertex
+                </strong>
+
+                <span>
+                    Systems AI
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             المستخدم
+        ====================================== -->
+
+        <div class="user-card">
+
+            <div
+                id="userAvatar"
+                class="user-avatar"
+            >
+                V
+            </div>
+
+
+            <div class="user-info">
+
+                <strong id="userName">
+                    مستخدم Vertex
+                </strong>
+
+                <span id="userEmail">
+                    user@example.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             التنقل
+        ====================================== -->
+
+        <nav class="sidebar-nav">
+
+
+            <button
+                class="nav-item active"
+                data-section="home"
+            >
+
+                <span>
+                    🏠
+                </span>
+
+                الرئيسية
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="projects"
+            >
+
+                <span>
+                    🚀
+                </span>
+
+                المشاريع
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="activity"
+            >
+
+                <span>
+                    📊
+                </span>
+
+                النشاط
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="system"
+            >
+
+                <span>
+                    ⚙️
+                </span>
+
+                النظام
+
+            </button>
+
+
+        </nav>
+
+
+
+        <!-- =====================================
+             أسفل القائمة
+        ====================================== -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="homePageBtn"
+                class="side-action"
+            >
+                🌐 الموقع الرئيسي
+            </button>
+
+
+            <button
+                id="projectsPageSideBtn"
+                class="side-action"
+            >
+                🚀 صفحة المشاريع
+            </button>
+
+
+            <button
+                id="logoutBtn"
+                class="side-action logout-btn"
+            >
+                🚪 تسجيل الخروج
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         محتوى الصفحة
+    ========================================== -->
+
+    <div class="page-wrapper">
+
+
+        <!-- =====================================
+             الشريط العلوي
+        ====================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-right">
+
+
+                <button
+                    id="menuBtn"
+                    class="menu-btn"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <p class="small-title">
+                        لوحة التحكم
+                    </p>
+
+
+                    <h1>
+                        Vertex Systems AI
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="topbar-left">
+
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    النظام يعمل
+
+                </div>
+
+
+                <div
+                    id="clock"
+                    class="clock"
+                >
+                    --:--
+                </div>
+
+
+                <div class="top-user">
+
+                    <div
+                        id="topUserAvatar"
+                        class="top-user-avatar"
+                    >
+                        V
+                    </div>
+
+                    <span id="topUserName">
+                        Vertex
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <main class="dashboard-main">
+
+
+            <!-- =====================================
+                 الرئيسية
+            ====================================== -->
+
+            <section
+                id="homeSection"
+                class="dashboard-section active-section"
+            >
+
+
+                <!-- الترحيب -->
+
+                <section class="welcome-card">
+
+                    <div class="welcome-grid"></div>
+
+
+                    <div class="welcome-content">
+
+                        <p class="welcome-label">
+                            VERTEX CONTROL CENTER
+                        </p>
+
+
+                        <h2>
+
+                            أهلاً
+
+                            <span id="welcomeUserName">
+                                مستخدم Vertex
+                            </span>
+
+                            👋
+
+                        </h2>
+
+
+                        <p>
+                            من هنا تستطيع الوصول إلى
+                            جميع أنظمة Vertex Systems AI
+                            ومتابعة البيانات والمشاريع.
+                        </p>
+
+
+                        <div class="welcome-buttons">
+
+                            <button
+                                id="openProjectsBtn"
+                                class="primary-btn"
+                            >
+                                🚀 فتح المشاريع
+                            </button>
+
+
+                            <button
+                                id="refreshBtn"
+                                class="secondary-btn"
+                            >
+                                🔄 تحديث البيانات
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="welcome-orb">
+
+                        <div class="orb-ring ring-one"></div>
+
+                        <div class="orb-ring ring-two"></div>
+
+                        <div class="orb-core">
+                            V
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     الإحصائيات
+                ================================== -->
+
+                <section class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🚀
+                        </div>
+
+                        <div>
+
+                            <span>
+                                المشاريع
+                            </span>
+
+                            <strong>
+                                5
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <span>
+                                رسائل Vertex AI
+                            </span>
+
+                            <strong id="chatCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🧠
+                        </div>
+
+                        <div>
+
+                            <span>
+                                ذكريات AI
+                            </span>
+
+                            <strong id="memoryCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🌌
+                        </div>
+
+                        <div>
+
+                            <span>
+                                مهمات الفضاء
+                            </span>
+
+                            <strong id="missionCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+
+                <!-- =================================
+                     الوصول السريع
+                ================================== -->
+
+                <section class="content-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <h2>
+                                ⚡ الوصول السريع
+                            </h2>
+
+                            <p>
+                                افتح أحد أنظمة Vertex.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            id="allProjectsBtn"
+                            class="text-btn"
+                        >
+                            كل المشاريع ←
+                        </button>
+
+                    </div>
+
+
+                    <div class="quick-projects">
+
+
+                        <button
+                            class="quick-project"
+                            data-page="ai.html"
+                        >
+
+                            <span class="quick-icon">
+                                🤖
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Vertex AI
+                                </strong>
+
+                                <small>
+                                    الذكاء الاصطناعي
+                                </small>
+
+                            </div>
+
+                            <span class="quick-arrow">
+                                ←
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-project"
+                            data-page="robots.html"
+                        >
+
+                            <span class="quick-icon">
+                                🦾
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Vertex Robots
+                                </strong>
+
+                                <small>
+                                    مختبر الروبوتات
+                                </small>
+
+                            </div>
+
+                            <span class="quick-arrow">
+                                ←
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-project"
+                            data-page="games.html"
+                        >
+
+                            <span class="quick-icon">
+                                🎮
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Vertex Games
+                                </strong>
+
+                                <small>
+                                    تطوير الألعاب
+                                </small>
+
+                            </div>
+
+                            <span class="quick-arrow">
+                                ←
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-project"
+                            data-page="web.html"
+                        >
+
+                            <span class="quick-icon">
+                                🌐
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Vertex Web
+                                </strong>
+
+                                <small>
+                                    إنشاء المواقع
+                                </small>
+
+                            </div>
+
+                            <span class="quick-arrow">
+                                ←
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-project"
+                            data-page="space.html"
+                        >
+
+                            <span class="quick-icon">
+                                🌌
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Vertex Space
+                                </strong>
+
+                                <small>
+                                    الفضاء والفلك
+                                </small>
+
+                            </div>
+
+                            <span class="quick-arrow">
+                                ←
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     حالة الأنظمة والنشاط
+                ================================== -->
+
+                <section class="dashboard-columns">
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>
+                                    📡 حالة الأنظمة
+                                </h2>
+
+                                <p>
+                                    حالة مشاريع Vertex الحالية.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="systems-list">
+
+
+                            <div class="system-row">
+
+                                <div>
+
+                                    <span class="system-icon">
+                                        🤖
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Vertex AI
+                                        </strong>
+
+                                        <small id="aiStatusText">
+                                            جاهز
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="status-badge online">
+                                    يعمل
+                                </span>
+
+                            </div>
+
+
+                            <div class="system-row">
+
+                                <div>
+
+                                    <span class="system-icon">
+                                        🦾
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Vertex Robots
+                                        </strong>
+
+                                        <small>
+                                            مختبر الروبوتات
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="status-badge online">
+                                    يعمل
+                                </span>
+
+                            </div>
+
+
+                            <div class="system-row">
+
+                                <div>
+
+                                    <span class="system-icon">
+                                        🎮
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Vertex Games
+                                        </strong>
+
+                                        <small>
+                                            Minecraft Rell X1000
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="status-badge development">
+                                    تطوير
+                                </span>
+
+                            </div>
+
+
+                            <div class="system-row">
+
+                                <div>
+
+                                    <span class="system-icon">
+                                        🌐
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Vertex Web
+                                        </strong>
+
+                                        <small id="webStatusText">
+                                            لا يوجد مشروع محفوظ
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="status-badge online">
+                                    يعمل
+                                </span>
+
+                            </div>
+
+
+                            <div class="system-row">
+
+                                <div>
+
+                                    <span class="system-icon">
+                                        🌌
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Vertex Space
+                                        </strong>
+
+                                        <small>
+                                            6 أقسام فضائية
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="status-badge online">
+                                    يعمل
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>
+                                    🕘 آخر النشاط
+                                </h2>
+
+                                <p>
+                                    ملخص بيانات Vertex.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="activityPreview"
+                            class="activity-list"
+                        >
+
+                            <div class="empty-activity">
+                                لا يوجد نشاط محفوظ.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- =====================================
+                 المشاريع
+            ====================================== -->
+
+            <section
+                id="projectsSection"
+                class="dashboard-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p>
+                            VERTEX PROJECTS
+                        </p>
+
+                        <h2>
+                            🚀 جميع المشاريع
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="projectsPageBtn"
+                        class="primary-btn"
+                    >
+                        فتح صفحة المشاريع
+                    </button>
+
+                </div>
+
+
+
+                <div class="projects-dashboard-grid">
+
+
+                    <article class="project-dashboard-card">
+
+                        <div class="project-big-icon">
+                            🤖
+                        </div>
+
+                        <h3>
+                            Vertex AI
+                        </h3>
+
+                        <p>
+                            مساعد ذكاء اصطناعي
+                            ونظام محادثة.
+                        </p>
+
+                        <button
+                            class="project-open-btn"
+                            data-page="ai.html"
+                        >
+                            فتح Vertex AI
+                        </button>
+
+                    </article>
+
+
+                    <article class="project-dashboard-card">
+
+                        <div class="project-big-icon">
+                            🦾
+                        </div>
+
+                        <h3>
+                            Vertex Robots
+                        </h3>
+
+                        <p>
+                            مختبر روبوتات وحساسات
+                            وتحكم.
+                        </p>
+
+                        <button
+                            class="project-open-btn"
+                            data-page="robots.html"
+                        >
+                            فتح Vertex Robots
+                        </button>
+
+                    </article>
+
+
+                    <article class="project-dashboard-card">
+
+                        <div class="project-big-icon">
+                            🎮
+                        </div>
+
+                        <h3>
+                            Vertex Games
+                        </h3>
+
+                        <p>
+                            مركز تطوير الألعاب
+                            وMinecraft Rell X1000.
+                        </p>
+
+                        <button
+                            class="project-open-btn"
+                            data-page="games.html"
+                        >
+                            فتح Vertex Games
+                        </button>
+
+                    </article>
+
+
+                    <article class="project-dashboard-card">
+
+                        <div class="project-big-icon">
+                            🌐
+                        </div>
+
+                        <h3>
+                            Vertex Web
+                        </h3>
+
+                        <p>
+                            منشئ وتصميم المواقع
+                            داخل Vertex.
+                        </p>
+
+                        <button
+                            class="project-open-btn"
+                            data-page="web.html"
+                        >
+                            فتح Vertex Web
+                        </button>
+
+                    </article>
+
+
+                    <article class="project-dashboard-card">
+
+                        <div class="project-big-icon">
+                            🌌
+                        </div>
+
+                        <h3>
+                            Vertex Space
+                        </h3>
+
+                        <p>
+                            نظام استكشاف الفضاء
+                            والفلك.
+                        </p>
+
+                        <button
+                            class="project-open-btn"
+                            data-page="space.html"
+                        >
+                            فتح Vertex Space
+                        </button>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 النشاط
+            ====================================== -->
+
+            <section
+                id="activitySection"
+                class="dashboard-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p>
+                            ACTIVITY CENTER
+                        </p>
+
+                        <h2>
+                            📊 النشاط والبيانات
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="activityRefreshBtn"
+                        class="secondary-btn"
+                    >
+                        🔄 تحديث
+                    </button>
+
+                </div>
+
+
+                <div class="activity-stats">
+
+
+                    <article>
+
+                        <span>
+                            💬
+                        </span>
+
+                        <strong id="activityChats">
+                            0
+                        </strong>
+
+                        <small>
+                            رسائل AI
+                        </small>
+
+                    </article>
+
+
+                    <article>
+
+                        <span>
+                            🧠
+                        </span>
+
+                        <strong id="activityMemories">
+                            0
+                        </strong>
+
+                        <small>
+                            ذكريات AI
+                        </small>
+
+                    </article>
+
+
+                    <article>
+
+                        <span>
+                            🚀
+                        </span>
+
+                        <strong id="activityMissions">
+                            0
+                        </strong>
+
+                        <small>
+                            مهمات فضائية
+                        </small>
+
+                    </article>
+
+
+                    <article>
+
+                        <span>
+                            🌐
+                        </span>
+
+                        <strong id="activityWeb">
+                            0
+                        </strong>
+
+                        <small>
+                            مشروع Web
+                        </small>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div
+                        id="fullActivityList"
+                        class="full-activity-list"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 النظام
+            ====================================== -->
+
+            <section
+                id="systemSection"
+                class="dashboard-section"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p>
+                            SYSTEM CONTROL
+                        </p>
+
+                        <h2>
+                            ⚙️ النظام
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الحساب -->
+
+                <div class="account-panel">
+
+                    <div class="account-avatar">
+                        👤
+                    </div>
+
+
+                    <div class="account-details">
+
+                        <span>
+                            المستخدم الحالي
+                        </span>
+
+                        <h3 id="systemUserName">
+                            مستخدم Vertex
+                        </h3>
+
+                        <p id="systemUserEmail">
+                            user@example.com
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="systemLogoutBtn"
+                        class="logout-main-btn"
+                    >
+                        🚪 تسجيل الخروج
+                    </button>
+
+                </div>
+
+
+
+                <div class="system-dashboard-grid">
+
+
+                    <article class="system-panel">
+
+                        <div class="system-panel-icon">
+                            💾
+                        </div>
+
+                        <h3>
+                            التخزين المحلي
+                        </h3>
+
+                        <p>
+                            بيانات المشاريع تحفظ
+                            داخل المتصفح.
+                        </p>
+
+                        <strong id="storageItems">
+                            0 عنصر
+                        </strong>
+
+                    </article>
+
+
+                    <article class="system-panel">
+
+                        <div class="system-panel-icon">
+                            🔐
+                        </div>
+
+                        <h3>
+                            الجلسة
+                        </h3>
+
+                        <p>
+                            الجلسة الحالية محمية
+                            بواسطة Vertex Auth.
+                        </p>
+
+                        <strong>
+                            12 ساعة
+                        </strong>
+
+                    </article>
+
+
+                    <article class="system-panel">
+
+                        <div class="system-panel-icon">
+                            🚀
+                        </div>
+
+                        <h3>
+                            الأنظمة
+                        </h3>
+
+                        <p>
+                            عدد أنظمة Vertex
+                            الرئيسية.
+                        </p>
+
+                        <strong>
+                            5 أنظمة
+                        </strong>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- =====================================
+             Footer
+        ====================================== -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                Vertex Systems AI
+            </span>
+
+            <span id="footerYear"></span>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         نافذة تسجيل الخروج
+    ========================================== -->
+
+    <div
+        id="logoutModal"
+        class="logout-modal"
+    >
+
+        <div
+            id="logoutOverlay"
+            class="logout-overlay"
+        ></div>
+
+
+        <div class="logout-modal-card">
+
+            <div class="logout-modal-icon">
+                🚪
+            </div>
+
+            <h2>
+                تسجيل الخروج؟
+            </h2>
+
+            <p>
+                سيتم إنهاء جلسة Vertex الحالية
+                والعودة إلى صفحة تسجيل الدخول.
+            </p>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    id="cancelLogoutBtn"
+                    class="secondary-btn"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    id="confirmLogoutBtn"
+                    class="logout-main-btn"
+                >
+                    تسجيل الخروج
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

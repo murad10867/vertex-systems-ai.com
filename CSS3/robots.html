@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Vertex Robots | Vertex Systems AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="robots.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-logo">
+            🤖
+        </div>
+
+        <div>
+
+            <h1>
+                Vertex Robots
+            </h1>
+
+            <p>
+                مختبر الروبوتات والأنظمة الذكية
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             مقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-grid"></div>
+
+
+            <div class="hero-content">
+
+                <h2>
+                    🤖 اصنع روبوتك الذكي
+                </h2>
+
+                <p>
+                    اختر نوع الروبوت،
+                    شغّله،
+                    تحكم في حركته،
+                    وراقب الحساسات والبطارية.
+                </p>
+
+
+                <button
+                    id="startLabBtn"
+                    class="primary-btn"
+                >
+                    ⚙️ دخول المختبر
+                </button>
+
+            </div>
+
+
+            <!-- الروبوت الكبير -->
+
+            <div class="hero-robot">
+
+                <div class="robot-head">
+
+                    <div class="robot-eye left-eye"></div>
+
+                    <div class="robot-eye right-eye"></div>
+
+                    <div class="robot-mouth"></div>
+
+                    <div class="antenna">
+
+                        <div class="antenna-light"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="robot-body">
+
+                    <div class="body-light"></div>
+
+                    <span>
+                        VERTEX
+                    </span>
+
+                </div>
+
+
+                <div class="robot-arm robot-arm-left"></div>
+
+                <div class="robot-arm robot-arm-right"></div>
+
+
+                <div class="robot-leg robot-leg-left"></div>
+
+                <div class="robot-leg robot-leg-right"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             أنواع الروبوتات
+        ========================================== -->
+
+        <section
+            class="section"
+            id="robotLab"
+        >
+
+            <div class="section-title">
+
+                <h2>
+                    🤖 اختر الروبوت
+                </h2>
+
+                <p>
+                    كل روبوت مخصص لمهمة مختلفة.
+                </p>
+
+            </div>
+
+
+            <div class="robots-grid">
+
+
+                <!-- روبوت مساعد -->
+
+                <button
+                    class="robot-card"
+                    data-robot="assistant"
+                >
+
+                    <div class="robot-card-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        Vertex Assistant
+                    </h3>
+
+                    <p>
+                        روبوت مساعد ذكي.
+                    </p>
+
+                </button>
+
+
+
+                <!-- روبوت استكشاف -->
+
+                <button
+                    class="robot-card"
+                    data-robot="explorer"
+                >
+
+                    <div class="robot-card-icon">
+                        🦾
+                    </div>
+
+                    <h3>
+                        Vertex Explorer
+                    </h3>
+
+                    <p>
+                        روبوت للاستكشاف والمهمات.
+                    </p>
+
+                </button>
+
+
+
+                <!-- روبوت صناعي -->
+
+                <button
+                    class="robot-card"
+                    data-robot="industrial"
+                >
+
+                    <div class="robot-card-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Vertex Industrial
+                    </h3>
+
+                    <p>
+                        روبوت للأعمال الصناعية.
+                    </p>
+
+                </button>
+
+
+
+                <!-- روبوت فضائي -->
+
+                <button
+                    class="robot-card"
+                    data-robot="space"
+                >
+
+                    <div class="robot-card-icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Vertex Space Bot
+                    </h3>
+
+                    <p>
+                        روبوت لاستكشاف الفضاء.
+                    </p>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             معلومات الروبوت المختار
+        ========================================== -->
+
+        <section class="robot-information">
+
+            <div
+                id="robotPreview"
+                class="robot-preview"
+            >
+                🤖
+            </div>
+
+
+            <p class="small-title">
+                الروبوت المحدد
+            </p>
+
+
+            <h2 id="robotName">
+                Vertex Assistant
+            </h2>
+
+
+            <p
+                id="robotDescription"
+                class="description"
+            >
+                روبوت مساعد ذكي يمكنه تنفيذ
+                المهام البسيطة والتفاعل مع المستخدم.
+            </p>
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+                    <span>
+                        🎯
+                    </span>
+
+                    <strong>
+                        المهمة
+                    </strong>
+
+                    <p id="robotMission">
+                        المساعدة
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        ⚡
+                    </span>
+
+                    <strong>
+                        السرعة
+                    </strong>
+
+                    <p id="robotSpeed">
+                        متوسطة
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        👁️
+                    </span>
+
+                    <strong>
+                        الحساسات
+                    </strong>
+
+                    <p id="robotSensors">
+                        كاميرا + مسافة
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        🧠
+                    </span>
+
+                    <strong>
+                        النظام
+                    </strong>
+
+                    <p id="robotSystem">
+                        Vertex AI
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             محاكي الروبوت
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🎮 محاكي التحكم
+                </h2>
+
+                <p>
+                    شغّل الروبوت ثم استخدم أزرار الحركة.
+                </p>
+
+            </div>
+
+
+            <div
+                class="robot-simulator"
+                id="robotSimulator"
+            >
+
+
+                <!-- أرضية -->
+
+                <div class="sim-floor"></div>
+
+
+                <!-- الروبوت -->
+
+                <div
+                    class="sim-robot"
+                    id="simRobot"
+                >
+
+                    <div class="sim-head">
+
+                        <div class="sim-eye sim-eye-left"></div>
+
+                        <div class="sim-eye sim-eye-right"></div>
+
+                    </div>
+
+
+                    <div class="sim-body">
+
+                        <span>
+                            V
+                        </span>
+
+                    </div>
+
+
+                    <div class="sim-arm sim-arm-left"></div>
+
+                    <div class="sim-arm sim-arm-right"></div>
+
+
+                    <div class="sim-leg sim-leg-left"></div>
+
+                    <div class="sim-leg sim-leg-right"></div>
+
+                </div>
+
+
+                <!-- الهدف -->
+
+                <div class="target">
+
+                    🎯
+
+                </div>
+
+
+                <!-- الحالة -->
+
+                <div class="status-display">
+
+                    <span>
+                        الحالة:
+                    </span>
+
+                    <strong id="robotStatus">
+                        متوقف
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 تشغيل / إيقاف
+            ====================================== -->
+
+            <div class="power-controls">
+
+                <button
+                    id="powerBtn"
+                    class="power-btn"
+                >
+                    🔌 تشغيل الروبوت
+                </button>
+
+
+                <button
+                    id="homeBtn"
+                    class="normal-btn"
+                >
+                    🏠 العودة للبداية
+                </button>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 التحكم بالحركة
+            ====================================== -->
+
+            <div class="movement-controls">
+
+
+                <button
+                    id="forwardBtn"
+                    class="move-btn forward"
+                >
+                    ▲
+                </button>
+
+
+                <div class="middle-controls">
+
+                    <button
+                        id="rightBtn"
+                        class="move-btn"
+                    >
+                        ▶
+                    </button>
+
+
+                    <button
+                        id="stopBtn"
+                        class="move-btn stop-btn"
+                    >
+                        ■
+                    </button>
+
+
+                    <button
+                        id="leftBtn"
+                        class="move-btn"
+                    >
+                        ◀
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="backwardBtn"
+                    class="move-btn backward"
+                >
+                    ▼
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             البطارية
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🔋 طاقة الروبوت
+                </h2>
+
+            </div>
+
+
+            <div class="battery-area">
+
+
+                <div class="battery">
+
+                    <div
+                        id="batteryFill"
+                        class="battery-fill"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    id="batteryText"
+                    class="battery-text"
+                >
+                    100%
+                </div>
+
+
+                <p
+                    id="batteryMessage"
+                    class="battery-message"
+                >
+                    البطارية ممتلئة.
+                </p>
+
+
+                <button
+                    id="chargeBtn"
+                    class="primary-btn"
+                >
+                    ⚡ شحن البطارية
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             الحساسات
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    📡 الحساسات
+                </h2>
+
+                <p>
+                    بيانات تجريبية من حساسات الروبوت.
+                </p>
+
+            </div>
+
+
+            <div class="sensors-grid">
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        📏
+                    </div>
+
+                    <h3>
+                        حساس المسافة
+                    </h3>
+
+                    <strong id="distanceSensor">
+                        250 cm
+                    </strong>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        🌡️
+                    </div>
+
+                    <h3>
+                        الحرارة
+                    </h3>
+
+                    <strong id="temperatureSensor">
+                        24°C
+                    </strong>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        💡
+                    </div>
+
+                    <h3>
+                        الإضاءة
+                    </h3>
+
+                    <strong id="lightSensor">
+                        70%
+                    </strong>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        العوائق
+                    </h3>
+
+                    <strong id="obstacleSensor">
+                        لا يوجد
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                id="scanBtn"
+                class="primary-btn scan-btn"
+            >
+                📡 فحص البيئة
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             أوامر الروبوت
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    💬 إرسال أمر
+                </h2>
+
+                <p>
+                    اكتب أمرًا بسيطًا للروبوت.
+                </p>
+
+            </div>
+
+
+            <div class="command-area">
+
+                <input
+                    type="text"
+                    id="commandInput"
+                    placeholder="مثال: مرحبا"
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="sendCommandBtn"
+                    class="primary-btn"
+                >
+                    إرسال
+                </button>
+
+            </div>
+
+
+            <div
+                id="robotReply"
+                class="robot-reply"
+            >
+                🤖 الروبوت ينتظر أمرًا...
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             سجل الروبوت
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    📋 سجل الأوامر
+                </h2>
+
+            </div>
+
+
+            <div
+                id="robotLog"
+                class="robot-log"
+            >
+
+                <p class="empty-log">
+                    لا توجد أوامر حتى الآن.
+                </p>
+
+            </div>
+
+
+            <button
+                id="clearLogBtn"
+                class="normal-btn"
+            >
+                🗑️ مسح السجل
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             قدرات مستقبلية
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🚀 تطويرات مستقبلية
+                </h2>
+
+            </div>
+
+
+            <div class="future-grid">
+
+
+                <article class="future-card">
+
+                    <span>
+                        🧠
+                    </span>
+
+                    <h3>
+                        ذكاء اصطناعي
+                    </h3>
+
+                    <p>
+                        ربط الروبوت بنظام Vertex AI.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <span>
+                        🗣️
+                    </span>
+
+                    <h3>
+                        أوامر صوتية
+                    </h3>
+
+                    <p>
+                        التحكم في الروبوت بالصوت.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <span>
+                        👁️
+                    </span>
+
+                    <h3>
+                        رؤية آلية
+                    </h3>
+
+                    <p>
+                        التعرف على الأشياء بالكاميرا.
+                    </p>
+
+                </article>
+
+
+                <article class="future-card">
+
+                    <span>
+                        🦾
+                    </span>
+
+                    <h3>
+                        ذراع روبوتية
+                    </h3>
+
+                    <p>
+                        التقاط وتحريك الأشياء.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة للمشاريع
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="robots.js"></script>
+
+
+</body>
+
+</html>

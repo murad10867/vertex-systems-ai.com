@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vertex AI - مساعد الذكاء الاصطناعي داخل Vertex Systems AI"
+    >
+
+    <title>
+        Vertex AI | Vertex Systems AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="ai.css"
+    >
+
+    <!-- الحماية -->
+    <script src="auth.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <div class="ai-app">
+
+
+        <!-- =========================================
+             Sidebar
+        ========================================== -->
+
+        <aside
+            id="aiSidebar"
+            class="ai-sidebar"
+        >
+
+
+            <!-- الشعار -->
+
+            <div class="sidebar-header">
+
+                <div class="vertex-logo">
+                    V
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Vertex AI
+                    </strong>
+
+                    <span>
+                        Intelligence System
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="closeSidebarBtn"
+                    class="close-sidebar-btn"
+                    aria-label="إغلاق"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <!-- محادثة جديدة -->
+
+            <button
+                id="newChatBtn"
+                class="new-chat-btn"
+            >
+
+                <span>
+                    ＋
+                </span>
+
+                محادثة جديدة
+
+            </button>
+
+
+
+            <!-- البحث -->
+
+            <div class="conversation-search">
+
+                <span>
+                    🔎
+                </span>
+
+                <input
+                    id="conversationSearchInput"
+                    type="text"
+                    placeholder="ابحث في المحادثات..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <!-- قائمة المحادثات -->
+
+            <div class="sidebar-label">
+
+                <span>
+                    المحادثات
+                </span>
+
+                <span id="conversationCount">
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="conversationsList"
+                class="conversations-list"
+            ></div>
+
+
+
+            <!-- أسفل القائمة -->
+
+            <div class="sidebar-footer">
+
+
+                <button
+                    id="memoriesViewBtn"
+                    class="sidebar-action"
+                >
+
+                    <span>
+                        🧠
+                    </span>
+
+                    الذاكرة
+
+                    <span
+                        id="memoryBadge"
+                        class="side-badge"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    id="settingsViewBtn"
+                    class="sidebar-action"
+                >
+
+                    <span>
+                        ⚙️
+                    </span>
+
+                    الإعدادات
+
+                </button>
+
+
+                <button
+                    id="projectsBtn"
+                    class="sidebar-action"
+                >
+
+                    <span>
+                        🚀
+                    </span>
+
+                    المشاريع
+
+                </button>
+
+
+                <button
+                    id="dashboardBtn"
+                    class="sidebar-action"
+                >
+
+                    <span>
+                        📊
+                    </span>
+
+                    Dashboard
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =========================================
+             المساحة الرئيسية
+        ========================================== -->
+
+        <div class="ai-main">
+
+
+            <!-- =====================================
+                 Topbar
+            ====================================== -->
+
+            <header class="ai-topbar">
+
+
+                <div class="topbar-start">
+
+                    <button
+                        id="menuBtn"
+                        class="menu-btn"
+                        aria-label="القائمة"
+                    >
+                        ☰
+                    </button>
+
+
+                    <div>
+
+                        <strong id="topConversationTitle">
+                            محادثة جديدة
+                        </strong>
+
+                        <span id="topConversationStatus">
+                            Vertex AI جاهز
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="topbar-actions">
+
+
+                    <div class="ai-status">
+
+                        <span class="status-dot"></span>
+
+                        Local AI
+
+                    </div>
+
+
+                    <button
+                        id="renameChatBtn"
+                        class="icon-btn"
+                        title="إعادة تسمية المحادثة"
+                    >
+                        ✏️
+                    </button>
+
+
+                    <button
+                        id="deleteChatBtn"
+                        class="icon-btn danger-icon"
+                        title="حذف المحادثة"
+                    >
+                        🗑️
+                    </button>
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- =====================================
+                 Chat View
+            ====================================== -->
+
+            <main
+                id="chatView"
+                class="app-view active-view"
+            >
+
+
+                <!-- حالة المحادثة الفارغة -->
+
+                <section
+                    id="welcomeScreen"
+                    class="welcome-screen"
+                >
+
+                    <div class="ai-core">
+
+                        <div class="core-ring ring-one"></div>
+
+                        <div class="core-ring ring-two"></div>
+
+                        <div class="core-center">
+                            V
+                        </div>
+
+                    </div>
+
+
+                    <p class="welcome-label">
+                        VERTEX AI
+                    </p>
+
+
+                    <h1>
+                        كيف أقدر أساعدك؟
+                    </h1>
+
+
+                    <p class="welcome-description">
+                        ابدأ محادثة جديدة مع Vertex AI.
+                        المحادثات تحفظ تلقائيًا داخل متصفحك.
+                    </p>
+
+
+
+                    <!-- اقتراحات -->
+
+                    <div class="prompt-suggestions">
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="اشرح لي ما هو الذكاء الاصطناعي بطريقة بسيطة"
+                        >
+
+                            <span>
+                                🧠
+                            </span>
+
+                            <strong>
+                                تعلّم
+                            </strong>
+
+                            <p>
+                                اشرح لي الذكاء الاصطناعي
+                            </p>
+
+                        </button>
+
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="ساعدني أتعلم JavaScript من البداية"
+                        >
+
+                            <span>
+                                💻
+                            </span>
+
+                            <strong>
+                                برمجة
+                            </strong>
+
+                            <p>
+                                ساعدني أتعلم JavaScript
+                            </p>
+
+                        </button>
+
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="أعطني فكرة لعبة جديدة أقدر أسويها في Godot"
+                        >
+
+                            <span>
+                                🎮
+                            </span>
+
+                            <strong>
+                                ألعاب
+                            </strong>
+
+                            <p>
+                                اقترح فكرة لعبة
+                            </p>
+
+                        </button>
+
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="عطني معلومة غريبة وممتعة عن الفضاء"
+                        >
+
+                            <span>
+                                🌌
+                            </span>
+
+                            <strong>
+                                فضاء
+                            </strong>
+
+                            <p>
+                                معلومة عن الفضاء
+                            </p>
+
+                        </button>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- الرسائل -->
+
+                <section
+                    id="messagesContainer"
+                    class="messages-container"
+                ></section>
+
+
+            </main>
+
+
+
+            <!-- =====================================
+                 Memory View
+            ====================================== -->
+
+            <main
+                id="memoryView"
+                class="app-view"
+            >
+
+                <section class="view-page">
+
+                    <div class="view-page-header">
+
+                        <div>
+
+                            <p class="page-label">
+                                VERTEX MEMORY
+                            </p>
+
+                            <h1>
+                                🧠 ذاكرة Vertex AI
+                            </h1>
+
+                            <p>
+                                معلومات محفوظة محليًا يستطيع
+                                Vertex AI استخدامها في المحادثة.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            id="addMemoryBtn"
+                            class="primary-btn"
+                        >
+                            ＋ إضافة ذاكرة
+                        </button>
+
+                    </div>
+
+
+
+                    <div
+                        id="memoriesGrid"
+                        class="memories-grid"
+                    ></div>
+
+
+                    <div
+                        id="emptyMemoryState"
+                        class="empty-state"
+                    >
+
+                        <span>
+                            🧠
+                        </span>
+
+                        <h2>
+                            لا توجد ذكريات بعد
+                        </h2>
+
+                        <p>
+                            أضف معلومة ليحفظها Vertex AI.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+
+
+            <!-- =====================================
+                 Settings View
+            ====================================== -->
+
+            <main
+                id="settingsView"
+                class="app-view"
+            >
+
+                <section class="view-page">
+
+                    <div class="view-page-header">
+
+                        <div>
+
+                            <p class="page-label">
+                                VERTEX CONFIGURATION
+                            </p>
+
+                            <h1>
+                                ⚙️ إعدادات Vertex AI
+                            </h1>
+
+                            <p>
+                                تحكم في طريقة عمل المساعد
+                                وتجربة المحادثة.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="settings-layout">
+
+
+                        <!-- إعدادات AI -->
+
+                        <section class="settings-card">
+
+                            <div class="settings-card-title">
+
+                                <span>
+                                    🤖
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        إعدادات المساعد
+                                    </h2>
+
+                                    <p>
+                                        غيّر اسم وطريقة رد Vertex AI.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        اسم المساعد
+                                    </strong>
+
+                                    <p>
+                                        الاسم الذي يظهر داخل المحادثة.
+                                    </p>
+
+                                </div>
+
+
+                                <input
+                                    id="assistantNameInput"
+                                    type="text"
+                                    maxlength="30"
+                                    value="Vertex AI"
+                                >
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        أسلوب الرد
+                                    </strong>
+
+                                    <p>
+                                        اختر طول الردود المحلية.
+                                    </p>
+
+                                </div>
+
+
+                                <select id="responseStyleSelect">
+
+                                    <option value="short">
+                                        مختصر
+                                    </option>
+
+                                    <option
+                                        value="balanced"
+                                        selected
+                                    >
+                                        متوازن
+                                    </option>
+
+                                    <option value="detailed">
+                                        مفصل
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        سرعة الكتابة
+                                    </strong>
+
+                                    <p>
+                                        سرعة ظهور رد المساعد.
+                                    </p>
+
+                                </div>
+
+
+                                <select id="typingSpeedSelect">
+
+                                    <option value="fast">
+                                        سريعة
+                                    </option>
+
+                                    <option
+                                        value="normal"
+                                        selected
+                                    >
+                                        طبيعية
+                                    </option>
+
+                                    <option value="slow">
+                                        بطيئة
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        استخدام الذاكرة
+                                    </strong>
+
+                                    <p>
+                                        يسمح للمساعد بالاطلاع على الذكريات.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="toggle">
+
+                                    <input
+                                        id="memoryEnabledToggle"
+                                        type="checkbox"
+                                        checked
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- Appearance -->
+
+                        <section class="settings-card">
+
+                            <div class="settings-card-title">
+
+                                <span>
+                                    🎨
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        المظهر
+                                    </h2>
+
+                                    <p>
+                                        تخصيص واجهة Vertex AI.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        حجم الخط
+                                    </strong>
+
+                                    <p>
+                                        حجم نص المحادثات.
+                                    </p>
+
+                                </div>
+
+
+                                <select id="fontSizeSelect">
+
+                                    <option value="small">
+                                        صغير
+                                    </option>
+
+                                    <option
+                                        value="medium"
+                                        selected
+                                    >
+                                        متوسط
+                                    </option>
+
+                                    <option value="large">
+                                        كبير
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        تأثيرات الحركة
+                                    </strong>
+
+                                    <p>
+                                        تشغيل أو إيقاف بعض الحركات.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="toggle">
+
+                                    <input
+                                        id="animationsToggle"
+                                        type="checkbox"
+                                        checked
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- Data -->
+
+                        <section class="settings-card danger-settings">
+
+                            <div class="settings-card-title">
+
+                                <span>
+                                    💾
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        البيانات
+                                    </h2>
+
+                                    <p>
+                                        إدارة بيانات Vertex AI المحلية.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="data-actions">
+
+                                <button
+                                    id="exportDataBtn"
+                                    class="secondary-btn"
+                                >
+                                    📤 تصدير البيانات
+                                </button>
+
+
+                                <button
+                                    id="clearConversationsBtn"
+                                    class="danger-btn"
+                                >
+                                    🗑️ مسح المحادثات
+                                </button>
+
+
+                                <button
+                                    id="clearMemoriesBtn"
+                                    class="danger-btn"
+                                >
+                                    🧠 مسح الذاكرة
+                                </button>
+
+
+                                <button
+                                    id="resetAISettingsBtn"
+                                    class="danger-btn"
+                                >
+                                    🔄 إعادة الإعدادات
+                                </button>
+
+                            </div>
+
+
+                        </section>
+
+
+                    </div>
+
+
+                    <div class="settings-save-area">
+
+                        <span id="settingsStatus"></span>
+
+
+                        <button
+                            id="saveSettingsBtn"
+                            class="primary-btn"
+                        >
+                            💾 حفظ الإعدادات
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+
+
+            <!-- =====================================
+                 Composer
+            ====================================== -->
+
+            <footer
+                id="composerArea"
+                class="composer-area"
+            >
+
+                <div class="composer-wrapper">
+
+
+                    <textarea
+                        id="messageInput"
+                        rows="1"
+                        placeholder="اكتب رسالتك إلى Vertex AI..."
+                        maxlength="5000"
+                    ></textarea>
+
+
+                    <div class="composer-bottom">
+
+
+                        <div class="composer-tools">
+
+                            <button
+                                id="clearInputBtn"
+                                class="composer-tool"
+                                title="مسح النص"
+                            >
+                                ✕
+                            </button>
+
+
+                            <span id="characterCount">
+                                0 / 5000
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            id="sendBtn"
+                            class="send-btn"
+                        >
+                            <span id="sendIcon">
+                                ↑
+                            </span>
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <p class="ai-warning">
+                    Vertex AI المحلي قد يقدم معلومات غير دقيقة.
+                </p>
+
+            </footer>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         Rename Modal
+    ========================================== -->
+
+    <div
+        id="renameModal"
+        class="modal"
+    >
+
+        <div
+            class="modal-overlay"
+            data-close-modal="renameModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <h2>
+                ✏️ إعادة تسمية المحادثة
+            </h2>
+
+
+            <input
+                id="renameInput"
+                type="text"
+                maxlength="60"
+                placeholder="اسم المحادثة"
+            >
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-btn"
+                    data-close-modal="renameModal"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    id="confirmRenameBtn"
+                    class="primary-btn"
+                >
+                    حفظ
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         Memory Modal
+    ========================================== -->
+
+    <div
+        id="memoryModal"
+        class="modal"
+    >
+
+        <div
+            class="modal-overlay"
+            data-close-modal="memoryModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <h2>
+                🧠 إضافة ذاكرة
+            </h2>
+
+
+            <textarea
+                id="memoryInput"
+                rows="5"
+                maxlength="500"
+                placeholder="مثال: مشروعي الرئيسي اسمه Minecraft Rell X1000"
+            ></textarea>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-btn"
+                    data-close-modal="memoryModal"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    id="confirmMemoryBtn"
+                    class="primary-btn"
+                >
+                    حفظ الذاكرة
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         Confirm Modal
+    ========================================== -->
+
+    <div
+        id="confirmModal"
+        class="modal"
+    >
+
+        <div
+            class="modal-overlay"
+            data-close-modal="confirmModal"
+        ></div>
+
+
+        <div class="modal-card">
+
+            <div class="confirm-icon">
+                ⚠️
+            </div>
+
+
+            <h2 id="confirmTitle">
+                هل أنت متأكد؟
+            </h2>
+
+
+            <p id="confirmMessage">
+                لا يمكن التراجع عن هذا الإجراء.
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-btn"
+                    data-close-modal="confirmModal"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    id="confirmActionBtn"
+                    class="danger-btn"
+                >
+                    تأكيد
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="ai.js"></script>
+
+    <!-- شريط المستخدم المركزي -->
+    <script src="vertex-userbar.js"></script>
+
+
+</body>
+
+</html>

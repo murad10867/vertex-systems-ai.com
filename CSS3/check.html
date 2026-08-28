@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Vertex System Check
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="check.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         الخلفية
+    ========================================== -->
+
+    <div class="background-grid"></div>
+
+
+    <!-- =========================================
+         Header
+    ========================================== -->
+
+    <header class="main-header">
+
+
+        <div class="brand">
+
+            <div class="logo">
+                V
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Vertex System Check
+                </h1>
+
+                <p>
+                    Vertex Systems AI — Version 1
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="homeBtn"
+            class="secondary-btn"
+        >
+            🏠 الصفحة الرئيسية
+        </button>
+
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             Hero
+        ========================================== -->
+
+        <section class="hero">
+
+            <p class="label">
+                FINAL SYSTEM TEST
+            </p>
+
+
+            <h2>
+                🔍 الفحص النهائي للمشروع
+            </h2>
+
+
+            <p>
+                يفحص هذا النظام الملفات الأساسية،
+                الصفحات، ملفات CSS وJavaScript،
+                نظام الدخول والتخزين المحلي.
+            </p>
+
+
+            <button
+                id="runCheckBtn"
+                class="primary-btn large-btn"
+            >
+                ▶ تشغيل الفحص الكامل
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================================
+             النتيجة العامة
+        ========================================== -->
+
+        <section class="summary-grid">
+
+
+            <article class="summary-card">
+
+                <span>
+                    📦
+                </span>
+
+                <strong id="totalTests">
+                    0
+                </strong>
+
+                <small>
+                    إجمالي الاختبارات
+                </small>
+
+            </article>
+
+
+            <article class="summary-card success">
+
+                <span>
+                    ✅
+                </span>
+
+                <strong id="passedTests">
+                    0
+                </strong>
+
+                <small>
+                    ناجح
+                </small>
+
+            </article>
+
+
+            <article class="summary-card error">
+
+                <span>
+                    ❌
+                </span>
+
+                <strong id="failedTests">
+                    0
+                </strong>
+
+                <small>
+                    يحتاج إصلاح
+                </small>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <span>
+                    📊
+                </span>
+
+                <strong id="scoreValue">
+                    0%
+                </strong>
+
+                <small>
+                    نتيجة المشروع
+                </small>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             Progress
+        ========================================== -->
+
+        <section class="progress-section">
+
+            <div class="progress-info">
+
+                <strong id="checkStatus">
+                    جاهز للفحص
+                </strong>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             ملفات المشروع
+        ========================================== -->
+
+        <section class="check-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="label">
+                        PROJECT FILES
+                    </p>
+
+                    <h2>
+                        📁 ملفات المشروع
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="filesBadge"
+                    class="section-badge"
+                >
+                    لم يتم الفحص
+                </span>
+
+            </div>
+
+
+            <div
+                id="filesResults"
+                class="results-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             HTML
+        ========================================== -->
+
+        <section class="check-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="label">
+                        HTML PAGES
+                    </p>
+
+                    <h2>
+                        🌐 صفحات HTML
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="htmlBadge"
+                    class="section-badge"
+                >
+                    لم يتم الفحص
+                </span>
+
+            </div>
+
+
+            <div
+                id="htmlResults"
+                class="results-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             JavaScript
+        ========================================== -->
+
+        <section class="check-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="label">
+                        JAVASCRIPT
+                    </p>
+
+                    <h2>
+                        ⚙️ ملفات JavaScript
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="jsBadge"
+                    class="section-badge"
+                >
+                    لم يتم الفحص
+                </span>
+
+            </div>
+
+
+            <div
+                id="jsResults"
+                class="results-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             Auth
+        ========================================== -->
+
+        <section class="check-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="label">
+                        AUTHENTICATION
+                    </p>
+
+                    <h2>
+                        🔐 نظام الدخول
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="authBadge"
+                    class="section-badge"
+                >
+                    لم يتم الفحص
+                </span>
+
+            </div>
+
+
+            <div
+                id="authResults"
+                class="results-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             LocalStorage
+        ========================================== -->
+
+        <section class="check-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="label">
+                        LOCAL STORAGE
+                    </p>
+
+                    <h2>
+                        💾 بيانات Vertex
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="storageBadge"
+                    class="section-badge"
+                >
+                    لم يتم الفحص
+                </span>
+
+            </div>
+
+
+            <div
+                id="storageResults"
+                class="results-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             النهاية
+        ========================================== -->
+
+        <section
+            id="finalResult"
+            class="final-result"
+        >
+
+            <div
+                id="finalIcon"
+                class="final-icon"
+            >
+                🔍
+            </div>
+
+
+            <h2 id="finalTitle">
+                لم يتم الفحص بعد
+            </h2>
+
+
+            <p id="finalMessage">
+                اضغط تشغيل الفحص الكامل.
+            </p>
+
+
+            <div class="final-actions">
+
+                <button
+                    id="runAgainBtn"
+                    class="primary-btn"
+                >
+                    🔄 إعادة الفحص
+                </button>
+
+
+                <button
+                    id="dashboardBtn"
+                    class="secondary-btn"
+                >
+                    📊 Dashboard
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="check.js"></script>
+
+
+</body>
+
+</html>

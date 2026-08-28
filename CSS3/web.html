@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Vertex Web | Vertex Systems AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="web.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         رأس الصفحة
+    ========================================== -->
+
+    <header class="main-header">
+
+        <div class="header-icon">
+            🌐
+        </div>
+
+        <div>
+
+            <h1>
+                Vertex Web
+            </h1>
+
+            <p>
+                مختبر تصميم وإنشاء المواقع
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================================
+             المقدمة
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-grid"></div>
+
+
+            <div class="hero-content">
+
+                <h2>
+                    💻 أنشئ موقعك بنفسك
+                </h2>
+
+                <p>
+                    غيّر النصوص والألوان والأقسام،
+                    وشاهد موقعك يتغير مباشرة أمامك.
+                </p>
+
+
+                <button
+                    id="startBuilderBtn"
+                    class="primary-btn"
+                >
+                    🛠️ فتح منشئ المواقع
+                </button>
+
+            </div>
+
+
+            <div class="hero-browser">
+
+                <div class="browser-top">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div class="browser-screen">
+
+                    <div class="browser-logo">
+                        V
+                    </div>
+
+                    <div class="browser-line line-one"></div>
+
+                    <div class="browser-line line-two"></div>
+
+                    <div class="browser-button"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             منشئ المواقع
+        ========================================== -->
+
+        <section
+            class="builder-section"
+            id="builderSection"
+        >
+
+
+            <!-- =====================================
+                 لوحة التحكم
+            ====================================== -->
+
+            <aside class="builder-panel">
+
+                <div class="panel-title">
+
+                    <h2>
+                        ⚙️ إعدادات الموقع
+                    </h2>
+
+                    <p>
+                        عدّل الخيارات وشاهد النتيجة مباشرة.
+                    </p>
+
+                </div>
+
+
+
+                <!-- اسم الموقع -->
+
+                <div class="setting-group">
+
+                    <label for="siteNameInput">
+                        اسم الموقع
+                    </label>
+
+                    <input
+                        id="siteNameInput"
+                        type="text"
+                        value="Vertex Website"
+                        maxlength="40"
+                    >
+
+                </div>
+
+
+
+                <!-- العنوان -->
+
+                <div class="setting-group">
+
+                    <label for="heroTitleInput">
+                        العنوان الرئيسي
+                    </label>
+
+                    <input
+                        id="heroTitleInput"
+                        type="text"
+                        value="مرحباً بك في موقعي"
+                        maxlength="70"
+                    >
+
+                </div>
+
+
+
+                <!-- الوصف -->
+
+                <div class="setting-group">
+
+                    <label for="heroDescriptionInput">
+                        وصف الموقع
+                    </label>
+
+                    <textarea
+                        id="heroDescriptionInput"
+                        rows="4"
+                        maxlength="200"
+                    >موقع تم إنشاؤه باستخدام Vertex Web.</textarea>
+
+                </div>
+
+
+
+                <!-- نص الزر -->
+
+                <div class="setting-group">
+
+                    <label for="buttonTextInput">
+                        نص الزر
+                    </label>
+
+                    <input
+                        id="buttonTextInput"
+                        type="text"
+                        value="ابدأ الآن"
+                        maxlength="30"
+                    >
+
+                </div>
+
+
+
+                <!-- اللون -->
+
+                <div class="setting-group">
+
+                    <label for="accentColorInput">
+                        اللون الرئيسي
+                    </label>
+
+                    <div class="color-row">
+
+                        <input
+                            id="accentColorInput"
+                            type="color"
+                            value="#2b8cff"
+                        >
+
+                        <span id="colorValue">
+                            #2b8cff
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- تصميم الصفحة -->
+
+                <div class="setting-group">
+
+                    <label>
+                        تصميم الموقع
+                    </label>
+
+
+                    <div class="theme-buttons">
+
+                        <button
+                            class="theme-btn selected"
+                            data-theme="dark"
+                        >
+                            🌑 داكن
+                        </button>
+
+
+                        <button
+                            class="theme-btn"
+                            data-theme="light"
+                        >
+                            ☀️ فاتح
+                        </button>
+
+
+                        <button
+                            class="theme-btn"
+                            data-theme="space"
+                        >
+                            🌌 فضائي
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- شكل الزر -->
+
+                <div class="setting-group">
+
+                    <label>
+                        شكل الأزرار
+                    </label>
+
+
+                    <div class="radius-buttons">
+
+                        <button
+                            class="radius-btn"
+                            data-radius="0"
+                        >
+                            مربع
+                        </button>
+
+
+                        <button
+                            class="radius-btn selected"
+                            data-radius="12"
+                        >
+                            ناعم
+                        </button>
+
+
+                        <button
+                            class="radius-btn"
+                            data-radius="30"
+                        >
+                            دائري
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الأقسام -->
+
+                <div class="setting-group">
+
+                    <label>
+                        أقسام الموقع
+                    </label>
+
+
+                    <div class="switch-list">
+
+
+                        <label class="switch-row">
+
+                            <span>
+                                🏠 الرئيسية
+                            </span>
+
+                            <input
+                                type="checkbox"
+                                id="heroToggle"
+                                checked
+                            >
+
+                        </label>
+
+
+                        <label class="switch-row">
+
+                            <span>
+                                ⚙️ الخدمات
+                            </span>
+
+                            <input
+                                type="checkbox"
+                                id="servicesToggle"
+                                checked
+                            >
+
+                        </label>
+
+
+                        <label class="switch-row">
+
+                            <span>
+                                👤 من نحن
+                            </span>
+
+                            <input
+                                type="checkbox"
+                                id="aboutToggle"
+                                checked
+                            >
+
+                        </label>
+
+
+                        <label class="switch-row">
+
+                            <span>
+                                📞 التواصل
+                            </span>
+
+                            <input
+                                type="checkbox"
+                                id="contactToggle"
+                                checked
+                            >
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الأزرار الرئيسية -->
+
+                <div class="panel-actions">
+
+                    <button
+                        id="saveBtn"
+                        class="primary-btn"
+                    >
+                        💾 حفظ
+                    </button>
+
+
+                    <button
+                        id="resetBtn"
+                        class="normal-btn"
+                    >
+                        🔄 إعادة
+                    </button>
+
+
+                    <button
+                        id="downloadBtn"
+                        class="download-btn"
+                    >
+                        ⬇️ تنزيل الموقع
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="saveMessage"
+                    class="save-message"
+                ></p>
+
+            </aside>
+
+
+
+            <!-- =====================================
+                 منطقة المعاينة
+            ====================================== -->
+
+            <section class="preview-area">
+
+                <div class="preview-toolbar">
+
+                    <div>
+
+                        <strong>
+                            👁️ معاينة الموقع
+                        </strong>
+
+                    </div>
+
+
+                    <div class="device-buttons">
+
+                        <button
+                            class="device-btn selected"
+                            data-device="desktop"
+                            title="كمبيوتر"
+                        >
+                            🖥️
+                        </button>
+
+
+                        <button
+                            class="device-btn"
+                            data-device="tablet"
+                            title="تابلت"
+                        >
+                            📱
+                        </button>
+
+
+                        <button
+                            class="device-btn"
+                            data-device="mobile"
+                            title="جوال"
+                        >
+                            📲
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- إطار الموقع -->
+
+                <div
+                    id="previewFrame"
+                    class="preview-frame desktop"
+                >
+
+                    <div
+                        id="websitePreview"
+                        class="website-preview theme-dark"
+                    >
+
+
+                        <!-- =================================
+                             القائمة
+                        ================================== -->
+
+                        <nav class="preview-nav">
+
+                            <strong id="previewSiteName">
+                                Vertex Website
+                            </strong>
+
+
+                            <div>
+
+                                <a href="#previewHero">
+                                    الرئيسية
+                                </a>
+
+                                <a href="#previewServices">
+                                    الخدمات
+                                </a>
+
+                                <a href="#previewAbout">
+                                    من نحن
+                                </a>
+
+                                <a href="#previewContact">
+                                    تواصل
+                                </a>
+
+                            </div>
+
+                        </nav>
+
+
+
+                        <!-- =================================
+                             الرئيسية
+                        ================================== -->
+
+                        <section
+                            id="previewHero"
+                            class="preview-hero"
+                        >
+
+                            <div class="preview-hero-glow"></div>
+
+
+                            <div class="preview-hero-content">
+
+                                <p class="preview-small">
+                                    WELCOME
+                                </p>
+
+
+                                <h1 id="previewHeroTitle">
+                                    مرحباً بك في موقعي
+                                </h1>
+
+
+                                <p id="previewHeroDescription">
+                                    موقع تم إنشاؤه باستخدام Vertex Web.
+                                </p>
+
+
+                                <button id="previewHeroButton">
+                                    ابدأ الآن
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- =================================
+                             الخدمات
+                        ================================== -->
+
+                        <section
+                            id="previewServices"
+                            class="preview-content-section"
+                        >
+
+                            <h2>
+                                خدماتنا
+                            </h2>
+
+
+                            <div class="preview-cards">
+
+
+                                <article>
+
+                                    <span>
+                                        💻
+                                    </span>
+
+                                    <h3>
+                                        تطوير المواقع
+                                    </h3>
+
+                                    <p>
+                                        تصميم مواقع جميلة وسريعة.
+                                    </p>
+
+                                </article>
+
+
+                                <article>
+
+                                    <span>
+                                        📱
+                                    </span>
+
+                                    <h3>
+                                        تصميم متجاوب
+                                    </h3>
+
+                                    <p>
+                                        يعمل على الكمبيوتر والجوال.
+                                    </p>
+
+                                </article>
+
+
+                                <article>
+
+                                    <span>
+                                        ⚡
+                                    </span>
+
+                                    <h3>
+                                        أداء سريع
+                                    </h3>
+
+                                    <p>
+                                        صفحات مرتبة وخفيفة.
+                                    </p>
+
+                                </article>
+
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- =================================
+                             من نحن
+                        ================================== -->
+
+                        <section
+                            id="previewAbout"
+                            class="preview-content-section preview-about"
+                        >
+
+                            <h2>
+                                من نحن
+                            </h2>
+
+                            <p>
+                                نبني تجارب رقمية جميلة
+                                باستخدام أحدث تقنيات الويب.
+                            </p>
+
+                        </section>
+
+
+
+                        <!-- =================================
+                             التواصل
+                        ================================== -->
+
+                        <section
+                            id="previewContact"
+                            class="preview-content-section preview-contact"
+                        >
+
+                            <h2>
+                                تواصل معنا
+                            </h2>
+
+
+                            <form
+                                onsubmit="return false;"
+                            >
+
+                                <input
+                                    type="text"
+                                    placeholder="الاسم"
+                                >
+
+                                <input
+                                    type="email"
+                                    placeholder="البريد الإلكتروني"
+                                >
+
+                                <textarea
+                                    placeholder="رسالتك"
+                                    rows="4"
+                                ></textarea>
+
+                                <button>
+                                    إرسال
+                                </button>
+
+                            </form>
+
+                        </section>
+
+
+
+                        <!-- =================================
+                             Footer
+                        ================================== -->
+
+                        <footer class="preview-footer">
+
+                            <span id="previewFooterName">
+                                Vertex Website
+                            </span>
+
+                            <span>
+                                تم إنشاؤه بواسطة Vertex Web
+                            </span>
+
+                        </footer>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =========================================
+             تقنيات الويب
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    💻 تقنيات Vertex Web
+                </h2>
+
+                <p>
+                    أهم التقنيات التي تستخدم لبناء المواقع.
+                </p>
+
+            </div>
+
+
+            <div class="technologies-grid">
+
+
+                <article class="technology-card">
+
+                    <div class="technology-icon">
+                        🧱
+                    </div>
+
+                    <h3>
+                        HTML
+                    </h3>
+
+                    <p>
+                        يبني هيكل ومحتوى صفحة الويب.
+                    </p>
+
+                </article>
+
+
+                <article class="technology-card">
+
+                    <div class="technology-icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        CSS
+                    </h3>
+
+                    <p>
+                        يتحكم في شكل وتصميم الموقع.
+                    </p>
+
+                </article>
+
+
+                <article class="technology-card">
+
+                    <div class="technology-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        JavaScript
+                    </h3>
+
+                    <p>
+                        يضيف التفاعل والحركة للموقع.
+                    </p>
+
+                </article>
+
+
+                <article class="technology-card">
+
+                    <div class="technology-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Responsive
+                    </h3>
+
+                    <p>
+                        يجعل الموقع مناسبًا لجميع الشاشات.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             خطوات بناء الموقع
+        ========================================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    🛠️ مراحل إنشاء موقع
+                </h2>
+
+            </div>
+
+
+            <div class="steps-grid">
+
+
+                <article>
+
+                    <span>
+                        1
+                    </span>
+
+                    <h3>
+                        الفكرة
+                    </h3>
+
+                    <p>
+                        حدد الهدف من الموقع.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        2
+                    </span>
+
+                    <h3>
+                        التصميم
+                    </h3>
+
+                    <p>
+                        اختر شكل الصفحات والألوان.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        3
+                    </span>
+
+                    <h3>
+                        البرمجة
+                    </h3>
+
+                    <p>
+                        اكتب HTML وCSS وJavaScript.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        4
+                    </span>
+
+                    <h3>
+                        الاختبار
+                    </h3>
+
+                    <p>
+                        تأكد أن كل شيء يعمل.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        5
+                    </span>
+
+                    <h3>
+                        النشر
+                    </h3>
+
+                    <p>
+                        ارفع الموقع على الإنترنت.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             العودة
+        ========================================== -->
+
+        <div class="bottom-area">
+
+            <button
+                id="backBtn"
+                class="back-btn"
+            >
+                🔙 العودة للمشاريع
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="web.js"></script>
+
+
+</body>
+
+</html>

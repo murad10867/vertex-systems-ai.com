@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Minecraft Rell X1000 | Vertex Games</title>
+
+    <link rel="stylesheet" href="minecraft.css">
+</head>
+
+
+<body>
+
+    <!-- ====================================
+         رأس الصفحة
+    ===================================== -->
+
+    <header class="main-header">
+
+        <h1>🎮 Minecraft Rell X1000</h1>
+
+        <p>
+            لوحة إدارة تطوير اللعبة - Vertex Games
+        </p>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- ====================================
+             معلومات المشروع
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>📌 معلومات المشروع</h2>
+
+
+            <div class="project-info">
+
+                <p>
+                    <strong>المحرك:</strong>
+                    Godot
+                </p>
+
+                <p>
+                    <strong>النوع:</strong>
+                    عالم مفتوح - بناء - استكشاف
+                </p>
+
+                <p>
+                    <strong>الحالة:</strong>
+                    قيد التطوير 🚧
+                </p>
+
+            </div>
+
+
+            <div class="project-settings">
+
+                <!-- الإصدار -->
+
+                <div class="setting-item">
+
+                    <label for="versionInput">
+                        🏷️ إصدار اللعبة
+                    </label>
+
+                    <div class="setting-row">
+
+                        <input
+                            id="versionInput"
+                            type="text"
+                            placeholder="v0.1.0"
+                        >
+
+                        <button id="saveVersionBtn">
+                            💾 حفظ الإصدار
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- المرحلة -->
+
+                <div class="setting-item">
+
+                    <label for="phaseSelect">
+                        🚀 مرحلة التطوير
+                    </label>
+
+                    <select id="phaseSelect">
+
+                        <option value="prototype">
+                            🧪 Prototype
+                        </option>
+
+                        <option value="alpha">
+                            🟠 Alpha
+                        </option>
+
+                        <option value="beta">
+                            🔵 Beta
+                        </option>
+
+                        <option value="release">
+                            🟢 Release
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="phaseText" class="phase-display">
+                🧪 Prototype
+            </div>
+
+
+            <p class="last-saved">
+
+                آخر حفظ:
+
+                <span id="lastSaved">
+                    --
+                </span>
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ====================================
+             التقدم العام
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>📊 تقدم المشروع</h2>
+
+
+            <div class="progress">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                >
+                    0%
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-box">
+
+                    <h3 id="totalTasks">
+                        0
+                    </h3>
+
+                    <p>كل المهام</p>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <h3 id="completedTasks">
+                        0
+                    </h3>
+
+                    <p>المنجزة ✅</p>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <h3 id="remainingTasks">
+                        0
+                    </h3>
+
+                    <p>المتبقية ⏳</p>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <h3 id="overdueTasks">
+                        0
+                    </h3>
+
+                    <p>المتأخرة ⚠️</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+             تقدم الأقسام
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>📈 تقدم أقسام اللعبة</h2>
+
+
+            <!-- اللاعب -->
+
+            <div class="section-progress">
+
+                <div class="section-title">
+
+                    <span>🧍 اللاعب</span>
+
+                    <span id="playerProgressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="small-progress">
+
+                    <div
+                        id="playerProgress"
+                        class="small-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- العالم -->
+
+            <div class="section-progress">
+
+                <div class="section-title">
+
+                    <span>🌍 العالم</span>
+
+                    <span id="worldProgressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="small-progress">
+
+                    <div
+                        id="worldProgress"
+                        class="small-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- الأنظمة -->
+
+            <div class="section-progress">
+
+                <div class="section-title">
+
+                    <span>⚙️ الأنظمة</span>
+
+                    <span id="systemsProgressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="small-progress">
+
+                    <div
+                        id="systemsProgress"
+                        class="small-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- المحتوى -->
+
+            <div class="section-progress">
+
+                <div class="section-title">
+
+                    <span>🐺 المحتوى</span>
+
+                    <span id="contentProgressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="small-progress">
+
+                    <div
+                        id="contentProgress"
+                        class="small-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+             إدارة المهام
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>🛠️ خطة التطوير</h2>
+
+
+            <!-- البحث -->
+
+            <div class="search-box">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="🔎 ابحث عن مهمة..."
+                >
+
+            </div>
+
+
+            <!-- إضافة أو تعديل مهمة -->
+
+            <div
+                id="taskEditor"
+                class="task-editor"
+            >
+
+                <input
+                    id="newTaskInput"
+                    type="text"
+                    placeholder="اسم المهمة..."
+                >
+
+
+                <select id="categorySelect">
+
+                    <option value="player">
+                        🧍 اللاعب
+                    </option>
+
+                    <option value="world">
+                        🌍 العالم
+                    </option>
+
+                    <option value="systems" selected>
+                        ⚙️ الأنظمة
+                    </option>
+
+                    <option value="content">
+                        🐺 المحتوى
+                    </option>
+
+                </select>
+
+
+                <select id="prioritySelect">
+
+                    <option value="high">
+                        🔴 مهمة جدًا
+                    </option>
+
+                    <option value="medium" selected>
+                        🟡 متوسطة
+                    </option>
+
+                    <option value="low">
+                        🟢 عادية
+                    </option>
+
+                </select>
+
+
+                <input
+                    id="dueDateInput"
+                    type="date"
+                >
+
+
+                <button id="addTaskBtn">
+                    ➕ إضافة مهمة
+                </button>
+
+
+                <button
+                    id="cancelEditBtn"
+                    class="hidden-control"
+                >
+                    ❌ إلغاء التعديل
+                </button>
+
+            </div>
+
+
+            <!-- الفلاتر -->
+
+            <div class="filters">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all"
+                >
+                    الكل
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="pending"
+                >
+                    ⏳ غير منجزة
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="done"
+                >
+                    ✅ منجزة
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="overdue"
+                >
+                    ⚠️ متأخرة
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="high"
+                >
+                    🔴 مهمة جدًا
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="medium"
+                >
+                    🟡 متوسطة
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="low"
+                >
+                    🟢 عادية
+                </button>
+
+            </div>
+
+
+            <!-- الترتيب -->
+
+            <div class="sort-buttons">
+
+                <button id="sortPriorityBtn">
+                    🔴 ترتيب حسب الأولوية
+                </button>
+
+                <button id="sortDateBtn">
+                    📅 ترتيب حسب الموعد
+                </button>
+
+                <button id="sortNameBtn">
+                    🔤 ترتيب بالاسم
+                </button>
+
+            </div>
+
+
+            <!-- المهام -->
+
+            <div id="taskList"></div>
+
+
+            <p
+                id="noTasksMessage"
+                class="empty-message"
+            >
+                لا توجد مهام مطابقة.
+            </p>
+
+        </section>
+
+
+
+        <!-- ====================================
+             الأخطاء Bugs
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>🐞 Bugs</h2>
+
+
+            <div class="bug-stats">
+
+                <span>
+                    مفتوحة:
+                    <strong id="openBugsCount">
+                        0
+                    </strong>
+                </span>
+
+                <span>
+                    تم إصلاحها:
+                    <strong id="fixedBugsCount">
+                        0
+                    </strong>
+                </span>
+
+            </div>
+
+
+            <div class="bug-editor">
+
+                <input
+                    id="bugInput"
+                    type="text"
+                    placeholder="اكتب الخطأ..."
+                >
+
+
+                <select id="bugSeverity">
+
+                    <option value="high">
+                        🔴 خطير
+                    </option>
+
+                    <option value="medium" selected>
+                        🟡 متوسط
+                    </option>
+
+                    <option value="low">
+                        🟢 بسيط
+                    </option>
+
+                </select>
+
+
+                <button id="addBugBtn">
+                    🐞 إضافة Bug
+                </button>
+
+            </div>
+
+
+            <div id="bugList"></div>
+
+
+            <p
+                id="noBugsMessage"
+                class="empty-message"
+            >
+                لا توجد أخطاء مسجلة 🎉
+            </p>
+
+        </section>
+
+
+
+        <!-- ====================================
+             الملاحظات
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>📝 ملاحظات المشروع</h2>
+
+
+            <textarea
+                id="projectNotes"
+                placeholder="اكتب أفكارك وملاحظاتك عن اللعبة هنا..."
+            ></textarea>
+
+
+            <div class="notes-actions">
+
+                <button id="saveNotesBtn">
+                    💾 حفظ الملاحظات
+                </button>
+
+                <span id="notesStatus"></span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+             أدوات المشروع
+        ===================================== -->
+
+        <section class="card">
+
+            <h2>🧰 أدوات المشروع</h2>
+
+
+            <div class="tools">
+
+                <button id="exportBtn">
+                    📤 تنزيل نسخة احتياطية
+                </button>
+
+
+                <button id="importBtn">
+                    📥 استرجاع نسخة احتياطية
+                </button>
+
+
+                <input
+                    id="importInput"
+                    type="file"
+                    accept=".json"
+                    hidden
+                >
+
+
+                <button
+                    id="resetBtn"
+                    class="danger-btn"
+                >
+                    🗑️ إعادة المشروع من البداية
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+             أزرار أسفل الصفحة
+        ===================================== -->
+
+        <div class="page-buttons">
+
+            <button id="startGameBtn">
+                ▶ عرض حالة المشروع
+            </button>
+
+            <button id="backBtn">
+                🔙 العودة إلى Vertex Games
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="minecraft.js"></script>
+
+</body>
+
+</html>
