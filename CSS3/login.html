@@ -326,7 +326,7 @@
                     <div class="input-group">
 
                         <label for="nameInput">
-                            الاسم
+                            الاسم (اختياري)
                         </label>
 
 
@@ -340,7 +340,7 @@
                             <input
                                 id="nameInput"
                                 type="text"
-                                placeholder="اكتب اسمك"
+                                placeholder="اكتب اسم العرض"
                                 autocomplete="name"
                                 maxlength="40"
                             >
@@ -514,6 +514,20 @@
 
 
                 <!-- =================================
+                     إنشاء حساب جديد
+                ================================== -->
+
+                <button
+                    type="button"
+                    class="back-home"
+                    onclick="window.location.href='signup.html'"
+                >
+                    ✨ إنشاء حساب جديد
+                </button>
+
+
+
+                <!-- =================================
                      معلومات النسخة المحلية
                 ================================== -->
 
@@ -525,8 +539,8 @@
 
 
                     <p>
-                        هذه نسخة تجريبية محلية.
-                        بيانات الجلسة تحفظ داخل متصفحك فقط.
+                        تسجيل الدخول محمي عبر Supabase.
+                        كلمة المرور لا يتم حفظها داخل كود الموقع.
                     </p>
 
                 </div>
@@ -584,23 +598,59 @@
             </div>
 
 
-            <h2>
+            <h2 id="forgotModalTitle">
                 استعادة كلمة المرور
             </h2>
 
 
-            <p>
-                المشروع يعمل حاليًا كتجربة محلية،
-                لذلك لا يوجد نظام استعادة كلمة مرور
-                من خادم في هذه النسخة.
+            <p id="forgotModalText">
+                سنرسل رابط استعادة كلمة المرور إلى البريد المكتوب في نموذج تسجيل الدخول.
             </p>
+
+
+            <div id="recoveryFields" hidden>
+
+                <div class="input-group">
+                    <label for="newPasswordInput">
+                        كلمة المرور الجديدة
+                    </label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input
+                            id="newPasswordInput"
+                            type="password"
+                            placeholder="12 حرفًا على الأقل"
+                            autocomplete="new-password"
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmNewPasswordInput">
+                        تأكيد كلمة المرور الجديدة
+                    </label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔐</span>
+                        <input
+                            id="confirmNewPasswordInput"
+                            type="password"
+                            placeholder="أعد كتابة كلمة المرور"
+                            autocomplete="new-password"
+                        >
+                    </div>
+                </div>
+
+            </div>
 
 
             <button
                 id="modalOkBtn"
+                type="button"
                 class="modal-button"
             >
-                فهمت
+                إرسال رابط الاستعادة
             </button>
 
 
@@ -612,7 +662,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
-   <script src="login.js"></script>
+    <script src="login.js"></script>
 
 
 </body>
