@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 
 Disallow: /login.html
+Disallow: /signup.html
 Disallow: /dashboard.html
 Disallow: /check.html
 
