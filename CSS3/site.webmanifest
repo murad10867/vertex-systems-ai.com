@@ -1,0 +1,17 @@
+{
+  "name": "Vertex Systems AI",
+  "short_name": "Vertex",
+  "start_url": "/vertex-systems-ai.com/",
+  "scope": "/vertex-systems-ai.com/",
+  "display": "standalone",
+  "background_color": "#08111f",
+  "theme_color": "#08111f",
+  "icons": [
+    {
+      "src": "img/logo3.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
