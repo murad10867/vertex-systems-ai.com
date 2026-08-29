@@ -1,0 +1,107 @@
+name: Finalize Vertex site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Finalize site
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('CSS3')
+          protected = [
+              'dashboard.html','projects.html','ai.html','robots.html','games.html','web.html',
+              'space.html','minecraft.html','planets.html','stars.html','black-holes.html',
+              'galaxies.html','moons.html','exploration.html','check.html'
+          ]
+
+          # Consistent icons/theme and noindex+auth on protected pages.
+          for path in root.glob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if '<head>' not in text:
+                  continue
+              additions = []
+              if 'rel="icon"' not in text:
+                  additions.append('    <link rel="icon" type="image/png" href="img/logo3.png">')
+              if 'rel="apple-touch-icon"' not in text:
+                  additions.append('    <link rel="apple-touch-icon" href="img/logo3.png">')
+              if 'name="theme-color"' not in text:
+                  additions.append('    <meta name="theme-color" content="#08111f">')
+              if additions:
+                  text = text.replace('<head>', '<head>\n' + '\n'.join(additions), 1)
+              path.write_text(text, encoding='utf-8')
+
+          for name in protected:
+              path = root / name
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              if 'name="robots"' not in text:
+                  text = text.replace('<head>', '<head>\n    <meta name="robots" content="noindex, nofollow">', 1)
+              if 'src="auth.js"' not in text:
+                  if '</head>' in text:
+                      text = text.replace('</head>', '    <script src="auth.js"></script>\n</head>', 1)
+                  else:
+                      text = text.replace('</body>', '    <script src="auth.js"></script>\n</body>', 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Make signup confirmation instructions unmistakable.
+          signup = root / 'signup.html'
+          if signup.exists():
+              text = signup.read_text(encoding='utf-8')
+              old = 'showFormMessage("✅ تم إنشاء الحساب. إذا كان تأكيد البريد مفعّلًا في Supabase، افتح رسالة التأكيد ثم سجّل الدخول.", "success");'
+              new = 'showFormMessage("✅ تم إنشاء الحساب. بقيت خطوة واحدة: افتح بريدك الإلكتروني، واضغط رابط تأكيد الحساب، ثم ارجع وسجّل الدخول.", "success");\n        backLoginBtn.textContent = "تم تأكيد البريد — تسجيل الدخول";'
+              text = text.replace(old, new)
+              signup.write_text(text, encoding='utf-8')
+
+          # Better homepage sharing metadata.
+          index = root / 'index.html'
+          if index.exists():
+              text = index.read_text(encoding='utf-8')
+              if 'property="og:site_name"' not in text:
+                  anchor = '<meta\n    property="og:type"\n    content="website"\n>'
+                  text = text.replace(anchor, anchor + '\n<meta property="og:site_name" content="Vertex Systems AI">', 1)
+              if 'property="og:image:alt"' not in text and 'property="og:image"' in text:
+                  marker = '<meta name="twitter:card" content="summary">'
+                  extra = '<meta property="og:image:alt" content="شعار Vertex Systems AI">\n<meta name="twitter:title" content="Vertex Systems AI">\n<meta name="twitter:description" content="منصة تقنية تجمع الذكاء الاصطناعي والروبوتات والألعاب وتطوير الويب واستكشاف الفضاء.">\n<meta name="twitter:image" content="https://murad10867.github.io/vertex-systems-ai.com/img/logo3.png">'
+                  text = text.replace(marker, marker + '\n' + extra, 1)
+              index.write_text(text, encoding='utf-8')
+
+          # 404 links must work even when the missing URL is nested.
+          p404 = root / '404.html'
+          if p404.exists():
+              text = p404.read_text(encoding='utf-8')
+              text = text.replace('href="index.html"', 'href="/vertex-systems-ai.com/"')
+              text = text.replace('href="img/logo3.png"', 'href="/vertex-systems-ai.com/img/logo3.png"')
+              p404.write_text(text, encoding='utf-8')
+
+          # Project-local robots file (meta robots on protected pages is the primary control on GitHub Pages).
+          robots = root / 'robots.txt'
+          robots.write_text('''User-agent: *\n\nAllow: /vertex-systems-ai.com/\n\nDisallow: /vertex-systems-ai.com/login.html\nDisallow: /vertex-systems-ai.com/signup.html\nDisallow: /vertex-systems-ai.com/dashboard.html\nDisallow: /vertex-systems-ai.com/projects.html\nDisallow: /vertex-systems-ai.com/ai.html\nDisallow: /vertex-systems-ai.com/robots.html\nDisallow: /vertex-systems-ai.com/games.html\nDisallow: /vertex-systems-ai.com/web.html\nDisallow: /vertex-systems-ai.com/space.html\nDisallow: /vertex-systems-ai.com/minecraft.html\nDisallow: /vertex-systems-ai.com/planets.html\nDisallow: /vertex-systems-ai.com/stars.html\nDisallow: /vertex-systems-ai.com/black-holes.html\nDisallow: /vertex-systems-ai.com/galaxies.html\nDisallow: /vertex-systems-ai.com/moons.html\nDisallow: /vertex-systems-ai.com/exploration.html\nDisallow: /vertex-systems-ai.com/check.html\n\nSitemap: https://murad10867.github.io/vertex-systems-ai.com/sitemap.xml\n''', encoding='utf-8')
+          PY
+
+      - name: Commit final cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CSS3
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Finalize Vertex site UX SEO and protected pages"
+            git push
+          fi
