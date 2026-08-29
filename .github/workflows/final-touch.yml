@@ -1,0 +1,75 @@
+name: Final Vertex touch
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  final-touch:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Apply final touch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('CSS3')
+
+          # 1) Protect the diagnostic page too.
+          auth = root / 'auth.js'
+          text = auth.read_text(encoding='utf-8')
+          if '"check.html"' not in text:
+              text = text.replace('        "exploration.html"\n', '        "exploration.html",\n        "check.html"\n', 1)
+          auth.write_text(text, encoding='utf-8')
+
+          # 2) Make the public homepage aware of the real Supabase session.
+          index = root / 'index.html'
+          text = index.read_text(encoding='utf-8')
+          old = '    <script src="scruipt.js"></script>'
+          new = '    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n    <script src="supabase-config.js"></script>\n    <script src="scruipt.js"></script>'
+          if 'src="supabase-config.js"' not in text:
+              text = text.replace(old, new, 1)
+          index.write_text(text, encoding='utf-8')
+
+          # 3) If already signed in, homepage buttons go straight to dashboard/system.
+          script = root / 'scruipt.js'
+          text = script.read_text(encoding='utf-8')
+          old_func = '''function openLogin() {\n\n    window.location.href =\n        "login.html";\n\n}'''
+          new_func = '''window.vertexHomeSessionActive = false;\n\nfunction openLogin(destinationPage) {\n\n    const destination =\n        typeof destinationPage === "string"\n            ? destinationPage\n            : "dashboard.html";\n\n    if (window.vertexHomeSessionActive) {\n        window.location.href = destination;\n        return;\n    }\n\n    window.location.href = "login.html";\n\n}'''
+          if 'window.vertexHomeSessionActive' not in text:
+              text = text.replace(old_func, new_func, 1)
+
+          old_system = '''        openLogin();\n\n    }\n\n);\n\n\n// ==========================================\n// Navbar عند النزول'''
+          new_system = '''        openLogin(selectedSystem + ".html");\n\n    }\n\n);\n\n\n// ==========================================\n// Navbar عند النزول'''
+          text = text.replace(old_system, new_system, 1)
+
+          if 'async function updateHomeAuthState()' not in text:
+              text += '''\n\n// ==========================================\n// حالة تسجيل الدخول في الصفحة الرئيسية\n// ==========================================\n\nasync function updateHomeAuthState() {\n    if (typeof supabaseClient === "undefined" || !supabaseClient?.auth) return;\n\n    try {\n        const { data, error } = await supabaseClient.auth.getSession();\n        if (error) throw error;\n\n        window.vertexHomeSessionActive = Boolean(data.session?.user);\n\n        if (window.vertexHomeSessionActive) {\n            if (loginBtn) loginBtn.textContent = "لوحة التحكم";\n            if (mobileLoginBtn) mobileLoginBtn.textContent = "📊 لوحة التحكم";\n            if (startBtn) startBtn.innerHTML = "لوحة التحكم <span>←</span>";\n            if (ctaLoginBtn) ctaLoginBtn.textContent = "فتح لوحة التحكم ←";\n            if (footerLoginBtn) footerLoginBtn.textContent = "لوحة التحكم ←";\n            if (systemLoginBtn) systemLoginBtn.textContent = "فتح النظام ←";\n        }\n    } catch (error) {\n        console.warn("Home session check failed:", error);\n    }\n}\n\nupdateHomeAuthState();\n'''
+          script.write_text(text, encoding='utf-8')
+
+          # 4) Remove an empty stray file that can create a confusing URL.
+          stray = root / 'black-holes'
+          if stray.exists() and stray.stat().st_size == 0:
+              stray.unlink()
+          PY
+
+      - name: Commit final touch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A CSS3
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Finish Vertex auth flow and homepage session UX"
+            git push
+          fi
