@@ -18,7 +18,7 @@ if (
 // المستخدم الحالي
 // ==========================================
 
-const currentUser =
+let currentUser =
     VertexAuth.getUser();
 
 
@@ -79,6 +79,9 @@ const systemUserEmail =
 // ==========================================
 
 function displayUser() {
+
+    currentUser =
+        VertexAuth.getUser();
 
     if (
         !currentUser
@@ -1247,6 +1250,20 @@ document
         "© " +
         new Date()
             .getFullYear();
+
+
+// ==========================================
+// تحديث بيانات المستخدم بعد جاهزية Supabase
+// ==========================================
+
+document.addEventListener(
+    "vertex-auth-ready",
+    function (event) {
+        if (event.detail && event.detail.loggedIn) {
+            displayUser();
+        }
+    }
+);
 
 
 // ==========================================
