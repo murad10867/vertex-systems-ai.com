@@ -6,4 +6,4 @@ Disallow: /login.html
 Disallow: /dashboard.html
 Disallow: /check.html
 
-Sitemap: https://vertexsystems-ai.netlify.app/sitemap.xml
+Sitemap: https://murad10867.github.io/vertex-systems-ai.com/sitemap.xml
