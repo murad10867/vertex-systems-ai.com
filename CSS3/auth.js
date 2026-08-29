@@ -28,7 +28,8 @@ const VertexAuth = {
         "black-holes.html",
         "galaxies.html",
         "moons.html",
-        "exploration.html"
+        "exploration.html",
+        "check.html"
 
     ],
 

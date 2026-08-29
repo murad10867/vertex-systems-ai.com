@@ -471,10 +471,21 @@ document.addEventListener(
 // فتح تسجيل الدخول
 // ==========================================
 
-function openLogin() {
+window.vertexHomeSessionActive = false;
 
-    window.location.href =
-        "login.html";
+function openLogin(destinationPage) {
+
+    const destination =
+        typeof destinationPage === "string"
+            ? destinationPage
+            : "dashboard.html";
+
+    if (window.vertexHomeSessionActive) {
+        window.location.href = destination;
+        return;
+    }
+
+    window.location.href = "login.html";
 
 }
 
@@ -688,7 +699,7 @@ systemLoginBtn.addEventListener(
         );
 
 
-        openLogin();
+        openLogin(selectedSystem + ".html");
 
     }
 
@@ -1182,3 +1193,31 @@ updateNavbar();
 
 
 updateTopButton();
+
+// ==========================================
+// حالة تسجيل الدخول في الصفحة الرئيسية
+// ==========================================
+
+async function updateHomeAuthState() {
+    if (typeof supabaseClient === "undefined" || !supabaseClient?.auth) return;
+
+    try {
+        const { data, error } = await supabaseClient.auth.getSession();
+        if (error) throw error;
+
+        window.vertexHomeSessionActive = Boolean(data.session?.user);
+
+        if (window.vertexHomeSessionActive) {
+            if (loginBtn) loginBtn.textContent = "لوحة التحكم";
+            if (mobileLoginBtn) mobileLoginBtn.textContent = "📊 لوحة التحكم";
+            if (startBtn) startBtn.innerHTML = "لوحة التحكم <span>←</span>";
+            if (ctaLoginBtn) ctaLoginBtn.textContent = "فتح لوحة التحكم ←";
+            if (footerLoginBtn) footerLoginBtn.textContent = "لوحة التحكم ←";
+            if (systemLoginBtn) systemLoginBtn.textContent = "فتح النظام ←";
+        }
+    } catch (error) {
+        console.warn("Home session check failed:", error);
+    }
+}
+
+updateHomeAuthState();
