@@ -24,6 +24,7 @@ jobs:
           import sys
 
           root = Path('CSS3')
+          root_abs = root.resolve()
           problems = []
           checked = 0
 
@@ -49,14 +50,13 @@ jobs:
                   return None
               prefix = '/vertex-systems-ai.com/'
               if path.startswith(prefix):
-                  return root / path[len(prefix):]
+                  return (root / path[len(prefix):]).resolve()
               if path == '/vertex-systems-ai.com':
-                  return root / 'index.html'
+                  return (root / 'index.html').resolve()
               if path.startswith('/'):
                   return None
               return (page.parent / path).resolve()
 
-          root_abs = root.resolve()
           for page in root.glob('*.html'):
               parser = RefParser()
               text = page.read_text(encoding='utf-8')
@@ -76,7 +76,6 @@ jobs:
                   if not target.exists():
                       problems.append(f'{page}: missing local reference {ref} -> {target}')
 
-          # Check CSS url(...) references.
           for css in root.glob('*.css'):
               text = css.read_text(encoding='utf-8')
               for raw in re.findall(r'url\(([^)]+)\)', text):
