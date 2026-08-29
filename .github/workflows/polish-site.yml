@@ -1,0 +1,104 @@
+name: Polish Vertex site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Polish public pages
+        shell: python
+        run: |
+          from pathlib import Path
+
+          root = Path('CSS3')
+
+          # Add favicon + theme color to HTML pages once.
+          for path in root.glob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if '<head>' not in text:
+                  continue
+              additions = []
+              if 'rel="icon"' not in text:
+                  additions.append('    <link rel="icon" type="image/png" href="img/logo3.png">')
+                  additions.append('    <link rel="apple-touch-icon" href="img/logo3.png">')
+              if 'name="theme-color"' not in text:
+                  additions.append('    <meta name="theme-color" content="#08111f">')
+              if additions:
+                  text = text.replace('<head>', '<head>\n' + '\n'.join(additions), 1)
+                  path.write_text(text, encoding='utf-8')
+
+          # Improve homepage sharing metadata.
+          index = root / 'index.html'
+          text = index.read_text(encoding='utf-8')
+          marker = '<meta\n    property="og:type"\n    content="website"\n>'
+          if 'property="og:image"' not in text and marker in text:
+              extra = '''<meta\n    property="og:image"\n    content="https://murad10867.github.io/vertex-systems-ai.com/img/logo3.png"\n>\n<meta name="twitter:card" content="summary">'''
+              text = text.replace(marker, marker + '\n' + extra, 1)
+          index.write_text(text, encoding='utf-8')
+
+          # Keep private/auth pages out of search results.
+          for name in ['login.html', 'signup.html']:
+              path = root / name
+              if path.exists():
+                  text = path.read_text(encoding='utf-8')
+                  if 'name="robots"' not in text:
+                      text = text.replace('<head>', '<head>\n    <meta name="robots" content="noindex, nofollow">', 1)
+                      path.write_text(text, encoding='utf-8')
+
+          # Friendly GitHub Pages 404 page.
+          page404 = root / '404.html'
+          page404.write_text('''<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#08111f">
+  <link rel="icon" type="image/png" href="img/logo3.png">
+  <title>الصفحة غير موجودة | Vertex Systems AI</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,#102b5e 0,#07101f 42%,#030711 100%);color:#eef6ff;font-family:Tahoma,Arial,sans-serif;padding:24px}.card{width:min(620px,100%);text-align:center;padding:48px 28px;border:1px solid rgba(93,180,255,.25);border-radius:28px;background:rgba(8,18,35,.82);box-shadow:0 30px 90px rgba(0,0,0,.45)}.logo{width:76px;height:76px;margin:auto;border-radius:22px;display:grid;place-items:center;font-size:40px;font-weight:800;background:linear-gradient(135deg,#1995ff,#6967ff);box-shadow:0 0 45px rgba(42,139,255,.35)}h1{font-size:clamp(58px,12vw,110px);margin:24px 0 0;background:linear-gradient(90deg,#2ba8ff,#7c7cff);-webkit-background-clip:text;color:transparent}h2{margin:8px 0 12px;font-size:28px}p{color:#9fb0c8;line-height:1.9;margin:0 auto 28px;max-width:460px}a{display:inline-block;text-decoration:none;color:white;font-weight:700;padding:14px 24px;border-radius:14px;background:linear-gradient(90deg,#187fed,#35b8f2);box-shadow:0 10px 30px rgba(29,137,239,.25)}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">V</div>
+    <h1>404</h1>
+    <h2>الصفحة غير موجودة</h2>
+    <p>الرابط الذي فتحته غير موجود أو تم نقله. ارجع إلى الصفحة الرئيسية في Vertex Systems AI.</p>
+    <a href="index.html">العودة إلى الرئيسية ←</a>
+  </main>
+</body>
+</html>''', encoding='utf-8')
+
+          # Update robots rules for auth pages.
+          robots = root / 'robots.txt'
+          if robots.exists():
+              text = robots.read_text(encoding='utf-8')
+              if 'Disallow: /signup.html' not in text:
+                  text = text.replace('Disallow: /login.html', 'Disallow: /login.html\nDisallow: /signup.html')
+              robots.write_text(text, encoding='utf-8')
+
+      - name: Commit polish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CSS3
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Polish Vertex site metadata and add 404 page"
+            git push
+          fi
