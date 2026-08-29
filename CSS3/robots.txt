@@ -1,10 +1,23 @@
 User-agent: *
 
-Allow: /
+Allow: /vertex-systems-ai.com/
 
-Disallow: /login.html
-Disallow: /signup.html
-Disallow: /dashboard.html
-Disallow: /check.html
+Disallow: /vertex-systems-ai.com/login.html
+Disallow: /vertex-systems-ai.com/signup.html
+Disallow: /vertex-systems-ai.com/dashboard.html
+Disallow: /vertex-systems-ai.com/projects.html
+Disallow: /vertex-systems-ai.com/ai.html
+Disallow: /vertex-systems-ai.com/robots.html
+Disallow: /vertex-systems-ai.com/games.html
+Disallow: /vertex-systems-ai.com/web.html
+Disallow: /vertex-systems-ai.com/space.html
+Disallow: /vertex-systems-ai.com/minecraft.html
+Disallow: /vertex-systems-ai.com/planets.html
+Disallow: /vertex-systems-ai.com/stars.html
+Disallow: /vertex-systems-ai.com/black-holes.html
+Disallow: /vertex-systems-ai.com/galaxies.html
+Disallow: /vertex-systems-ai.com/moons.html
+Disallow: /vertex-systems-ai.com/exploration.html
+Disallow: /vertex-systems-ai.com/check.html
 
 Sitemap: https://murad10867.github.io/vertex-systems-ai.com/sitemap.xml

@@ -327,7 +327,8 @@ signupForm.addEventListener("submit", async function (event) {
             return;
         }
 
-        showFormMessage("✅ تم إنشاء الحساب. إذا كان تأكيد البريد مفعّلًا في Supabase، افتح رسالة التأكيد ثم سجّل الدخول.", "success");
+        showFormMessage("✅ تم إنشاء الحساب. بقيت خطوة واحدة: افتح بريدك الإلكتروني، واضغط رابط تأكيد الحساب، ثم ارجع وسجّل الدخول.", "success");
+        backLoginBtn.textContent = "تم تأكيد البريد — تسجيل الدخول";
         passwordInput.value = "";
         confirmPasswordInput.value = "";
         backLoginBtn.focus();
