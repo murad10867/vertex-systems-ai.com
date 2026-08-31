@@ -1500,10 +1500,15 @@ async function sendCurrentMessage() {
     }
 
 
-    const reply =
-        generateLocalReply(
-            text
-        );
+    let reply;
+
+    try {
+        reply = await generateAIReply(text);
+    }
+    catch (error) {
+        console.error("Vertex AI request failed:", error);
+        reply = getVertexAIErrorMessage(error);
+    }
 
 
     typingElement.remove();
@@ -1906,6 +1911,43 @@ function updateGeneratingState() {
 }
 
 
+// ==========================================
+// Real Vertex AI (Supabase Edge Function)
+// ==========================================
+
+async function generateAIReply(userText) {
+    let client = null;
+    if (window.VertexAuth && typeof window.VertexAuth.ensureSupabase === "function") {
+        client = await window.VertexAuth.ensureSupabase();
+    } else if (typeof supabaseClient !== "undefined" && supabaseClient && supabaseClient.functions) {
+        client = supabaseClient;
+    }
+    if (!client || !client.functions) throw new Error("supabase_not_ready");
+    const conversation = getActiveConversation();
+    const messages = conversation ? conversation.messages.map(function (message) {
+        return { role: message.role, content: message.content };
+    }) : [{ role: "user", content: userText }];
+    const memoryPayload = settings.memoryEnabled ? memories.slice(0, 20).map(function (memory) {
+        return { content: memory.content };
+    }) : [];
+    const { data, error } = await client.functions.invoke("vertex-ai", {
+        body: { messages: messages, memories: memoryPayload, assistantName: settings.assistantName }
+    });
+    if (error) throw error;
+    if (!data || typeof data.reply !== "string" || !data.reply.trim()) throw new Error("empty_ai_reply");
+    return applyResponseStyle(data.reply.trim());
+}
+
+function getVertexAIErrorMessage(error) {
+    const message = String(error && error.message ? error.message : error || "").toLowerCase();
+    if (message.includes("jwt") || message.includes("401") || message.includes("unauthorized")) {
+        return "🔐 انتهت جلسة الدخول. سجّل الدخول من جديد ثم حاول مرة أخرى.";
+    }
+    if (message.includes("failed to fetch") || message.includes("network")) {
+        return "🌐 تعذر الاتصال بخدمة Vertex AI. تأكد من الإنترنت ثم حاول مرة أخرى.";
+    }
+    return "⚠️ تعذر الحصول على رد من Vertex AI الآن. حاول مرة أخرى بعد قليل.";
+}
 // ==========================================
 // Local AI
 // ==========================================
