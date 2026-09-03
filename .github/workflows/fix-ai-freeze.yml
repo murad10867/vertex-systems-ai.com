@@ -1,0 +1,99 @@
+name: Fix Vertex AI chat freeze
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Patch chat typing animation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('CSS3/ai.js')
+          text = path.read_text(encoding='utf-8')
+
+          pattern = re.compile(
+              r'async function typeText\(\s*element,\s*text,\s*token\s*\)\s*\{.*?\n\}\n\n\n// ==========================================\n// Stop',
+              re.S,
+          )
+
+          replacement = '''async function typeText(
+    element,
+    text,
+    token
+) {
+
+    if (!element) {
+        return;
+    }
+
+    if (!settings.animations || !text) {
+        element.textContent = text || "";
+        return;
+    }
+
+    element.textContent = "";
+
+    // Keep the typing effect smooth without making long AI replies
+    // look frozen for tens of seconds.
+    const targetDuration =
+        settings.typingSpeed === "fast"
+            ? 450
+            : settings.typingSpeed === "slow"
+                ? 1600
+                : 900;
+
+    const frameDelay = 16;
+    const frameCount = Math.max(1, Math.floor(targetDuration / frameDelay));
+    const chunkSize = Math.max(1, Math.ceil(text.length / frameCount));
+
+    for (let i = 0; i < text.length; i += chunkSize) {
+        if (token !== generationToken) {
+            element.textContent = text;
+            return;
+        }
+
+        element.textContent += text.slice(i, i + chunkSize);
+        scrollMessagesToBottom();
+        await wait(frameDelay);
+    }
+
+    element.textContent = text;
+}
+
+
+// ==========================================
+// Stop'''
+
+          new_text, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Could not replace typeText function; matches={count}')
+
+          path.write_text(new_text, encoding='utf-8')
+          PY
+
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CSS3/ai.js
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Prevent Vertex AI chat from appearing frozen"
+            git push
+          fi
