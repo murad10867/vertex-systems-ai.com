@@ -1734,79 +1734,40 @@ async function typeText(
     token
 ) {
 
-    const characterDelay =
-        settings.typingSpeed ===
-        "fast"
-            ?
-        2
-            :
-        settings.typingSpeed ===
-        "slow"
-            ?
-        18
-            :
-        7;
-
-
-    if (
-        !settings.animations
-    ) {
-
-        element.textContent =
-            text;
-
-
+    if (!element) {
         return;
-
     }
 
+    if (!settings.animations || !text) {
+        element.textContent = text || "";
+        return;
+    }
 
-    element.textContent =
-        "";
+    element.textContent = "";
 
+    const targetDuration =
+        settings.typingSpeed === "fast"
+            ? 450
+            : settings.typingSpeed === "slow"
+                ? 1600
+                : 900;
 
-    for (
-        let i = 0;
-        i <
-        text.length;
-        i++
-    ) {
+    const frameDelay = 16;
+    const frameCount = Math.max(1, Math.floor(targetDuration / frameDelay));
+    const chunkSize = Math.max(1, Math.ceil(text.length / frameCount));
 
-        if (
-            token !==
-            generationToken
-        ) {
-
-            element.textContent =
-                text;
-
-
+    for (let i = 0; i < text.length; i += chunkSize) {
+        if (token !== generationToken) {
+            element.textContent = text;
             return;
-
         }
 
-
-        element.textContent +=
-            text[i];
-
-
-        if (
-            i %
-            3 ===
-            0
-        ) {
-
-            scrollMessagesToBottom();
-
-        }
-
-
-        await wait(
-            characterDelay
-        );
-
+        element.textContent += text.slice(i, i + chunkSize);
+        scrollMessagesToBottom();
+        await wait(frameDelay);
     }
 
+    element.textContent = text;
 }
 
 
