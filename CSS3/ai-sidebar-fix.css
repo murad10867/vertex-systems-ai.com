@@ -1,0 +1,36 @@
+/* Vertex AI sidebar conversation list fix */
+
+.ai-sidebar {
+    overflow: hidden;
+}
+
+.conversations-list {
+    flex: 1 1 auto;
+    min-height: 140px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.sidebar-footer {
+    flex: 0 0 auto;
+    padding-top: 8px;
+}
+
+.sidebar-footer .sidebar-action {
+    height: 42px;
+    min-height: 42px;
+    margin: 0;
+    flex: 0 0 42px;
+}
+
+@media (max-height: 700px) {
+    .conversations-list {
+        min-height: 100px;
+    }
+
+    .sidebar-footer .sidebar-action {
+        height: 38px;
+        min-height: 38px;
+        flex-basis: 38px;
+    }
+}
