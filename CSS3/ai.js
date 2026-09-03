@@ -1728,6 +1728,16 @@ function createAssistantStreamingElement(
 // Type text
 // ==========================================
 
+function isChatNearBottom(threshold = 12) {
+    const distanceFromBottom =
+        chatView.scrollHeight -
+        chatView.scrollTop -
+        chatView.clientHeight;
+
+    return distanceFromBottom <= threshold;
+}
+
+
 async function typeText(
     element,
     text,
@@ -1762,8 +1772,16 @@ async function typeText(
             return;
         }
 
+        // Follow the reply only while the user is already at the bottom.
+        // As soon as the user scrolls up, stop forcing the chat back down.
+        const shouldFollowOutput = isChatNearBottom();
+
         element.textContent += text.slice(i, i + chunkSize);
-        scrollMessagesToBottom();
+
+        if (shouldFollowOutput) {
+            scrollMessagesToBottom();
+        }
+
         await wait(frameDelay);
     }
 
