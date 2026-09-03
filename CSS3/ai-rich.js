@@ -1,12 +1,14 @@
 // ==========================================
 // Vertex AI rich responses
 // Clickable links + code blocks + downloads
+// Real Excel .xlsx generation
 // ==========================================
 
 (function () {
     "use strict";
 
     const timers = new WeakMap();
+    let xlsxLoaderPromise = null;
 
     function installStyles() {
         if (document.getElementById("vertexRichStyles")) {
@@ -79,10 +81,14 @@
             }
 
             .download-generated-file-btn {
-                max-width: 230px;
+                max-width: 250px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+            }
+
+            .download-generated-file-btn.vertex-excel-btn {
+                border-color: rgba(72, 187, 120, 0.28);
             }
         `;
         document.head.appendChild(style);
@@ -171,6 +177,9 @@
             text: "vertex.txt",
             txt: "vertex.txt",
             csv: "data.csv",
+            xlsx: "vertex-workbook.xlsx",
+            excel: "vertex-workbook.xlsx",
+            spreadsheet: "vertex-workbook.xlsx",
             xml: "data.xml",
             sql: "query.sql",
             yaml: "config.yaml",
@@ -245,10 +254,17 @@
                 /(?:^|\n)\s*(?:FILE|File|file|ملف)\s*:\s*([^\n]+)\s*$/
             );
             const fallback = inferFilename(language, index);
-            const name = sanitizeFilename(
+            let name = sanitizeFilename(
                 named ? named[1] : "",
                 fallback
             );
+
+            if (
+                (language === "xlsx" || language === "excel" || language === "spreadsheet") &&
+                !/\.xlsx$/i.test(name)
+            ) {
+                name = name.replace(/\.[^.]+$/, "") + ".xlsx";
+            }
 
             if (content.trim()) {
                 files.push({
@@ -288,7 +304,157 @@
         return "text/plain;charset=utf-8";
     }
 
-    function downloadFile(file) {
+    function loadXLSX() {
+        if (window.XLSX) {
+            return Promise.resolve(window.XLSX);
+        }
+
+        if (xlsxLoaderPromise) {
+            return xlsxLoaderPromise;
+        }
+
+        xlsxLoaderPromise = new Promise(function (resolve, reject) {
+            const script = document.createElement("script");
+            script.src = "https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js";
+            script.async = true;
+            script.onload = function () {
+                if (window.XLSX) {
+                    resolve(window.XLSX);
+                }
+                else {
+                    reject(new Error("xlsx_library_missing"));
+                }
+            };
+            script.onerror = function () {
+                reject(new Error("xlsx_library_failed"));
+            };
+            document.head.appendChild(script);
+        });
+
+        return xlsxLoaderPromise;
+    }
+
+    function cleanSheetName(name, fallback) {
+        const value = String(name || fallback || "Sheet1")
+            .replace(/[\\/?*\[\]:]/g, "-")
+            .trim()
+            .slice(0, 31);
+        return value || fallback || "Sheet1";
+    }
+
+    function parseExcelPayload(content) {
+        const source = String(content || "").trim();
+
+        try {
+            const parsed = JSON.parse(source);
+
+            if (parsed && Array.isArray(parsed.sheets)) {
+                return parsed.sheets
+                    .filter(function (sheet) {
+                        return sheet && Array.isArray(sheet.rows);
+                    })
+                    .slice(0, 20)
+                    .map(function (sheet, index) {
+                        return {
+                            name: cleanSheetName(sheet.name, "Sheet" + (index + 1)),
+                            rows: sheet.rows.slice(0, 5000).map(function (row) {
+                                return Array.isArray(row)
+                                    ? row.slice(0, 100).map(function (cell) {
+                                        if (cell === null || typeof cell === "undefined") return "";
+                                        if (["string", "number", "boolean"].includes(typeof cell)) return cell;
+                                        return String(cell);
+                                    })
+                                    : [String(row ?? "")];
+                            })
+                        };
+                    });
+            }
+
+            if (Array.isArray(parsed)) {
+                return [{ name: "Sheet1", rows: parsed }];
+            }
+        }
+        catch (error) {
+            // Fallback to CSV/TSV below.
+        }
+
+        return null;
+    }
+
+    async function downloadExcelFile(file, button) {
+        const originalText = button ? button.textContent : "";
+
+        if (button) {
+            button.disabled = true;
+            button.textContent = "⏳ تجهيز Excel...";
+        }
+
+        try {
+            const XLSX = await loadXLSX();
+            let workbook;
+            const sheets = parseExcelPayload(file.content);
+
+            if (sheets && sheets.length) {
+                workbook = XLSX.utils.book_new();
+
+                sheets.forEach(function (sheet) {
+                    const worksheet = XLSX.utils.aoa_to_sheet(sheet.rows);
+
+                    if (sheet.rows.length) {
+                        const maxColumns = sheet.rows.reduce(function (max, row) {
+                            return Math.max(max, Array.isArray(row) ? row.length : 0);
+                        }, 0);
+
+                        worksheet["!cols"] = Array.from({ length: maxColumns }, function (_, colIndex) {
+                            let width = 10;
+                            sheet.rows.slice(0, 200).forEach(function (row) {
+                                const value = Array.isArray(row) ? row[colIndex] : "";
+                                width = Math.max(width, Math.min(40, String(value ?? "").length + 2));
+                            });
+                            return { wch: width };
+                        });
+                    }
+
+                    XLSX.utils.book_append_sheet(workbook, worksheet, sheet.name);
+                });
+            }
+            else {
+                workbook = XLSX.read(file.content, {
+                    type: "string",
+                    raw: false
+                });
+            }
+
+            if (!workbook || !Array.isArray(workbook.SheetNames) || !workbook.SheetNames.length) {
+                throw new Error("empty_workbook");
+            }
+
+            XLSX.writeFile(workbook, file.name, {
+                bookType: "xlsx",
+                compression: true
+            });
+        }
+        catch (error) {
+            console.error("Vertex Excel download failed:", error);
+            alert("تعذر تجهيز ملف Excel. جرّب طلب الملف من Vertex AI مرة أخرى.");
+        }
+        finally {
+            if (button) {
+                button.disabled = false;
+                button.textContent = originalText || ("⬇️ " + file.name);
+            }
+        }
+    }
+
+    function downloadFile(file, button) {
+        const isExcel = /\.xlsx$/i.test(file.name) ||
+            ["xlsx", "excel", "spreadsheet"].includes(file.language);
+
+        if (isExcel) {
+            downloadExcelFile(file, button);
+            return;
+        }
+
         const blob = new Blob(
             [file.content],
             { type: mimeTypeForFilename(file.name) }
@@ -334,16 +500,22 @@
 
         files.forEach(function (file) {
             const button = document.createElement("button");
+            const isExcel = /\.xlsx$/i.test(file.name) ||
+                ["xlsx", "excel", "spreadsheet"].includes(file.language);
+
             button.type = "button";
             button.className =
-                "message-action-btn download-generated-file-btn";
-            button.textContent = "⬇️ " + file.name;
-            button.title = "تحميل " + file.name;
+                "message-action-btn download-generated-file-btn" +
+                (isExcel ? " vertex-excel-btn" : "");
+            button.textContent = (isExcel ? "📊 " : "⬇️ ") + file.name;
+            button.title = isExcel
+                ? "تنزيل ملف Excel حقيقي"
+                : "تحميل " + file.name;
 
             button.addEventListener(
                 "click",
                 function () {
-                    downloadFile(file);
+                    downloadFile(file, button);
                 }
             );
 
@@ -379,7 +551,9 @@
             toolbar.className = "vertex-code-toolbar";
 
             const label = document.createElement("span");
-            label.textContent = language;
+            label.textContent = ["xlsx", "excel", "spreadsheet"].includes(language)
+                ? "Excel workbook data"
+                : language;
 
             const copyButton = document.createElement("button");
             copyButton.type = "button";
