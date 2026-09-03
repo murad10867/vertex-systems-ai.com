@@ -1,6 +1,9 @@
 const aiBtn =
     document.getElementById("aiBtn");
 
+const apiKeyBtn =
+    document.getElementById("apiKeyBtn");
+
 const robotsBtn =
     document.getElementById("robotsBtn");
 
@@ -25,6 +28,19 @@ aiBtn.addEventListener(
 
         window.location.href =
             "ai.html";
+
+    }
+);
+
+
+// Vertex Systems AI API Key
+
+apiKeyBtn.addEventListener(
+    "click",
+    function () {
+
+        window.location.href =
+            "api-key.html";
 
     }
 );
