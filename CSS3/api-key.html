@@ -1,4 +1,76 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#070b12"><title>Vertex Systems AI API Key</title><link rel="icon" type="image/png" href="img/logo3.png"><link rel="stylesheet" href="api-key.css"><script src="auth.js"></script></head><body><div class="shell"><header class="topbar"><a class="brand" href="ai.html"><div class="brand-logo">V</div><div><strong>Vertex Systems AI</strong><span>API Key Center</span></div></a><a class="back-link" href="ai.html">← العودة إلى Vertex AI</a></header><main><section class="hero"><div class="eyebrow">VERTEX DEVELOPER PLATFORM</div><h1>مفاتيح Vertex Systems AI API</h1><p>أنشئ مفتاح API خاص بمشروعك واستخدم Vertex AI من السيرفر أو التطبيق الخلفي لديك.</p><div class="security-note">🔐 المفتاح الكامل يظهر مرة واحدة فقط ولا يتم تخزينه كنص قابل للقراءة.</div></section><section id="loadingState" class="state-card"><div class="spinner"></div><p>جاري التحقق من حسابك...</p></section><section id="loginState" class="state-card hidden"><div class="state-icon">🔑</div><h2>سجّل الدخول أولًا</h2><p>استخدم نفس حساب Vertex Systems AI حتى تقدر تنشئ وتدير مفاتيحك.</p><a class="primary-btn link-btn" href="login.html">تسجيل الدخول</a></section><div id="dashboard" class="hidden"><section class="stats-grid"><article class="stat-card"><span>المفاتيح النشطة</span><strong id="activeKeysCount">0</strong></article><article class="stat-card"><span>طلبات آخر 24 ساعة</span><strong id="requests24h">0</strong></article><article class="stat-card"><span>إجمالي الطلبات</span><strong id="totalRequests">0</strong></article></section><section class="panel create-panel"><div class="panel-heading"><div><div class="section-kicker">NEW KEY</div><h2>إنشاء مفتاح API</h2></div></div><div class="create-row"><input id="keyNameInput" type="text" maxlength="80" placeholder="مثال: موقع المتجر أو تطبيق الجوال" autocomplete="off"><button id="createKeyBtn" class="primary-btn" type="button">＋ إنشاء مفتاح</button></div><p class="small-help">يمكنك إنشاء حتى 10 مفاتيح نشطة. الحد الافتراضي لكل مفتاح 100 طلب خلال 24 ساعة.</p><div id="createError" class="error-box hidden"></div></section><section class="panel"><div class="panel-heading"><div><div class="section-kicker">YOUR KEYS</div><h2>مفاتيحي</h2></div><button id="refreshBtn" class="ghost-btn" type="button">↻ تحديث</button></div><div id="keysList" class="keys-list"></div></section><section class="panel docs-panel"><div class="panel-heading"><div><div class="section-kicker">QUICK START</div><h2>استخدام Vertex AI API</h2></div></div><div class="endpoint-box"><span>POST</span><code id="endpointText">https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-api</code><button class="copy-small" data-copy-target="endpointText" type="button">نسخ</button></div><p class="warning-line">⚠️ لا تضع مفتاح API داخل JavaScript عام في واجهة موقعك. استخدمه من Backend أو Server حتى لا يراه الزوار.</p><div class="code-tabs"><button class="code-tab active" data-code="jsCode" type="button">JavaScript</button><button class="code-tab" data-code="curlCode" type="button">cURL</button></div><div class="code-card active" id="jsCode"><button class="code-copy" data-copy-code="jsCodeText" type="button">📋 نسخ الكود</button><pre><code id="jsCodeText">const response = await fetch(
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#070b12">
+  <title>Vertex Systems AI API Key</title>
+  <link rel="icon" type="image/png" href="img/logo3.png">
+  <link rel="stylesheet" href="api-key.css">
+  <script src="auth.js"></script>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="ai.html"><div class="brand-logo">V</div><div><strong>Vertex Systems AI</strong><span>API Key Center</span></div></a>
+    <a class="back-link" href="ai.html">← العودة إلى Vertex AI</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">VERTEX DEVELOPER PLATFORM</div>
+      <h1>مفاتيح Vertex Systems AI API</h1>
+      <p>أنشئ مفتاح API خاص بمشروعك واستخدم Vertex AI من السيرفر أو التطبيق الخلفي لديك.</p>
+      <div class="security-note">🔐 المفتاح الكامل يظهر مرة واحدة فقط ولا يتم تخزينه كنص قابل للقراءة.</div>
+    </section>
+
+    <section id="loadingState" class="state-card"><div class="spinner"></div><p>جاري التحقق من حسابك...</p></section>
+    <section id="loginState" class="state-card hidden"><div class="state-icon">🔑</div><h2>سجّل الدخول أولًا</h2><p>استخدم نفس حساب Vertex Systems AI حتى تقدر تنشئ وتدير مفاتيحك.</p><a class="primary-btn link-btn" href="login.html">تسجيل الدخول</a></section>
+
+    <div id="dashboard" class="hidden">
+      <section class="stats-grid">
+        <article class="stat-card"><span>المفاتيح النشطة</span><strong id="activeKeysCount">0</strong></article>
+        <article class="stat-card"><span>طلبات آخر 24 ساعة</span><strong id="requests24h">0</strong></article>
+        <article class="stat-card"><span>إجمالي الطلبات</span><strong id="totalRequests">0</strong></article>
+      </section>
+
+      <section class="panel create-panel">
+        <div class="panel-heading"><div><div class="section-kicker">NEW KEY</div><h2>إنشاء مفتاح API</h2></div></div>
+        <div class="create-row"><input id="keyNameInput" type="text" maxlength="80" placeholder="مثال: موقع المتجر أو تطبيق الجوال" autocomplete="off"><button id="createKeyBtn" class="primary-btn" type="button">＋ إنشاء مفتاح</button></div>
+        <p class="small-help">يمكنك إنشاء حتى 10 مفاتيح نشطة. الحد الافتراضي لكل مفتاح 100 طلب خلال 24 ساعة.</p>
+        <div id="createError" class="error-box hidden"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><div class="section-kicker">YOUR KEYS</div><h2>مفاتيحي</h2></div><button id="refreshBtn" class="ghost-btn" type="button">↻ تحديث</button></div>
+        <div id="keysList" class="keys-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><div class="section-kicker">LIVE TEST</div><h2>🧪 اختبار API حقيقي</h2></div></div>
+        <p class="warning-line">المفتاح الذي تلصقه هنا يُستخدم لهذا الاختبار فقط ولا يتم حفظه في Local Storage أو قاعدة البيانات.</p>
+        <div class="create-row" style="margin-top:12px">
+          <input id="testApiKeyInput" type="password" placeholder="الصق مفتاح vx_live_ هنا" autocomplete="off" spellcheck="false" dir="ltr">
+          <button id="toggleTestKeyBtn" class="ghost-btn" type="button">إظهار</button>
+        </div>
+        <div class="create-row" style="margin-top:10px">
+          <input id="testPromptInput" type="text" maxlength="12000" value="قل: نجح اتصال Vertex AI API ✅" placeholder="اكتب رسالة الاختبار">
+          <button id="testApiBtn" class="primary-btn" type="button">▶ إرسال اختبار</button>
+        </div>
+        <div id="testStatus" class="small-help" style="margin-top:12px">جاهز للاختبار.</div>
+        <div id="testResponseWrap" class="response-example hidden">
+          <h3>الاستجابة الحقيقية</h3>
+          <pre><code id="testResponseText"></code></pre>
+        </div>
+      </section>
+
+      <section class="panel docs-panel">
+        <div class="panel-heading"><div><div class="section-kicker">QUICK START</div><h2>استخدام Vertex AI API</h2></div></div>
+        <div class="endpoint-box"><span>POST</span><code id="endpointText">https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-api</code><button class="copy-small" data-copy-target="endpointText" type="button">نسخ</button></div>
+        <p class="warning-line">⚠️ لا تضع مفتاح API داخل JavaScript عام في واجهة موقعك. استخدمه من Backend أو Server حتى لا يراه الزوار.</p>
+        <div class="code-tabs"><button class="code-tab active" data-code="jsCode" type="button">JavaScript</button><button class="code-tab" data-code="curlCode" type="button">cURL</button></div>
+        <div class="code-card active" id="jsCode"><button class="code-copy" data-copy-code="jsCodeText" type="button">📋 نسخ الكود</button><pre><code id="jsCodeText">const response = await fetch(
   "https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-api",
   {
     method: "POST",
@@ -10,12 +82,34 @@
   }
 );
 const data = await response.json();
-console.log(data.reply);</code></pre></div><div class="code-card" id="curlCode"><button class="code-copy" data-copy-code="curlCodeText" type="button">📋 نسخ الكود</button><pre><code id="curlCodeText">curl -X POST \
+console.log(data.reply);</code></pre></div>
+        <div class="code-card" id="curlCode"><button class="code-copy" data-copy-code="curlCodeText" type="button">📋 نسخ الكود</button><pre><code id="curlCodeText">curl -X POST \
   "https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-api" \
   -H "Content-Type: application/json" \
   -H "x-api-key: vx_live_YOUR_KEY" \
-  -d '{"prompt":"مرحبا Vertex AI"}'</code></pre></div><div class="response-example"><h3>شكل الاستجابة</h3><pre><code>{
+  -d '{"prompt":"مرحبا Vertex AI"}'</code></pre></div>
+        <div class="response-example"><h3>شكل الاستجابة</h3><pre><code>{
   "object": "vertex.response",
   "model": "gemini-2.5-flash",
   "reply": "..."
-}</code></pre></div></section></div></main><footer><span>Vertex Systems AI Developer Platform</span><span>API keys are private credentials.</span></footer></div><div id="keyModal" class="modal hidden"><div class="modal-backdrop"></div><div class="modal-card"><div class="success-icon">✓</div><h2>تم إنشاء المفتاح</h2><p>انسخه الآن واحفظه في مكان آمن. بعد إغلاق هذه النافذة لن نعرض المفتاح كاملًا مرة ثانية.</p><div class="secret-box"><code id="newApiKey"></code><button id="copyNewKeyBtn" type="button">📋 نسخ</button></div><label class="confirm-row"><input id="savedKeyCheck" type="checkbox"><span>نسخت المفتاح وحفظته في مكان آمن</span></label><button id="closeKeyModalBtn" class="primary-btn full" type="button" disabled>تم، إغلاق</button></div></div><script src="api-key.js"></script></body></html>
+}</code></pre></div>
+      </section>
+    </div>
+  </main>
+
+  <footer><span>Vertex Systems AI Developer Platform</span><span>API keys are private credentials.</span></footer>
+</div>
+
+<div id="keyModal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card">
+    <div class="success-icon">✓</div><h2>تم إنشاء المفتاح</h2>
+    <p>انسخه الآن واحفظه في مكان آمن. بعد إغلاق هذه النافذة لن نعرض المفتاح كاملًا مرة ثانية.</p>
+    <div class="secret-box"><code id="newApiKey"></code><button id="copyNewKeyBtn" type="button">📋 نسخ</button></div>
+    <label class="confirm-row"><input id="savedKeyCheck" type="checkbox"><span>نسخت المفتاح وحفظته في مكان آمن</span></label>
+    <button id="closeKeyModalBtn" class="primary-btn full" type="button" disabled>تم، إغلاق</button>
+  </div>
+</div>
+<script src="api-key.js"></script>
+</body>
+</html>
