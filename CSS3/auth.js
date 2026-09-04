@@ -16,6 +16,7 @@ const VertexAuth = {
         "projects.html",
 
         "ai.html",
+        "api-key.html",
         "robots.html",
         "games.html",
         "web.html",
