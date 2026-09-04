@@ -7,39 +7,40 @@
   <meta name="theme-color" content="#07101c">
   <title>Vertex AI | API Demo</title>
   <link rel="icon" type="image/png" href="img/logo3.png">
-  <link rel="stylesheet" href="api-demo.css">
+  <link rel="stylesheet" href="api-demo.css?v=4">
 </head>
 <body>
   <div class="app">
     <header class="topbar">
-      <a class="brand" href="api-key.html" aria-label="Vertex AI">
-        <div class="brand-mark">V</div>
+      <div class="top-actions">
+        <div class="online-pill" dir="ltr"><span></span>API Online</div>
+        <button id="openKeyBtn" class="key-button" type="button">🔑 ربط المفتاح</button>
+      </div>
+
+      <a class="brand" href="api-key.html" aria-label="Vertex AI" dir="ltr">
         <div class="brand-copy">
           <strong>Vertex AI</strong>
           <span>Powered by Vertex API</span>
         </div>
+        <div class="brand-mark">V</div>
       </a>
-
-      <div class="top-actions">
-        <div class="online-pill"><span></span> API Online</div>
-        <button id="openKeyBtn" class="key-button" type="button">🔑 ربط المفتاح</button>
-      </div>
     </header>
 
     <main class="chat-shell">
       <section id="welcome" class="welcome">
-        <div class="core-wrap">
+        <div class="core-wrap" aria-hidden="true">
           <div class="core-glow"></div>
           <div class="core">V</div>
         </div>
-        <div class="welcome-label">VERTEX INTELLIGENCE</div>
-        <h1>وش تبغى تسأل Vertex AI؟</h1>
-        <p>واجهة محادثة مباشرة تستخدم Vertex Systems AI API.</p>
+
+        <div class="welcome-label" dir="ltr">VERTEX INTELLIGENCE</div>
+        <h1>وش تبغى تسأل <span dir="ltr">Vertex AI</span>؟</h1>
+        <p>واجهة محادثة مباشرة تستخدم <span dir="ltr">Vertex Systems AI API</span>.</p>
 
         <div class="suggestions">
-          <button type="button" data-prompt="اكتب لي فكرة مشروع تقني جديدة">💡 فكرة مشروع</button>
-          <button type="button" data-prompt="اشرح لي الذكاء الاصطناعي بطريقة بسيطة">🧠 اشرح لي</button>
-          <button type="button" data-prompt="ساعدني أكتب كود JavaScript بسيط">💻 برمجة</button>
+          <button type="button" data-prompt="اكتب لي فكرة مشروع تقني جديدة"><span>💡</span> فكرة مشروع</button>
+          <button type="button" data-prompt="اشرح لي الذكاء الاصطناعي بطريقة بسيطة"><span>🧠</span> اشرح لي</button>
+          <button type="button" data-prompt="ساعدني أكتب كود JavaScript بسيط"><span>💻</span> برمجة</button>
         </div>
       </section>
 
@@ -62,7 +63,7 @@
       <h2 id="keyTitle">ربط Vertex API Key</h2>
       <p>ألصق مفتاحك هنا. يبقى في الذاكرة المؤقتة لهذه الصفحة فقط، ولا يتم حفظه في Local Storage أو قاعدة البيانات.</p>
 
-      <label for="apiKeyInput">API Key</label>
+      <label for="apiKeyInput" dir="ltr">API Key</label>
       <div class="key-field">
         <input id="apiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="vx_live_..." dir="ltr">
         <button id="toggleKeyBtn" type="button">إظهار</button>
@@ -79,6 +80,6 @@
     </div>
   </div>
 
-  <script src="api-demo.js"></script>
+  <script src="api-demo.js?v=4"></script>
 </body>
 </html>
