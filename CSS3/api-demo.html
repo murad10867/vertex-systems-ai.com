@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#07101c">
-  <title>Vertex AI | API Demo</title>
+  <title>Vertex AI</title>
   <link rel="icon" type="image/png" href="img/logo3.png">
-  <link rel="stylesheet" href="api-demo.css?v=5">
+  <link rel="stylesheet" href="api-demo.css?v=6">
+  <script src="auth.js"></script>
 </head>
 <body>
   <div class="app">
     <header class="topbar">
       <div class="top-actions">
         <div class="online-pill" dir="ltr"><span></span>API Online</div>
-        <button id="openKeyBtn" class="key-button" type="button">🔑 ربط المفتاح</button>
       </div>
 
-      <a class="brand" href="api-key.html" aria-label="Vertex AI" dir="ltr">
+      <a class="brand" href="ai.html" aria-label="Vertex AI" dir="ltr">
         <div class="brand-copy">
           <strong>Vertex AI</strong>
-          <span>Powered by Vertex API</span>
+          <span>Powered by Vertex Systems AI</span>
         </div>
         <div class="brand-mark">V</div>
       </a>
@@ -35,7 +35,7 @@
 
         <div class="welcome-label" dir="ltr">VERTEX INTELLIGENCE</div>
         <h1>وش تبغى تسأل <span dir="ltr">Vertex AI</span>؟</h1>
-        <p>واجهة محادثة مباشرة تستخدم <span dir="ltr">Vertex Systems AI API</span>.</p>
+        <p>اكتب سؤالك مباشرة، بدون ربط مفتاح أو إعدادات إضافية.</p>
 
         <div class="suggestions">
           <button type="button" data-prompt="اكتب لي فكرة مشروع تقني جديدة"><span>💡</span> فكرة مشروع</button>
@@ -52,34 +52,10 @@
         <textarea id="promptInput" rows="1" placeholder="اكتب رسالتك إلى Vertex AI..." maxlength="12000"></textarea>
         <button id="sendBtn" class="send-btn" type="button" aria-label="إرسال">↑</button>
       </div>
-      <div class="composer-note">Enter للإرسال • Shift + Enter لسطر جديد • المفتاح لا يُحفظ</div>
+      <div class="composer-note">Enter للإرسال • Shift + Enter لسطر جديد</div>
     </div>
   </div>
 
-  <div id="keyModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="keyTitle">
-    <button id="modalBackdrop" class="modal-backdrop" type="button" aria-label="إغلاق"></button>
-    <div class="modal-card">
-      <div class="modal-icon">🔑</div>
-      <h2 id="keyTitle">ربط Vertex API Key</h2>
-      <p>ألصق مفتاحك هنا. يبقى في الذاكرة المؤقتة لهذه الصفحة فقط، ولا يتم حفظه في Local Storage أو قاعدة البيانات.</p>
-
-      <label for="apiKeyInput" dir="ltr">API Key</label>
-      <div class="key-field">
-        <input id="apiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="vx_live_..." dir="ltr">
-        <button id="toggleKeyBtn" type="button">إظهار</button>
-      </div>
-
-      <div id="keyError" class="key-error hidden"></div>
-
-      <div class="modal-actions">
-        <button id="cancelKeyBtn" class="secondary-btn" type="button">إلغاء</button>
-        <button id="saveKeyBtn" class="primary-btn" type="button">استخدام المفتاح</button>
-      </div>
-
-      <div class="security-tip">⚠️ هذه صفحة اختبار. في الإنتاج خزّن المفتاح في Backend أو Server Environment Variable.</div>
-    </div>
-  </div>
-
-  <script src="api-demo.js?v=5"></script>
+  <script src="api-demo.js?v=6"></script>
 </body>
 </html>
