@@ -3,106 +3,168 @@
 
   const ENDPOINT="https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-api";
   const $=id=>document.getElementById(id);
+  let apiKey="";
+  let busy=false;
 
   function show(el){el&&el.classList.remove("hidden")}
   function hide(el){el&&el.classList.add("hidden")}
 
-  function setStatus(type,message){
-    const box=$("statusBox");
-    box.className="status "+type;
-    box.textContent=message;
-    show(box);
+  function openKeyModal(){
+    $("keyError").textContent="";
+    hide($("keyError"));
+    $("apiKeyInput").value=apiKey;
+    show($("keyModal"));
+    setTimeout(()=>$("apiKeyInput").focus(),40);
   }
 
-  async function send(){
-    const key=$("apiKeyInput").value.trim();
-    const prompt=$("promptInput").value.trim();
-    const btn=$("sendBtn");
+  function closeKeyModal(){
+    hide($("keyModal"));
+    $("apiKeyInput").value="";
+  }
 
-    hide($("responseCard"));
-
-    if(!key){
-      setStatus("error","الصق مفتاح Vertex API أولًا.");
-      $("apiKeyInput").focus();
+  function saveKey(){
+    const value=$("apiKeyInput").value.trim();
+    if(!value.startsWith("vx_live_")||value.length<30){
+      $("keyError").textContent="الصق مفتاح Vertex API الصحيح أولًا.";
+      show($("keyError"));
       return;
     }
+    apiKey=value;
+    $("openKeyBtn").textContent="✓ المفتاح مربوط";
+    $("openKeyBtn").classList.add("connected");
+    closeKeyModal();
+  }
 
-    if(!key.startsWith("vx_live_")){
-      setStatus("error","هذا لا يبدو كمفتاح Vertex API صالح.");
-      $("apiKeyInput").focus();
-      return;
+  function message(role,text,meta){
+    hide($("welcome"));
+    const wrap=document.createElement("article");
+    wrap.className="message "+role;
+    const avatar=document.createElement("div");
+    avatar.className="avatar";
+    avatar.textContent=role==="assistant"?"V":"أنت";
+    const content=document.createElement("div");
+    const bubble=document.createElement("div");
+    bubble.className="bubble";
+    bubble.textContent=text;
+    content.appendChild(bubble);
+    if(meta){
+      const metaEl=document.createElement("div");
+      metaEl.className="message-meta";
+      metaEl.textContent=meta;
+      content.appendChild(metaEl);
     }
-
-    if(!prompt){
-      setStatus("error","اكتب سؤالًا أولًا.");
-      $("promptInput").focus();
-      return;
+    if(role==="assistant"){
+      wrap.appendChild(avatar);
+      wrap.appendChild(content);
+    }else{
+      wrap.appendChild(content);
+      wrap.appendChild(avatar);
     }
+    $("messages").appendChild(wrap);
+    requestAnimationFrame(()=>wrap.scrollIntoView({behavior:"smooth",block:"end"}));
+    return {wrap,bubble};
+  }
 
-    btn.disabled=true;
-    btn.textContent="جاري الاتصال بـ Vertex AI...";
-    setStatus("loading","يتم الآن إرسال طلب API حقيقي...");
+  function typingMessage(){
+    hide($("welcome"));
+    const wrap=document.createElement("article");
+    wrap.className="message assistant";
+    wrap.innerHTML='<div class="avatar">V</div><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
+    $("messages").appendChild(wrap);
+    requestAnimationFrame(()=>wrap.scrollIntoView({behavior:"smooth",block:"end"}));
+    return wrap;
+  }
+
+  function autoGrow(){
+    const box=$("promptInput");
+    box.style.height="auto";
+    box.style.height=Math.min(box.scrollHeight,160)+"px";
+  }
+
+  async function sendPrompt(prefill){
+    if(busy)return;
+    const box=$("promptInput");
+    if(prefill)box.value=prefill;
+    const prompt=box.value.trim();
+    if(!prompt)return;
+    if(!apiKey){openKeyModal();return;}
+
+    busy=true;
+    $("sendBtn").disabled=true;
+    message("user",prompt);
+    box.value="";
+    autoGrow();
+    const typing=typingMessage();
 
     try{
       const response=await fetch(ENDPOINT,{
         method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-          "x-api-key":key
-        },
+        headers:{"Content-Type":"application/json","x-api-key":apiKey},
         body:JSON.stringify({prompt})
       });
-
       const data=await response.json().catch(()=>({}));
+      typing.remove();
 
       if(!response.ok){
         const code=data?.error?.code||"api_error";
-        const message=data?.error?.message||("HTTP "+response.status);
-        throw new Error(code+": "+message);
+        const msg=data?.error?.message||("HTTP "+response.status);
+        message("assistant","تعذر تنفيذ الطلب: "+msg,"HTTP "+response.status+" • "+code);
+        if(response.status===401){
+          apiKey="";
+          $("openKeyBtn").textContent="🔑 ربط المفتاح";
+          $("openKeyBtn").classList.remove("connected");
+        }
+        return;
       }
 
-      $("replyText").textContent=data.reply||"تم الاتصال بنجاح، لكن لم يصل نص رد.";
-      $("metaText").textContent="HTTP 200 • model: "+(data.model||"unknown")+" • request: "+(data.request_id||data.id||"-");
-      setStatus("success","✅ نجح اتصال Vertex AI API — HTTP 200");
-      show($("responseCard"));
+      message(
+        "assistant",
+        data.reply||"تم الاتصال بنجاح، لكن لم يصل نص رد.",
+        "HTTP 200 • "+(data.model||"Vertex AI")
+      );
     }catch(error){
-      setStatus("error","❌ فشل الطلب: "+(error?.message||"حدث خطأ غير معروف"));
+      typing.remove();
+      message("assistant","صار خطأ في الاتصال بالـ API. حاول مرة ثانية.",error?.message||"network_error");
     }finally{
-      btn.disabled=false;
-      btn.textContent="▶ إرسال إلى Vertex AI";
-    }
-  }
-
-  async function copyReply(){
-    const value=$("replyText").textContent||"";
-    if(!value)return;
-    try{
-      await navigator.clipboard.writeText(value);
-      const btn=$("copyReplyBtn");
-      const old=btn.textContent;
-      btn.textContent="✓ تم النسخ";
-      setTimeout(()=>btn.textContent=old,1200);
-    }catch{
-      alert("تعذر النسخ تلقائيًا.");
+      busy=false;
+      $("sendBtn").disabled=false;
+      box.focus();
     }
   }
 
   function init(){
-    $("sendBtn").addEventListener("click",send);
-    $("promptInput").addEventListener("keydown",e=>{
-      if((e.ctrlKey||e.metaKey)&&e.key==="Enter")send();
-    });
+    $("openKeyBtn").addEventListener("click",openKeyModal);
+    $("saveKeyBtn").addEventListener("click",saveKey);
+    $("cancelKeyBtn").addEventListener("click",closeKeyModal);
+    $("modalBackdrop").addEventListener("click",closeKeyModal);
     $("toggleKeyBtn").addEventListener("click",()=>{
       const input=$("apiKeyInput");
-      const hidden=input.type==="password";
-      input.type=hidden?"text":"password";
-      $("toggleKeyBtn").textContent=hidden?"إخفاء":"إظهار";
+      const isHidden=input.type==="password";
+      input.type=isHidden?"text":"password";
+      $("toggleKeyBtn").textContent=isHidden?"إخفاء":"إظهار";
     });
-    $("copyReplyBtn").addEventListener("click",copyReply);
+    $("apiKeyInput").addEventListener("keydown",e=>{
+      if(e.key==="Enter")saveKey();
+    });
 
-    window.addEventListener("beforeunload",()=>{
-      $("apiKeyInput").value="";
+    $("sendBtn").addEventListener("click",()=>sendPrompt());
+    $("promptInput").addEventListener("input",autoGrow);
+    $("promptInput").addEventListener("keydown",e=>{
+      if(e.key==="Enter"&&!e.shiftKey){
+        e.preventDefault();
+        sendPrompt();
+      }
     });
+
+    document.querySelectorAll("[data-prompt]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        $("promptInput").value=btn.dataset.prompt||"";
+        autoGrow();
+        $("promptInput").focus();
+      });
+    });
+
+    window.addEventListener("beforeunload",()=>{apiKey="";$("apiKeyInput").value="";});
   }
 
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
