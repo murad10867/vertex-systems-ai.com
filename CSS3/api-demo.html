@@ -2,70 +2,81 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#070b12">
-  <title>Vertex AI API Demo</title>
+  <meta name="theme-color" content="#07101c">
+  <title>Vertex AI | API Demo</title>
   <link rel="icon" type="image/png" href="img/logo3.png">
   <link rel="stylesheet" href="api-demo.css">
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app">
     <header class="topbar">
-      <a class="brand" href="api-key.html">
-        <div class="logo">V</div>
-        <div>
-          <strong>Vertex AI API Demo</strong>
-          <span>Live Test Website</span>
+      <a class="brand" href="api-key.html" aria-label="Vertex AI">
+        <div class="brand-mark">V</div>
+        <div class="brand-copy">
+          <strong>Vertex AI</strong>
+          <span>Powered by Vertex API</span>
         </div>
       </a>
-      <a class="back" href="api-key.html">← مركز API Key</a>
+
+      <div class="top-actions">
+        <div class="online-pill"><span></span> API Online</div>
+        <button id="openKeyBtn" class="key-button" type="button">🔑 ربط المفتاح</button>
+      </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="badge">LIVE API DEMO</div>
-        <h1>جرّب Vertex AI داخل موقع بسيط</h1>
-        <p>ألصق مفتاح Vertex API عندك فقط، اكتب سؤالك، واضغط إرسال. المفتاح لا يتم حفظه في Local Storage أو قاعدة بيانات.</p>
-      </section>
-
-      <section class="warning">
-        <strong>⚠️ للاختبار فقط</strong>
-        <span>في المواقع الحقيقية لا تضع مفتاح API داخل الواجهة الأمامية. خزّنه في Backend أو Server Environment Variable.</span>
-      </section>
-
-      <section class="card">
-        <label for="apiKeyInput">مفتاح API</label>
-        <div class="key-row">
-          <input id="apiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="vx_live_...">
-          <button id="toggleKeyBtn" type="button" class="secondary">إظهار</button>
+    <main class="chat-shell">
+      <section id="welcome" class="welcome">
+        <div class="core-wrap">
+          <div class="core-glow"></div>
+          <div class="core">V</div>
         </div>
+        <div class="welcome-label">VERTEX INTELLIGENCE</div>
+        <h1>وش تبغى تسأل Vertex AI؟</h1>
+        <p>واجهة محادثة مباشرة تستخدم Vertex Systems AI API.</p>
 
-        <label for="promptInput">سؤالك</label>
-        <textarea id="promptInput" rows="6" placeholder="مثال: اكتب لي ترحيبًا قصيرًا لموقعي">عرّف بنفسك في سطر واحد وقل إن اتصال Vertex AI API يعمل.</textarea>
-
-        <button id="sendBtn" class="primary" type="button">▶ إرسال إلى Vertex AI</button>
-
-        <div id="statusBox" class="status hidden"></div>
-      </section>
-
-      <section id="responseCard" class="card response hidden">
-        <div class="response-head">
-          <div>
-            <span class="small-label">VERTEX RESPONSE</span>
-            <h2>رد Vertex AI</h2>
-          </div>
-          <button id="copyReplyBtn" class="secondary" type="button">📋 نسخ الرد</button>
+        <div class="suggestions">
+          <button type="button" data-prompt="اكتب لي فكرة مشروع تقني جديدة">💡 فكرة مشروع</button>
+          <button type="button" data-prompt="اشرح لي الذكاء الاصطناعي بطريقة بسيطة">🧠 اشرح لي</button>
+          <button type="button" data-prompt="ساعدني أكتب كود JavaScript بسيط">💻 برمجة</button>
         </div>
-        <div id="replyText" class="reply"></div>
-        <div id="metaText" class="meta"></div>
       </section>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
     </main>
 
-    <footer>
-      <span>Vertex Systems AI</span>
-      <span>Demo client — do not embed production keys in frontend code.</span>
-    </footer>
+    <div class="composer-area">
+      <div class="composer">
+        <textarea id="promptInput" rows="1" placeholder="اكتب رسالتك إلى Vertex AI..." maxlength="12000"></textarea>
+        <button id="sendBtn" class="send-btn" type="button" aria-label="إرسال">↑</button>
+      </div>
+      <div class="composer-note">Enter للإرسال • Shift + Enter لسطر جديد • المفتاح لا يُحفظ</div>
+    </div>
+  </div>
+
+  <div id="keyModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="keyTitle">
+    <button id="modalBackdrop" class="modal-backdrop" type="button" aria-label="إغلاق"></button>
+    <div class="modal-card">
+      <div class="modal-icon">🔑</div>
+      <h2 id="keyTitle">ربط Vertex API Key</h2>
+      <p>ألصق مفتاحك هنا. يبقى في الذاكرة المؤقتة لهذه الصفحة فقط، ولا يتم حفظه في Local Storage أو قاعدة البيانات.</p>
+
+      <label for="apiKeyInput">API Key</label>
+      <div class="key-field">
+        <input id="apiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="vx_live_..." dir="ltr">
+        <button id="toggleKeyBtn" type="button">إظهار</button>
+      </div>
+
+      <div id="keyError" class="key-error hidden"></div>
+
+      <div class="modal-actions">
+        <button id="cancelKeyBtn" class="secondary-btn" type="button">إلغاء</button>
+        <button id="saveKeyBtn" class="primary-btn" type="button">استخدام المفتاح</button>
+      </div>
+
+      <div class="security-tip">⚠️ هذه صفحة اختبار. في الإنتاج خزّن المفتاح في Backend أو Server Environment Variable.</div>
+    </div>
   </div>
 
   <script src="api-demo.js"></script>
