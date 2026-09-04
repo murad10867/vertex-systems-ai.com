@@ -23,6 +23,17 @@
     flex: 0 0 42px;
 }
 
+/* Vertex AI now uses the real Supabase/Gemini backend, not the old local reply mode. */
+.ai-status {
+    font-size: 0;
+}
+
+.ai-status::after {
+    content: "Vertex AI Online";
+    font-size: 14px;
+    line-height: 1;
+}
+
 @media (max-height: 700px) {
     .conversations-list {
         min-height: 100px;
