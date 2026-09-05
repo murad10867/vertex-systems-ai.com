@@ -45,8 +45,8 @@
       } else {
         utterance.lang = arabic ? "ar-SA" : "en-US";
       }
-      // User-selected speech speeds: Arabic maximum, English very slow.
-      utterance.rate = arabic ? 10 : 0.1;
+      // Arabic back to natural speed; English remains at the user's selected slow speed.
+      utterance.rate = arabic ? 1.0 : 0.1;
       utterance.pitch = 1.03;
       utterance.volume = 1;
     } catch (_) {}
