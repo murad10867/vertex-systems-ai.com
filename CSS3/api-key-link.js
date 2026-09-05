@@ -31,7 +31,7 @@
         if (document.getElementById("vertexNaturalVoiceScript")) return;
         const tuning = document.createElement("script");
         tuning.id = "vertexNaturalVoiceScript";
-        tuning.src = "ai-voice-natural.js?v=20260905-3";
+        tuning.src = "ai-voice-natural.js?v=20260905-4";
         document.body.appendChild(tuning);
     }
 
