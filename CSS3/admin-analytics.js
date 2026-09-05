@@ -44,7 +44,7 @@
     if (!list.length) {
       const div = document.createElement("div");
       div.className = "chart-empty";
-      div.textContent = "تظهر البيانات هنا بعد بدء تسجيل الزيارات.";
+      div.textContent = "تظهر البيانات هنا بعد بدء تسجيل المستخدمين.";
       root.appendChild(div);
       return;
     }
@@ -76,7 +76,7 @@
     const areaPoints = left + "," + (top + chartH) + " " + points + " " + (left + chartW) + "," + (top + chartH);
     const gridValues = [0, .25, .5, .75, 1];
     const cssClass = opts.cssClass || "annual-chart";
-    const ariaLabel = opts.ariaLabel || "الرسم البياني للزيارات";
+    const ariaLabel = opts.ariaLabel || "الرسم البياني للمستخدمين";
     const labelEvery = Number(opts.labelEvery || 1);
 
     let svg = '<svg class="' + cssClass + '" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + ariaLabel + '">';
@@ -96,7 +96,7 @@
       const px = x(i);
       const py = y(value);
       const label = labels[i] || "";
-      svg += '<circle class="chart-point" cx="' + px + '" cy="' + py + '" r="4.5"><title>' + label + ': ' + fmt(value) + ' زيارة</title></circle>';
+      svg += '<circle class="chart-point" cx="' + px + '" cy="' + py + '" r="4.5"><title>' + label + ': ' + fmt(value) + ' مستخدم</title></circle>';
 
       if (opts.showValues) {
         svg += '<text class="chart-value" x="' + px + '" y="' + Math.max(15, py - 12) + '" text-anchor="middle">' + fmt(value) + '</text>';
@@ -115,7 +115,7 @@
     const byDate = new Map();
     if (Array.isArray(items)) {
       items.forEach(function (item) {
-        byDate.set(String(item.date || ""), Number(item.views || 0));
+        byDate.set(String(item.date || ""), Number(item.users || 0));
       });
     }
 
@@ -139,7 +139,7 @@
       width: 1180,
       height: 300,
       cssClass: "daily-chart",
-      ariaLabel: "الرسم البياني للزيارات خلال آخر 30 يوم",
+      ariaLabel: "عدد المستخدمين المختلفين خلال آخر 30 يوم",
       labelEvery: 3,
       showValues: false
     });
@@ -153,7 +153,7 @@
       items.forEach(function (item) {
         const monthIndex = Number(item.month) - 1;
         if (monthIndex >= 0 && monthIndex < 12) {
-          values[monthIndex] = Number(item.views || 0);
+          values[monthIndex] = Number(item.users || 0);
         }
       });
     }
@@ -162,7 +162,7 @@
       width: 960,
       height: 300,
       cssClass: "annual-chart",
-      ariaLabel: "الرسم البياني السنوي للزيارات",
+      ariaLabel: "عدد المستخدمين المختلفين خلال السنة",
       labelEvery: 1,
       showValues: true
     });
@@ -213,10 +213,10 @@
       document.getElementById("uniqueVisitors").textContent = fmt(data.unique_visitors);
       document.getElementById("todayViews").textContent = fmt(data.today_views);
       document.getElementById("todayVisitors").textContent = fmt(data.today_unique_visitors);
-      document.getElementById("yearViews").textContent = fmt(data.year_views);
+      document.getElementById("yearViews").textContent = fmt(data.year_unique_visitors);
       document.getElementById("yearLabel").textContent = "سنة " + fmt(data.year);
-      document.getElementById("monthlyTitle").textContent = "الرسم البياني السنوي للزيارات - " + fmt(data.year);
-      document.getElementById("yearVisitors").textContent = "زوار مختلفون هذه السنة: " + fmt(data.year_unique_visitors);
+      document.getElementById("monthlyTitle").textContent = "المستخدمون خلال السنة - " + fmt(data.year);
+      document.getElementById("yearVisitors").textContent = "إجمالي مشاهدات السنة: " + fmt(data.year_views);
 
       rows("topPages", data.top_pages, "لا توجد صفحات مسجلة بعد.");
       rows("devices", data.devices, "لا توجد بيانات أجهزة بعد.");
