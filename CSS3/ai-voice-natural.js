@@ -45,8 +45,8 @@
       } else {
         utterance.lang = arabic ? "ar-SA" : "en-US";
       }
-      // Slightly faster conversational pacing while keeping the voice natural.
-      utterance.rate = arabic ? 1.08 : 1.05;
+      // Faster conversational pacing while keeping the voice clear.
+      utterance.rate = arabic ? 1.18 : 1.14;
       utterance.pitch = 1.03;
       utterance.volume = 1;
     } catch (_) {}
