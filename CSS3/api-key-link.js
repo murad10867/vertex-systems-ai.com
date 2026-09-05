@@ -6,11 +6,27 @@
     const staleApiButton = document.getElementById("vertexApiKeyCenterBtn");
     if (staleApiButton) staleApiButton.remove();
 
+    // Voice emblem: square instead of circular.
+    if (!document.getElementById("vertexVoiceSquareStyle")) {
+        const style = document.createElement("style");
+        style.id = "vertexVoiceSquareStyle";
+        style.textContent = `
+            .vertex-voice-orb {
+                border-radius: 28px !important;
+            }
+            .vertex-voice-orb::before,
+            .vertex-voice-orb::after {
+                border-radius: inherit !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     function loadNaturalVoiceTuning() {
         if (document.getElementById("vertexNaturalVoiceScript")) return;
         const tuning = document.createElement("script");
         tuning.id = "vertexNaturalVoiceScript";
-        tuning.src = "ai-voice-natural.js?v=20260905-1";
+        tuning.src = "ai-voice-natural.js?v=20260905-3";
         document.body.appendChild(tuning);
     }
 
@@ -21,7 +37,7 @@
 
     const script = document.createElement("script");
     script.id = "vertexVoiceScript";
-    script.src = "ai-voice.js?v=20260904-1";
+    script.src = "ai-voice.js?v=20260905-2";
     script.onload = loadNaturalVoiceTuning;
     script.defer = true;
     document.body.appendChild(script);
