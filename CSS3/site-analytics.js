@@ -1,9 +1,13 @@
-// Vertex Systems AI - privacy-friendly page analytics
+// Vertex Systems AI - first-party + Mixpanel analytics
 (function () {
     "use strict";
 
     const ENDPOINT =
         "https://fkpjawyuyzgtjceymnal.supabase.co/functions/v1/vertex-analytics";
+
+    // Mixpanel project token is a public client-side identifier, not a secret.
+    const MIXPANEL_TOKEN = "1539d11e2295";
+    const MIXPANEL_API_HOST = "https://api-eu.mixpanel.com";
 
     function uuid() {
         if (window.crypto && typeof window.crypto.randomUUID === "function") {
@@ -71,22 +75,27 @@
         screen_width: Math.round(window.screen && window.screen.width ? window.screen.width : window.innerWidth || 0)
     };
 
-    async function sessionToken() {
+    async function sessionInfo() {
         try {
-            if (!window.supabaseClient || !window.supabaseClient.auth) return null;
+            if (!window.supabaseClient || !window.supabaseClient.auth) {
+                return { token: null, user: null };
+            }
+
             const result = await window.supabaseClient.auth.getSession();
-            return result && result.data && result.data.session
-                ? result.data.session.access_token
-                : null;
+            const session = result && result.data ? result.data.session : null;
+
+            return {
+                token: session ? session.access_token : null,
+                user: session ? session.user : null
+            };
         } catch (_) {
-            return null;
+            return { token: null, user: null };
         }
     }
 
-    async function send() {
+    async function sendFirstPartyAnalytics(info) {
         const headers = { "Content-Type": "application/json" };
-        const token = await sessionToken();
-        if (token) headers.Authorization = "Bearer " + token;
+        if (info && info.token) headers.Authorization = "Bearer " + info.token;
 
         fetch(ENDPOINT, {
             method: "POST",
@@ -98,6 +107,75 @@
         }).catch(function () {
             // Analytics must never affect the user experience.
         });
+    }
+
+    function loadMixpanel(info) {
+        if (window.mixpanel && typeof window.mixpanel.init === "function") {
+            initMixpanel(info);
+            return;
+        }
+
+        const existing = document.querySelector('script[data-vertex-mixpanel="1"]');
+        if (existing) return;
+
+        const script = document.createElement("script");
+        script.src = "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+        script.async = true;
+        script.dataset.vertexMixpanel = "1";
+        script.onload = function () {
+            initMixpanel(info);
+        };
+        script.onerror = function () {
+            // Mixpanel failure must never affect Vertex.
+        };
+        document.head.appendChild(script);
+    }
+
+    function initMixpanel(info) {
+        try {
+            if (!window.mixpanel || typeof window.mixpanel.init !== "function") return;
+            if (window.__vertexMixpanelReady) return;
+
+            window.mixpanel.init(MIXPANEL_TOKEN, {
+                api_host: MIXPANEL_API_HOST,
+                persistence: "localStorage",
+                track_pageview: false,
+                debug: false
+            });
+
+            window.__vertexMixpanelReady = true;
+
+            if (info && info.user && info.user.id) {
+                window.mixpanel.identify(info.user.id);
+                window.mixpanel.people.set({
+                    "Registered User": true
+                });
+            }
+
+            window.mixpanel.track("Page Viewed", {
+                "Page Path": payload.page_path,
+                "Page Title": payload.page_title,
+                "Device Type": payload.device_type,
+                "Referrer Host": payload.referrer_host || "direct",
+                "Language": payload.language || "unknown",
+                "Signed In": !!(info && info.user)
+            });
+
+            const path = String(payload.page_path || "").toLowerCase();
+            if (/\/ai\.html$/.test(path)) {
+                window.mixpanel.track("Vertex AI Opened", {
+                    "Signed In": !!(info && info.user)
+                });
+            }
+        } catch (_) {
+            // Analytics must never affect the user experience.
+        }
+    }
+
+    async function send() {
+        const info = await sessionInfo();
+        sendFirstPartyAnalytics(info);
+        loadMixpanel(info);
     }
 
     if (document.readyState === "loading") {
