@@ -6,17 +6,17 @@
     const staleApiButton = document.getElementById("vertexApiKeyCenterBtn");
     if (staleApiButton) staleApiButton.remove();
 
-    // Voice emblem: square instead of circular.
+    // Voice emblem: true square with sharp corners.
     if (!document.getElementById("vertexVoiceSquareStyle")) {
         const style = document.createElement("style");
         style.id = "vertexVoiceSquareStyle";
         style.textContent = `
             .vertex-voice-orb {
-                border-radius: 28px !important;
+                border-radius: 0 !important;
             }
             .vertex-voice-orb::before,
             .vertex-voice-orb::after {
-                border-radius: inherit !important;
+                border-radius: 0 !important;
             }
         `;
         document.head.appendChild(style);
@@ -37,7 +37,7 @@
 
     const script = document.createElement("script");
     script.id = "vertexVoiceScript";
-    script.src = "ai-voice.js?v=20260905-2";
+    script.src = "ai-voice.js?v=20260905-3";
     script.onload = loadNaturalVoiceTuning;
     script.defer = true;
     document.body.appendChild(script);
