@@ -20,7 +20,7 @@
 <body>
   <main class="shell">
     <header class="top">
-      <div class="brand"><div class="logo">V</div><div><h1>Vertex Admin</h1><div class="sub">لوحة خاصة لإدارة ومتابعة زيارات Vertex</div></div></div>
+      <div class="brand"><div class="logo">V</div><div><h1>Vertex Admin</h1><div class="sub">لوحة خاصة لمتابعة مستخدمي Vertex والزيارات</div></div></div>
       <button id="refreshBtn" class="btn">↻ تحديث</button>
     </header>
 
@@ -30,22 +30,22 @@
     <section id="dashboard" class="hidden">
       <div class="cards">
         <div class="card"><div class="label">مشاهدات 30 يوم</div><div id="totalViews" class="value">0</div></div>
-        <div class="card"><div class="label">زوار مختلفون</div><div id="uniqueVisitors" class="value">0</div></div>
+        <div class="card"><div class="label">مستخدمون خلال 30 يوم</div><div id="uniqueVisitors" class="value">0</div></div>
         <div class="card"><div class="label">مشاهدات اليوم</div><div id="todayViews" class="value">0</div></div>
-        <div class="card"><div class="label">زوار اليوم</div><div id="todayVisitors" class="value">0</div></div>
-        <div class="card"><div class="label">زيارات هذه السنة</div><div id="yearViews" class="value">0</div><div id="yearLabel" class="mini"></div></div>
+        <div class="card"><div class="label">مستخدمو اليوم</div><div id="todayVisitors" class="value">0</div></div>
+        <div class="card"><div class="label">مستخدمو هذه السنة</div><div id="yearViews" class="value">0</div><div id="yearLabel" class="mini"></div></div>
       </div>
 
       <div class="panel">
-        <h2>الرسم البياني لآخر 30 يوم</h2>
+        <h2>المستخدمون خلال آخر 30 يوم</h2>
         <div id="dailyChart" class="chart-wrap"></div>
-        <div class="chart-legend"><span class="legend-dot"></span><span>عدد الزيارات لكل يوم خلال آخر 30 يوم</span></div>
+        <div class="chart-legend"><span class="legend-dot"></span><span>عدد المستخدمين المختلفين لكل يوم — المستخدم نفسه يُحسب مرة واحدة في اليوم</span></div>
       </div>
 
       <div class="panel">
-        <h2 id="monthlyTitle">الرسم البياني السنوي للزيارات</h2>
+        <h2 id="monthlyTitle">المستخدمون خلال السنة</h2>
         <div id="monthlyChart" class="chart-wrap"></div>
-        <div class="chart-legend"><span class="legend-dot"></span><span>عدد الزيارات لكل شهر من يناير إلى ديسمبر</span></div>
+        <div class="chart-legend"><span class="legend-dot"></span><span>عدد المستخدمين المختلفين في كل شهر من يناير إلى ديسمبر</span></div>
       </div>
 
       <div class="grid">
@@ -65,7 +65,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
-  <script src="admin-analytics.js?v=20260905-4"></script>
+  <script src="admin-analytics.js?v=20260905-5"></script>
   <script src="site-analytics.js?v=20260905-1"></script>
 </body>
 </html>
