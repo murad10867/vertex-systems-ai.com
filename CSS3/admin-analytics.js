@@ -59,8 +59,76 @@
     });
   }
 
+  function renderAnnualChart(items) {
+    const root = document.getElementById("monthlyChart");
+    root.innerHTML = "";
+
+    const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    const values = new Array(12).fill(0);
+
+    if (Array.isArray(items)) {
+      items.forEach(function (item) {
+        const monthIndex = Number(item.month) - 1;
+        if (monthIndex >= 0 && monthIndex < 12) {
+          values[monthIndex] = Number(item.views || 0);
+        }
+      });
+    }
+
+    const width = 960;
+    const height = 300;
+    const left = 54;
+    const right = 26;
+    const top = 28;
+    const bottom = 48;
+    const chartW = width - left - right;
+    const chartH = height - top - bottom;
+    const maxValue = Math.max.apply(null, values.concat([1]));
+
+    function x(i) {
+      return left + (chartW * i / 11);
+    }
+
+    function y(v) {
+      return top + chartH - (chartH * v / maxValue);
+    }
+
+    const points = values.map(function (v, i) {
+      return x(i).toFixed(1) + "," + y(v).toFixed(1);
+    }).join(" ");
+
+    const areaPoints = left + "," + (top + chartH) + " " + points + " " + (left + chartW) + "," + (top + chartH);
+    const gridValues = [0, .25, .5, .75, 1];
+
+    let svg = '<svg class="annual-chart" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="الرسم البياني السنوي للزيارات">';
+    svg += '<defs><linearGradient id="vertexChartGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35a7ff"/><stop offset="100%" stop-color="#2367ff" stop-opacity="0"/></linearGradient></defs>';
+
+    gridValues.forEach(function (ratio) {
+      const gy = top + chartH - (chartH * ratio);
+      const label = Math.round(maxValue * ratio);
+      svg += '<line class="chart-grid-line" x1="' + left + '" y1="' + gy + '" x2="' + (left + chartW) + '" y2="' + gy + '"></line>';
+      svg += '<text class="chart-axis-text" x="' + (left - 10) + '" y="' + (gy + 4) + '" text-anchor="end">' + fmt(label) + '</text>';
+    });
+
+    svg += '<polygon class="chart-area" points="' + areaPoints + '"></polygon>';
+    svg += '<polyline class="chart-line" points="' + points + '"></polyline>';
+
+    values.forEach(function (value, i) {
+      const px = x(i);
+      const py = y(value);
+      svg += '<circle class="chart-point" cx="' + px + '" cy="' + py + '" r="5"><title>' + monthNames[i] + ': ' + fmt(value) + ' زيارة</title></circle>';
+      svg += '<text class="chart-value" x="' + px + '" y="' + Math.max(15, py - 12) + '" text-anchor="middle">' + fmt(value) + '</text>';
+      svg += '<text class="chart-axis-text" x="' + px + '" y="' + (height - 18) + '" text-anchor="middle">' + monthNames[i] + '</text>';
+    });
+
+    svg += '</svg>';
+    root.innerHTML = svg;
+  }
+
   async function load() {
     loading.classList.remove("hidden");
+    loading.classList.remove("error");
+    loading.textContent = "جاري التحقق من صلاحية الإدارة وتحميل الإحصائيات…";
     denied.classList.add("hidden");
     dashboard.classList.add("hidden");
     refreshBtn.disabled = true;
@@ -104,7 +172,7 @@
       document.getElementById("todayVisitors").textContent = fmt(data.today_unique_visitors);
       document.getElementById("yearViews").textContent = fmt(data.year_views);
       document.getElementById("yearLabel").textContent = "سنة " + fmt(data.year);
-      document.getElementById("monthlyTitle").textContent = "الزيارات الشهرية - " + fmt(data.year);
+      document.getElementById("monthlyTitle").textContent = "الرسم البياني السنوي للزيارات - " + fmt(data.year);
       document.getElementById("yearVisitors").textContent = "زوار مختلفون هذه السنة: " + fmt(data.year_unique_visitors);
 
       rows("topPages", data.top_pages, "لا توجد صفحات مسجلة بعد.");
@@ -115,10 +183,7 @@
         return item.date;
       }, 14);
 
-      const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
-      renderBars("monthlyBars", data.monthly, "views", function (item) {
-        return monthNames[(Number(item.month) || 1) - 1] || "شهر";
-      });
+      renderAnnualChart(data.monthly);
 
       document.getElementById("generatedAt").textContent =
         "آخر تحديث: " + new Date(data.generated_at).toLocaleString("ar-SA");
