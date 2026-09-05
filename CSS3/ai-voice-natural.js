@@ -45,8 +45,8 @@
       } else {
         utterance.lang = arabic ? "ar-SA" : "en-US";
       }
-      // Faster conversational pacing while keeping the voice clear.
-      utterance.rate = arabic ? 1.18 : 1.14;
+      // Arabic stays fast; English is intentionally very slow per user preference.
+      utterance.rate = arabic ? 1.18 : 0.1;
       utterance.pitch = 1.03;
       utterance.volume = 1;
     } catch (_) {}
