@@ -71,13 +71,29 @@
         screen_width: Math.round(window.screen && window.screen.width ? window.screen.width : window.innerWidth || 0)
     };
 
-    function send() {
+    async function sessionToken() {
+        try {
+            if (!window.supabaseClient || !window.supabaseClient.auth) return null;
+            const result = await window.supabaseClient.auth.getSession();
+            return result && result.data && result.data.session
+                ? result.data.session.access_token
+                : null;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    async function send() {
+        const headers = { "Content-Type": "application/json" };
+        const token = await sessionToken();
+        if (token) headers.Authorization = "Bearer " + token;
+
         fetch(ENDPOINT, {
             method: "POST",
             mode: "cors",
             credentials: "omit",
             keepalive: true,
-            headers: { "Content-Type": "application/json" },
+            headers: headers,
             body: JSON.stringify(payload)
         }).catch(function () {
             // Analytics must never affect the user experience.
