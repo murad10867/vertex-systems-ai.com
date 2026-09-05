@@ -1,0 +1,37 @@
+name: Bump User Analytics Cache Once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bump-user-analytics-cache-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bump-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update analytics cache version in HTML pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in Path('CSS3').glob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              old = s
+              s = s.replace('site-analytics.js?v=20260905-1', 'site-analytics.js?v=20260905-2')
+              if s != old:
+                  p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit cache updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CSS3/*.html
+          if git diff --cached --quiet; then
+            echo "No cache updates needed"
+          else
+            git commit -m "Refresh signed-in analytics across Vertex pages"
+            git push
+          fi
