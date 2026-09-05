@@ -20,7 +20,6 @@
       if (lang === "en-us") score += 100;
       else if (lang.startsWith("en")) score += 70;
     }
-    // Prefer higher-quality system/cloud voices when the browser exposes them.
     if (/natural|neural|online|microsoft|google|siri|enhanced/.test(name)) score += 35;
     if (/female|zira|salma|hoda|laila|layla/.test(name)) score += 8;
     if (v.localService === false) score += 5;
@@ -45,15 +44,13 @@
       } else {
         utterance.lang = arabic ? "ar-SA" : "en-US";
       }
-      // Arabic back to natural speed; English remains at the user's selected slow speed.
-      utterance.rate = arabic ? 1.0 : 0.1;
+      utterance.rate = arabic ? 5.5 : 0.1;
       utterance.pitch = 1.03;
       utterance.volume = 1;
     } catch (_) {}
     return originalSpeak(utterance);
   };
 
-  // Warm the voice list; Chromium may populate it asynchronously.
   synth.getVoices();
   synth.addEventListener?.("voiceschanged", function () { synth.getVoices(); });
 })();
