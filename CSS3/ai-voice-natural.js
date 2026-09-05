@@ -45,8 +45,8 @@
       } else {
         utterance.lang = arabic ? "ar-SA" : "en-US";
       }
-      // Calm, conversational pacing closer to a modern voice assistant.
-      utterance.rate = arabic ? 0.92 : 0.96;
+      // Slightly faster conversational pacing while keeping the voice natural.
+      utterance.rate = arabic ? 1.08 : 1.05;
       utterance.pitch = 1.03;
       utterance.volume = 1;
     } catch (_) {}
