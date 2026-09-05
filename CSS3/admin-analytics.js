@@ -36,71 +36,50 @@
     });
   }
 
-  function renderBars(targetId, items, valueKey, labelFn, limit) {
+  function renderLineChart(targetId, values, labels, options) {
     const root = document.getElementById(targetId);
     root.innerHTML = "";
-    const list = Array.isArray(items) ? (limit ? items.slice(-limit) : items.slice()) : [];
+
+    const list = Array.isArray(values) ? values.map(function (v) { return Number(v || 0); }) : [];
     if (!list.length) {
       const div = document.createElement("div");
-      div.className = "mini";
+      div.className = "chart-empty";
       div.textContent = "تظهر البيانات هنا بعد بدء تسجيل الزيارات.";
       root.appendChild(div);
       return;
     }
 
-    const max = Math.max.apply(null, list.map(function (x) { return Number(x[valueKey] || 0); }).concat([1]));
-    list.forEach(function (item) {
-      const value = Number(item[valueKey] || 0);
-      const bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.height = Math.max(5, Math.round((value / max) * 100)) + "%";
-      bar.title = labelFn(item) + " • " + fmt(value) + " زيارة";
-      root.appendChild(bar);
-    });
-  }
-
-  function renderAnnualChart(items) {
-    const root = document.getElementById("monthlyChart");
-    root.innerHTML = "";
-
-    const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
-    const values = new Array(12).fill(0);
-
-    if (Array.isArray(items)) {
-      items.forEach(function (item) {
-        const monthIndex = Number(item.month) - 1;
-        if (monthIndex >= 0 && monthIndex < 12) {
-          values[monthIndex] = Number(item.views || 0);
-        }
-      });
-    }
-
-    const width = 960;
-    const height = 300;
+    const opts = options || {};
+    const width = Number(opts.width || 960);
+    const height = Number(opts.height || 300);
     const left = 54;
     const right = 26;
     const top = 28;
     const bottom = 48;
     const chartW = width - left - right;
     const chartH = height - top - bottom;
-    const maxValue = Math.max.apply(null, values.concat([1]));
+    const maxValue = Math.max.apply(null, list.concat([1]));
+    const count = Math.max(1, list.length - 1);
 
     function x(i) {
-      return left + (chartW * i / 11);
+      return left + (chartW * i / count);
     }
 
     function y(v) {
       return top + chartH - (chartH * v / maxValue);
     }
 
-    const points = values.map(function (v, i) {
+    const points = list.map(function (v, i) {
       return x(i).toFixed(1) + "," + y(v).toFixed(1);
     }).join(" ");
 
     const areaPoints = left + "," + (top + chartH) + " " + points + " " + (left + chartW) + "," + (top + chartH);
     const gridValues = [0, .25, .5, .75, 1];
+    const cssClass = opts.cssClass || "annual-chart";
+    const ariaLabel = opts.ariaLabel || "الرسم البياني للزيارات";
+    const labelEvery = Number(opts.labelEvery || 1);
 
-    let svg = '<svg class="annual-chart" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="الرسم البياني السنوي للزيارات">';
+    let svg = '<svg class="' + cssClass + '" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + ariaLabel + '">';
     svg += '<defs><linearGradient id="vertexChartGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35a7ff"/><stop offset="100%" stop-color="#2367ff" stop-opacity="0"/></linearGradient></defs>';
 
     gridValues.forEach(function (ratio) {
@@ -113,16 +92,80 @@
     svg += '<polygon class="chart-area" points="' + areaPoints + '"></polygon>';
     svg += '<polyline class="chart-line" points="' + points + '"></polyline>';
 
-    values.forEach(function (value, i) {
+    list.forEach(function (value, i) {
       const px = x(i);
       const py = y(value);
-      svg += '<circle class="chart-point" cx="' + px + '" cy="' + py + '" r="5"><title>' + monthNames[i] + ': ' + fmt(value) + ' زيارة</title></circle>';
-      svg += '<text class="chart-value" x="' + px + '" y="' + Math.max(15, py - 12) + '" text-anchor="middle">' + fmt(value) + '</text>';
-      svg += '<text class="chart-axis-text" x="' + px + '" y="' + (height - 18) + '" text-anchor="middle">' + monthNames[i] + '</text>';
+      const label = labels[i] || "";
+      svg += '<circle class="chart-point" cx="' + px + '" cy="' + py + '" r="4.5"><title>' + label + ': ' + fmt(value) + ' زيارة</title></circle>';
+
+      if (opts.showValues) {
+        svg += '<text class="chart-value" x="' + px + '" y="' + Math.max(15, py - 12) + '" text-anchor="middle">' + fmt(value) + '</text>';
+      }
+
+      if (i % labelEvery === 0 || i === list.length - 1) {
+        svg += '<text class="chart-axis-text" x="' + px + '" y="' + (height - 18) + '" text-anchor="middle">' + label + '</text>';
+      }
     });
 
     svg += '</svg>';
     root.innerHTML = svg;
+  }
+
+  function render30DayChart(items) {
+    const byDate = new Map();
+    if (Array.isArray(items)) {
+      items.forEach(function (item) {
+        byDate.set(String(item.date || ""), Number(item.views || 0));
+      });
+    }
+
+    const values = [];
+    const labels = [];
+    const now = new Date();
+    const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+
+    for (let offset = 29; offset >= 0; offset -= 1) {
+      const d = new Date(todayUtc.getTime() - offset * 86400000);
+      const key = d.toISOString().slice(0, 10);
+      values.push(byDate.get(key) || 0);
+      labels.push(d.toLocaleDateString("ar-SA-u-ca-gregory", {
+        day: "numeric",
+        month: "short",
+        timeZone: "UTC"
+      }));
+    }
+
+    renderLineChart("dailyChart", values, labels, {
+      width: 1180,
+      height: 300,
+      cssClass: "daily-chart",
+      ariaLabel: "الرسم البياني للزيارات خلال آخر 30 يوم",
+      labelEvery: 3,
+      showValues: false
+    });
+  }
+
+  function renderAnnualChart(items) {
+    const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    const values = new Array(12).fill(0);
+
+    if (Array.isArray(items)) {
+      items.forEach(function (item) {
+        const monthIndex = Number(item.month) - 1;
+        if (monthIndex >= 0 && monthIndex < 12) {
+          values[monthIndex] = Number(item.views || 0);
+        }
+      });
+    }
+
+    renderLineChart("monthlyChart", values, monthNames, {
+      width: 960,
+      height: 300,
+      cssClass: "annual-chart",
+      ariaLabel: "الرسم البياني السنوي للزيارات",
+      labelEvery: 1,
+      showValues: true
+    });
   }
 
   async function load() {
@@ -179,10 +222,7 @@
       rows("devices", data.devices, "لا توجد بيانات أجهزة بعد.");
       rows("referrers", data.referrers, "لا توجد مصادر دخول بعد.");
 
-      renderBars("dailyBars", data.daily, "views", function (item) {
-        return item.date;
-      }, 14);
-
+      render30DayChart(data.daily);
       renderAnnualChart(data.monthly);
 
       document.getElementById("generatedAt").textContent =
