@@ -36,10 +36,10 @@
     });
   }
 
-  function bars(items) {
-    const root = document.getElementById("dailyBars");
+  function renderBars(targetId, items, valueKey, labelFn, limit) {
+    const root = document.getElementById(targetId);
     root.innerHTML = "";
-    const list = Array.isArray(items) ? items.slice(-14) : [];
+    const list = Array.isArray(items) ? (limit ? items.slice(-limit) : items.slice()) : [];
     if (!list.length) {
       const div = document.createElement("div");
       div.className = "mini";
@@ -48,12 +48,13 @@
       return;
     }
 
-    const max = Math.max.apply(null, list.map(function (x) { return Number(x.views || 0); }).concat([1]));
+    const max = Math.max.apply(null, list.map(function (x) { return Number(x[valueKey] || 0); }).concat([1]));
     list.forEach(function (item) {
+      const value = Number(item[valueKey] || 0);
       const bar = document.createElement("div");
       bar.className = "bar";
-      bar.style.height = Math.max(5, Math.round((Number(item.views || 0) / max) * 100)) + "%";
-      bar.title = item.date + " • " + fmt(item.views) + " زيارة";
+      bar.style.height = Math.max(5, Math.round((value / max) * 100)) + "%";
+      bar.title = labelFn(item) + " • " + fmt(value) + " زيارة";
       root.appendChild(bar);
     });
   }
@@ -101,11 +102,23 @@
       document.getElementById("uniqueVisitors").textContent = fmt(data.unique_visitors);
       document.getElementById("todayViews").textContent = fmt(data.today_views);
       document.getElementById("todayVisitors").textContent = fmt(data.today_unique_visitors);
+      document.getElementById("yearViews").textContent = fmt(data.year_views);
+      document.getElementById("yearLabel").textContent = "سنة " + fmt(data.year);
+      document.getElementById("monthlyTitle").textContent = "الزيارات الشهرية - " + fmt(data.year);
+      document.getElementById("yearVisitors").textContent = "زوار مختلفون هذه السنة: " + fmt(data.year_unique_visitors);
 
       rows("topPages", data.top_pages, "لا توجد صفحات مسجلة بعد.");
       rows("devices", data.devices, "لا توجد بيانات أجهزة بعد.");
       rows("referrers", data.referrers, "لا توجد مصادر دخول بعد.");
-      bars(data.daily);
+
+      renderBars("dailyBars", data.daily, "views", function (item) {
+        return item.date;
+      }, 14);
+
+      const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+      renderBars("monthlyBars", data.monthly, "views", function (item) {
+        return monthNames[(Number(item.month) || 1) - 1] || "شهر";
+      });
 
       document.getElementById("generatedAt").textContent =
         "آخر تحديث: " + new Date(data.generated_at).toLocaleString("ar-SA");
