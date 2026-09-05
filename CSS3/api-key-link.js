@@ -6,6 +6,18 @@
     const staleApiButton = document.getElementById("vertexApiKeyCenterBtn");
     if (staleApiButton) staleApiButton.remove();
 
+    // Load response sharing controls.
+    function loadShareTools() {
+        if (document.getElementById("vertexShareScript")) return;
+        const share = document.createElement("script");
+        share.id = "vertexShareScript";
+        share.src = "ai-share.js?v=20260905-1";
+        share.defer = true;
+        document.body.appendChild(share);
+    }
+
+    loadShareTools();
+
     // Voice emblem: rounded square matching the Vertex V logo style.
     if (!document.getElementById("vertexVoiceSquareStyle")) {
         const style = document.createElement("style");
